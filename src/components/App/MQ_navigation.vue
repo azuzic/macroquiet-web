@@ -1,10 +1,10 @@
 <template>
     <div class="w-full h-16 bg-MQ_dark flex p-3 bg-opacity-75 absolute z-50 drop-shadow-md">
         <router-link to="/" class="h-full">
-            <img class="cursor-pointer h-full ml-8" src="src/assets/Logos/macroquiet_logo.png">
+            <img class="cursor-pointer h-full | ml-2 lg:ml-8 | transition-all duration-300" src="src/assets/Logos/macroquiet_logo.png">
         </router-link>
 
-        <div class="flex justify-center ml-32 mt-2 items-center gap-8">
+        <div class="flex justify-center | ml-12 lg:ml-32 | mt-2 items-center | gap-4 lg:gap-8 | transition-all duration-300">
             <div v-for="link in links" :key="link.title" 
             class="flex h-min cursor-pointer group"
             @click="scroll(link.to)">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="flex grow items-center justify-end">
-            <button class="bg-transparent px-5 py-1.5 text-sm rounded-full hover:bg-MQ_red text-MQ_light hover:text-MQ_dark hover:font-bold mr-8 transition-all duration-300 border-MQ_red border-2">
+            <button class="bg-transparent px-5 py-1.5 text-sm rounded-full hover:bg-MQ_red text-MQ_light hover:text-MQ_dark hover:font-bold | mr-2 lg:mr-8 | transition-all duration-300 border-MQ_red border-2">
                 LOG IN
             </button>
         </div>
