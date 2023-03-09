@@ -13,6 +13,6 @@
 
 <script>
 export default {
-    name: "MQ_carouselTitle"
+    name: "MQ_carouselTitle",
 }
 </script>
