@@ -1,5 +1,5 @@
 <template>
-    <div class="pb-8 relative">
+    <div id="games" class="pb-8 relative">
 
         <MQ_h2 text="FEATURED GAMES"/>
 

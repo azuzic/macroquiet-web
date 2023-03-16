@@ -33,7 +33,7 @@ export default {
                 {
                     title: "CONTACT US",
                     icon: "address-card",
-                    to: "contact",
+                    to: "contact-us",
                 },
             ],
         }

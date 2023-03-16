@@ -1,5 +1,5 @@
 <template>
-    <div class="relative bg-gradient-to-b from-MQ_dark to-MQ_darkblue w-full opacity-90">
+    <div id="about" class="relative bg-gradient-to-b from-MQ_dark to-MQ_darkblue w-full opacity-90">
         <hr class="border-2 border-MQ_light drop-shadow-MQ relative">
         <div class="flex flex-col items-center">
 
@@ -15,7 +15,7 @@
                 </h2>
             </div>
 
-            <div id="news" class="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-20 py-4">
+            <div class="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-20 py-4">
                 <MQ_portrait :imageSrc="'src/assets/portraits/Portret_Luka_Big-noBG.png'"      :name="'Blaskec'"   :userName="'blaskec'"/>
                 <MQ_portrait :imageSrc="'src/assets/portraits/Portret_Alesandro_Big-noBG.png'" :name="'Zuza'"      :userName="'zuza'"/>
             </div>
@@ -28,6 +28,7 @@
 <script>
 import MQ_h2 from '../../Global/MQ_h2.vue';
 import MQ_portrait from './MQ_portrait.vue';
+
 
 export default {
     name: "MQ_aboutUs",

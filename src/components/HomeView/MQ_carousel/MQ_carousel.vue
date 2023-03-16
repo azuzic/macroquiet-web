@@ -1,9 +1,9 @@
 <template>
-    <div id="games" class="h-[240px] xs:h-[280px] sm:h-[340px] md:h-[400px] lg:h-[460px] xl:h-[520px] 2xl:h-[600px] | overflow-hidden relative | transition-all duration-300">
+    <div class="h-[240px] xs:h-[280px] sm:h-[340px] md:h-[400px] lg:h-[460px] xl:h-[520px] 2xl:h-[600px] | overflow-hidden relative | transition-all duration-300">
         <MQ_carouselTitle class="mt-8 sm:mt-7 md:mt-4 xl:mt-6 2xl:mt-2 | transition-all duration-300"/>
-        <carousel :items-to-show="1" :wrapAround="true" :autoplay="0" :transition="1000" :mouseDrag="false" :touchDrag="false" class="h-full relative">
-            <slide v-for="slide in 1" :key="slide" class="h-full">
-                <div class="h-full w-full overflow-hidden bg-cover" :style="'background-image: url(src/assets/tempImages/' + (slide + 15) + '.png)'">
+        <carousel :items-to-show="1" :wrapAround="true" :autoplay="10000" :transition="1000" :mouseDrag="false" :touchDrag="false" class="h-full relative">
+            <slide v-for="slide in 15" :key="slide" class="h-full">
+                <div class="h-full w-full overflow-hidden bg-cover" :style="'background-image: url(src/assets/tempImages/' + (slide + 1) + '.png)'">
                     <div class="w-full h-full bg-gradient-to-b from-MQ_dark opacity-25 absolute top-0"></div>
                 </div>
             </slide>

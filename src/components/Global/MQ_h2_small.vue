@@ -1,5 +1,5 @@
 <template>
-    <h2 id="games" class="drop-shadow-MQ | w-full flex justify-center items-center pt-2 pb-1 | transition-all duration-300 | relative"> 
+    <h2 class="drop-shadow-MQ | w-full flex justify-center items-center pt-2 pb-1 | transition-all duration-300 | relative"> 
 
         <div class="grow h-0.5 rounded-full bg-gradient-to-l from-slate-600 via-slate-900 to-slate-600 opacity-75 relative flex items-center">
 

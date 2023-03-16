@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div id="news" class="relative">
         <MQ_h2 text="WHAT'S BEEN GOING ON"/>
 
         <div class="snap-x snap-proximity flex w-0 min-w-full grow h-[760px] items-center pl-16 pr-48 overflow-x-scroll">
@@ -22,7 +22,7 @@ export default {
                 {
                     date: "9 November, 2022",
                     title: "STRANDED AWAY | OFFICIAL TRAILER",
-                    text: `Stranded Away official gameplay trailer has been just released! <iframe class="w-full pt-2 aspect-video" src="https://www.youtube.com/embed/FB92RX_obXA" title="Stranded Away | Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                    text: `Stranded Away official gameplay trailer has been just released! <iframe class="w-full pt-2 aspect-video" title="Stranded Away | Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
                     author: "MacroQuiet",
                     icon: "fa-brands fa-youtube"
                 },
@@ -50,7 +50,7 @@ export default {
                 {
                     date: "9 November, 2022",
                     title: "NEW MACROQUIET INTRO",
-                    text: `Check out our new video intro on Youtube!<br><br><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/qUBenrhpwek" title="MacroQuiet Intro 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                    text: `Check out our new video intro on Youtube!<br><br><iframe class="w-full aspect-video" src="" title="MacroQuiet Intro 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
                     author: "MacroQuiet",
                     icon: "fa-brands fa-youtube"
                 },

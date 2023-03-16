@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed h-full z-50 flex flex-col justify-center | md2:-ml-16 | transition-all duration-300">
+    <div class="fixed h-full z-[1000] top-0 flex flex-col justify-center | md2:-ml-16 | transition-all duration-300">
         <div class="flex flex-col">
             <div v-for="link, index in links" :key="link.title" @click="scroll(link.to)"
                 class="h-min cursor-pointer group | transition-all duration-300">
@@ -28,6 +28,11 @@
 </template>
 
 <script>
+let wait = function (seconds) {
+    return new Promise((resolveFn) => {
+        setTimeout(resolveFn, seconds * 1000);
+    });
+};
 export default {
     name: "MQ_navigationSide",
     props: {
@@ -36,11 +41,11 @@ export default {
     methods: {
         async scroll(id) {
             if (id == "contact-us") {
-                router.push({ path: "/contact-us" }).catch(() => { });
+                this.$router.push({ path: "/contact-us" }).catch(() => { });
                 return;
             }
             if (this.$route.name != "Home") {
-                router.push({ path: "/", replace: true }).catch(() => { });
+                this.$router.push({ path: "/", replace: true }).catch(() => { });
                 await wait(0.1);
             }
 

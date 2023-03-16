@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-16 bg-MQ_dark flex p-3 bg-opacity-75 fixed z-40 drop-shadow-md">
+    <div class="w-full h-16 bg-MQ_dark flex p-3 bg-opacity-75 fixed top-0 z-[1000] drop-shadow-md">
 
         <MQ_logo />
 
@@ -28,6 +28,11 @@
 
 <script>
 import MQ_logo from "./MQ_logo.vue";
+let wait = function (seconds) {
+    return new Promise((resolveFn) => {
+        setTimeout(resolveFn, seconds * 1000);
+    });
+};
 export default {
     name: "MQ_navigationTop",
     components: {
@@ -39,11 +44,11 @@ export default {
     methods: {
         async scroll(id) {
             if (id == "contact-us") {
-                router.push({ path: "/contact-us" }).catch(() => { });
+                this.$router.push({ path: "/contact-us" }).catch(() => { });
                 return;
             }
             if (this.$route.name != "Home") {
-                router.push({ path: "/", replace: true }).catch(() => { });
+                this.$router.push({ path: "/", replace: true }).catch(() => { });
                 await wait(0.1);
             }
 

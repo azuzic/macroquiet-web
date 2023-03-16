@@ -1,8 +1,10 @@
 <template>  
-    <MQ_carousel/>
-    <MQ_featuredGames/>
-    <MQ_aboutUs/>
-    <MQ_timeline/>
+    <div>
+        <MQ_carousel/>
+        <MQ_featuredGames/>
+        <MQ_aboutUs/>
+        <MQ_timeline/>
+    </div>
 </template>
 
 <script>
@@ -15,4 +17,6 @@ export default {
     name: "HomeView",
     components: { MQ_carousel, MQ_featuredGames, MQ_aboutUs, MQ_timeline }
 }
+//
 </script>
+
