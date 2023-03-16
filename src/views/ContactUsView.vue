@@ -6,9 +6,9 @@
 
             <Form @submit="onSubmit" class="w-full max-w-md flex gap-2" :validation-schema="schema">
                 <div class="flex flex-col w-full justify-between items-center gap-2">
-                    <MQ_textInput label="Name" />
-                    <MQ_textInput label="E-mail" />
-                    <MQ_dropdownInput label="Subject" :list="list"/>
+                    <MQ_textInput label="Name" icon="user"/>
+                    <MQ_textInput label="E-mail" icon="envelope"/>
+                    <MQ_dropdownInput label="Subject" :list="list" icon="keyboard"/>
                     <MQ_textAreaInput label="Message" :max="2000"/>
                     <button @click="onSubmit()" class="h-8 w-full | group relative overflow-hidden | flex flex-col justify-between items-center | rounded-md bg-MQ_dark bg-opacity-25 drop-shadow-MQ">
                         <div class="px-5 h-full | text-MQ_light group-hover:text-MQ_dark | group-hover:font-bold | z-10 | transition-all duration-500 | flex items-center text-sm">SEND</div>
@@ -54,7 +54,7 @@ export default {
     },
     data() {
         return {
-            list: ["Registration problem", "Achievements problem", "bug report", "Suggestion", "Cooperation", "Other"],
+            list: ["Registration problem", "Achievements problem", "Bug report", "Suggestion", "Cooperation", "Other"],
             left: false
         }
     },
