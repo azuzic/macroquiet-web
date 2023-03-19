@@ -18,9 +18,9 @@
 
         <!-- LOG IN -->
         <div class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
-            <button class="px-5 py-1.5 | mr-2 lg:mr-8 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark | hover:font-bold | border-MQ_red border-2 rounded-full | transition-all duration-300">
+            <router-link to="/log-in" class="px-5 py-1.5 | mr-2 lg:mr-8 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark | hover:font-bold | border-MQ_red border-2 rounded-full | transition-all duration-300">
                 LOG IN
-            </button>
+            </router-link>
         </div>
 
     </div>

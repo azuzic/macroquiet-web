@@ -17,7 +17,7 @@
 <style>
 * { font-family: "Poppins", sans-serif; }
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
+html body::-webkit-scrollbar-track { background: black; }
 ::-webkit-scrollbar-thumb {
     background: #192739;
     border-radius: 4px;
@@ -30,5 +30,48 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: all 0s 50000s;
+}
+::selection {
+  color: rgb(239, 83, 80);
+  background: rgba(239, 83, 80, 0.2);
+}
+
+@font-face {
+  font-family: pdark;
+  src: url("src/assets/fonts/pdark.ttf");
+}
+@font-face {
+  font-family: logo_font;
+  src: url("src/assets/fonts/logo.ttf");
+}
+.p-dark {
+  font-family: pdark;
+}
+.logo_font {
+  font-family: logo_font;
+}
+.main {
+    background-image: url("src/assets/background/night_sky.gif");
+    background-size: 480px;
+}
+.vignette {
+	box-shadow: inset 0px 0px 32px rgba(0,0,0,0.75), inset 0px 0px 8px rgba(0,0,0,1);
+}
+.rendering-auto { image-rendering: auto; }
+.rendering-crisp-edges { image-rendering: crisp-edges; }
+.rendering-pixelated { image-rendering: pixelated; }
+
+html, body, #app {
+  height: 100%;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: all 0.3s;
+}
+.fade-enter-from {
+    opacity: 0;
+}
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

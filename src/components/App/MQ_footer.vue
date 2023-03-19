@@ -1,5 +1,5 @@
 <template>
-    <div class="bottom-0 w-full z-0 | bg-MQ_dark bg-opacity-75 drop-shadow-MQ | flex flex-col justify-center items-center | pt-2">
+    <div class="bottom-0 w-full z-50 | bg-MQ_dark bg-opacity-75 drop-shadow-MQ | flex flex-col justify-center items-center | pt-2">
 
         <div class="flex flex-col justify-center items-center">
             <b class="text-MQ_red text-sm mb-1">MacroQuiet Game Development</b>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import MQ_h2_small from '../Global/MQ_h2_small.vue';
+import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
 
 export default {
     name: "MQ_footer",

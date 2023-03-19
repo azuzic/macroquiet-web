@@ -1,6 +1,6 @@
 <template>
-    <h2 class="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl | drop-shadow-MQ | flex justify-center items-center
-        py-4 xs:py-4 sm:py-6 md:py-8 lg:py-12 | transition-all duration-300"> 
+    <h2 class="text-2xl xs:text-3xl | drop-shadow-MQ | flex justify-center items-center
+        py-4 xs:py-4 sm:py-6 md:py-8 lg:py-12 | transition-all duration-300" :class="small ? 'sm:text-3xl lg:text-4xl' : 'sm:text-4xl md:text-4xl lg:text-5xl'"> 
 
         <div class="grow | mr-8 xs:ml-2 | sm:mr-12 sm:ml-4 | md:mr-14 md:ml-12 | lg:ml-16 | xl:ml-28 | 2xl:mr-16 2xl:ml-32 | h-0.5 sm:h-1 | rounded-full bg-gradient-to-l from-MQ_lighter via-MQ_light to-transparent opacity-75 relative flex items-center | transition-all duration-500">
 
@@ -12,7 +12,8 @@
 
         </div>
 
-        <div class="text-MQ_light font-bold text-center | transition-all duration-500">{{ text }}</div>
+        <div class="max-w-[200px] xs:max-w-[260px] sm:max-w-[360px] | text-MQ_light font-bold text-center | transition-all duration-500 leading-tight" 
+            :class="small ? 'md:max-w-sm' : 'md:max-w-sm lg:max-w-xl'" v-html="text"></div>
 
         <div class="grow | ml-8 xs:mr-2 | sm:ml-12 sm:mr-4 | md:ml-14 md:mr-12 | lg:mr-16 | xl:mr-28 | 2xl:ml-16  2xl:mr-32 | h-0.5 sm:h-1 | rounded-full bg-gradient-to-r from-MQ_lighter via-MQ_light to-transparent opacity-75 relative flex items-center | transition-all duration-500">
             
@@ -30,7 +31,8 @@
 export default {
     name: "MQ_h2",
     props: {
-        text: String
+        text: String,
+        small: Boolean
     }
 }
 </script>

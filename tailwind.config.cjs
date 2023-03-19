@@ -13,6 +13,9 @@ module.exports = {
                 xs: "480px",
                 md2: "860px",
             },
+            animation: {
+                spin_slow: "spin 3s linear infinite",
+            },
             backgroundSize: {
                 "size-200_200": "200% 200%",
                 "size-100_100": "100% 100%",
@@ -108,6 +111,7 @@ module.exports = {
                 MQ_darkhover: "#13131f",
                 MQ_darkblue: "#0f1119",
                 MQ_red: "#EF5350",
+                MQ_green: "#16a34a",
                 MQ_blue: "#15171e",
                 MQ_light: "#cbd5e1",
                 MQ_lighter: "#e2e8f0",
