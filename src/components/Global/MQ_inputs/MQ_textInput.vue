@@ -13,10 +13,10 @@
 
                 <ErrorMessage class="absolute text-xs text-MQ_red mt-1" :name="label" />
 
-                <label  class="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 z-50 origin-[0] left-0
+                <label  class="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-50 origin-[0] left-0
                               peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" 
                         :class="errorMessage ? 'peer-focus:text-MQ_red text-MQ_red' : 'peer-focus:text-MQ_light text-slate-500'">
-                    {{ label + ' ' + errorMessage }}
+                    {{ label }}
                 </label>
         
             </Field>
