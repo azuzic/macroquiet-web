@@ -18,24 +18,22 @@
             </Form>
 
             
-            <img @click="left = true" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 right-[10%] z-[100] cursor-pointer | transition-all duration-500
-                hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-0" 
-                src="src/assets/icons/trader_robot_idle.gif"
-                :class="left ? 'opacity-0' : ''">
-            <img @click="left = false" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 left-[10%] -scale-x-100 z-[100] cursor-pointer | transition-all duration-500
-                hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-0" 
-                src="src/assets/icons/trader_robot_idle.gif"
-                :class="left ? '' : 'opacity-0'">
+            <img @click="left = true" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 right-[10%] z-[100] cursor-pointer 
+                transition-all duration-500  hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-0" 
+                src="src/assets/icons/trader_robot_idle.gif" :class="left ? 'opacity-0' : ''">
+            <img @click="left = false" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 left-[10%] -scale-x-100 z-[100] cursor-pointer 
+                transition-all duration-500 hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-0" 
+                src="src/assets/icons/trader_robot_idle.gif" :class="left ? '' : 'opacity-0'">
             
         </div>
     </div>
 </template>
 
 <script>
-import MQ_dropdownInput from '../components/ContactUsView/MQ_dropdownInput.vue';
-import MQ_textAreaInput from '../components/ContactUsView/MQ_textAreaInput.vue';
-import MQ_textInput from '../components/ContactUsView/MQ_textInput.vue';
-import MQ_h2 from '../components/Global/MQ_h2.vue';
+import MQ_dropdownInput from '../components/Global/MQ_inputs/MQ_dropdownInput.vue';
+import MQ_textAreaInput from '../components/Global/MQ_inputs/MQ_textAreaInput.vue';
+import MQ_textInput from '../components/Global/MQ_inputs/MQ_textInput.vue';
+import MQ_h2 from '../components/Global/MQ_h2/MQ_h2.vue';
 import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 

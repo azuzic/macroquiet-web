@@ -41,7 +41,18 @@ export default {
     props: {
         links: Array,
     },
+    data() {
+        return {
+            scrollPosition: 0,
+        }
+    }, 
+    created() {
+        window.addEventListener("scroll", this.handleScroll);
+    },
     methods: {
+        handleScroll() {
+            this.scrollPosition = window.scrollY;
+        },
         async scroll(id) {
             if (id == "contact-us") {
                 this.$router.push({ path: "/contact-us" }).catch(() => { });
