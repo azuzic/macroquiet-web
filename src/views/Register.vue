@@ -20,7 +20,7 @@
 
                     <MQ_h2_small :white="true" text="OR" class="mb-8 mt-2 px-4"/>
 
-                    <MQ_textInput label="Username" icon="envelope" :max="16"/>
+                    <MQ_textInput label="Username" icon="user" :max="16"/>
                     <MQ_textInput label="E-mail" icon="envelope" />
                     <MQ_textInput :password="true" label="Password" icon="key" />
                     <MQ_textInput :password="true" label="Password confirm" icon="key" />
@@ -52,7 +52,7 @@
                     <div class="text-sm text-MQ_light transition-all duration-500 relative z-20"
                         :class="submitting || type != 'none' ? 'opacity-0' : 'opacity-100 delay-500'">
                         Already have an account?
-                        <router-link class="text-MQ_red hover:underline" to="/log-in">
+                        <router-link class="text-MQ_red hover:underline" to="/login">
                             Log in here
                         </router-link> 
                     </div>

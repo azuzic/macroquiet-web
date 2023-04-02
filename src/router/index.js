@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { Auth } from "@/services";
 import HomeView from "../views/HomeView.vue";
 import ContactUsView from "../views/ContactUsView.vue";
 import LogIn from "../views/LogIn.vue";
 import Register from "../views/Register.vue";
-
+import PageNotFound from "../views/PageNotFound.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -18,7 +19,7 @@ const router = createRouter({
             component: ContactUsView,
         },
         {
-            path: "/log-in",
+            path: "/login",
             name: "LogIn",
             component: LogIn,
         },
@@ -27,6 +28,37 @@ const router = createRouter({
             name: "Register",
             component: Register,
         },
+        {
+            path: "/:pathMatch(.*)*",
+            name: "NotFound",
+            component: PageNotFound,
+        },
     ],
 });
+
+router.beforeEach((to, from, next) => {
+    const publicPages = [
+        "/",
+        "/login",
+        "/register",
+        "/contact-us",
+        "/games/doge",
+        "/games/stranded-away",
+    ];
+    const adminPages = ["admin-panel"];
+    const userRequired = !publicPages.includes(to.path);
+    const adminRequired = adminPages.includes(to.path);
+
+    const user = Auth.getCurrentUser();
+
+    if (userRequired && !user) {
+        console.log("sdsd");
+        next("/login");
+        return;
+    } else if (adminRequired && !user && !user.admin) {
+        next("/");
+        return;
+    } else next();
+});
+
 export default router;

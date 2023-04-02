@@ -77,6 +77,8 @@ import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 import MQ_checkBoxInput from '../components/Global/MQ_inputs/MQ_checkBoxInput.vue';
 import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
+import { Auth } from "@/services";
+import authResolver from "@/services/authResolver";
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -100,27 +102,40 @@ export default {
         return {
             submitting: false,
             type: "none",
-            logInIcons: ["google", "apple", "steam", "xbox", "sony"]
+            logInIcons: ["google", "apple", "steam", "xbox", "sony"],
+            authResolver
         }
     },
     methods: {
         async onSubmit(values) {
             if (values) {
-                console.log(values);
+                console.log();
                 this.submitting = true;
+
+                
+                let userData = {
+                    email: values["E-mail"],
+                    password: values["Password"],
+                    rememberMe: values["Remember me"],
+                };
+                let response = {}
                 try {
-                    await wait(2);
+                    response = await Auth.authenticateUser(userData);
+                    await wait(1);
+                    console.log("Request sent successfully!");
                     this.submitting = false;
                     this.type = "success";
+                    this.authResolver.loginHandler("success", response, "Logging in...", 2);
                     await wait(2);
                     this.type = "none";
                 } catch (e) {
-                    await wait(2);
+                    console.error("Error sending message! ", e);
+                    await wait(1);
                     this.submitting = false;
                     this.type = "warning";
                     await wait(2);
                     this.type = "none";
-                    console.error("Error sending message!");
+                    this.authResolver.loginHandler("error", response, "Error");
                 }
             }
         },
