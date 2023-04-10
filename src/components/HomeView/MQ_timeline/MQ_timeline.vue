@@ -23,6 +23,3 @@ export default {
     components: { MQ_h2, MQ_timelineCard },
 }
 </script>
-
-<style>
-</style>

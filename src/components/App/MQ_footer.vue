@@ -1,5 +1,5 @@
 <template>
-    <div class="bottom-0 w-full z-50 | bg-MQ_dark bg-opacity-75 drop-shadow-MQ | flex flex-col justify-center items-center | pt-2">
+    <div class="w-full z-50 | bg-MQ_dark bg-opacity-75 drop-shadow-MQ | flex flex-col justify-center items-center | pt-2">
 
         <div class="flex flex-col justify-center items-center">
             <b class="text-MQ_red text-sm mb-1">MacroQuiet Game Development</b>
@@ -18,7 +18,7 @@
                     <i class="text-MQ_light hover:text-MQ_red fa-brands fa-twitter text-xl opacity-80 | transition-all duration-300"></i>
                 </a>
                 <a href="https://www.buymeacoffee.com/macroquiet" target="_blank">
-                    <img class="h-[28px] min-w-[28px] mb-1.5 -ml-2 opacity-75 | transition-all duration-300 | coffe" src="src/assets/icons/buymeacoffee.png">
+                    <i class="text-MQ_light hover:text-MQ_red fa-solid fa-mug-hot text-xl opacity-80 | transition-all duration-300"></i>
                 </a>
             </div>
         </div>

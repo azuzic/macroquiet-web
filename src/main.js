@@ -4,12 +4,20 @@ import { createPinia } from "pinia";
 import router from "./router";
 import App from "./App.vue";
 
+import VImageInput from "vue3-img-input";
+
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
+
 import { init } from "@emailjs/browser";
 
 import "./style.css";
 
 const pinia = createPinia();
 const app = createApp(App);
+
+app.component("v-image-input", VImageInput);
+app.component("QuillEditor", QuillEditor);
 
 app.use(router);
 app.use(pinia);

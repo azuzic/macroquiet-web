@@ -4,31 +4,41 @@
             :class="show ? 'border-MQ_red bg-opacity-100' : 'border-MQ_dark bg-opacity-10'">
             <img :class="show ? 'scale-150' : 'scale-125'" class="hover:scale-150 | transition-all duration-300 | cursor-pointer" :src="avatarImage">
         </div>
-        <div @mouseleave="focus = false" @mouseenter="focus = true" :class="show ? 'h-64' : 'h-1 opacity-0'"
-            class="mt-20 | bg-MQ_dark bg-opacity-75 | drop-shadow-md rounded-lg | overflow-hidden | transition-all duration-700 | absolute top-0 right-4">
+
+        <div @mouseleave="focus = false" @mouseenter="focus = true" :class="show ? user.admin ? 'w-64 xs:w-80 h-64 xs:h-60' : 'w-64 xs:w-80 h-56 xs:h-60' : 'h-1 w-1 opacity-0'"
+            class="mt-20 | bg-MQ_dark bg-opacity-60 hover:bg-opacity-90 | drop-shadow-md rounded-lg | overflow-hidden | transition-all duration-700 | absolute top-0 right-4">
+            
             <div class="flex flex-col justify-center items-center py-4 px-8">
+
                 <MQ_h2_small :white="true" text=" ">
-                    <div class="text-MQ_red text-3xl font-bold">
+                    <div class="text-MQ_red text-2xl font-bold">
                         {{ user.username }} 
                     </div>
                 </MQ_h2_small>
-                <div class="text-MQ_light text-sm my-2"> 
+
+                <div class="text-MQ_light text-xs my-2"> 
                     {{ user.email }} 
                 </div>
-                <div class="w-full flex justify-center gap-4 py-4">
-                    <div class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
-                        <router-link to="/profile" class="px-5 py-1.5 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
-                            hover:font-bold | border-MQ_red border-2 rounded-full | transition-all duration-300">
-                            MY PROFILE
-                        </router-link>
+
+                <div class="w-full flex flex-col xs:flex-row justify-center items-center gap-2 xs:gap-8 py-2 xs:py-4">
+                    <div class="flex h-min cursor-pointer group" 
+                        @click="this.$router.push({ name: 'User', params: { userName: user.username }, }).catch(() => { });">
+                        <i :class="'text-MQ_red fa-solid fa-address-card mr-2 text-xl'"></i>
+                        <div class="text-MQ_light text-sm h-min flex flex-col items-center">
+                            <b class="group-hover:tracking-widest transition-all duration-300 whitespace-nowrap">MY PROFILE</b>
+                            <span class="h-[3px] w-0 | rounded-full | group-hover:w-full group-hover:bg-MQ_red group-hover:opacity-100 opacity-50 | transition-all duration-300"></span>
+                        </div>
                     </div>
-                    <div v-if="user.admin" class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
-                        <router-link to="/profile" class="px-5 py-1.5 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
-                            hover:font-bold | border-MQ_red border-2 rounded-full | transition-all duration-300">
-                            ADMIN PANEL
-                        </router-link>
+                    <div v-if="user.admin" class="flex h-min cursor-pointer group"
+                        @click="this.$router.push({ path: '/admin-panel' }).catch(() => { });">
+                        <i :class="'text-MQ_red fa-solid fa-toolbox mr-2 text-xl'"></i>
+                        <div class="text-MQ_light text-sm h-min flex flex-col items-center">
+                            <b class="group-hover:tracking-widest transition-all whitespace-nowrap duration-300">ADMIN PANEL</b>
+                            <span class="h-[3px] w-0 | rounded-full | group-hover:w-full group-hover:bg-MQ_red group-hover:opacity-100 opacity-50 | transition-all duration-300"></span>
+                        </div>
                     </div>
                 </div>
+
                 <MQ_h2_small />
                 <div class="flex grow md:grow-0 items-center justify-end | transition-all duration-300 mt-4">
                     <router-link to="" @click="LogOut()" class="px-5 py-1.5 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
@@ -36,6 +46,7 @@
                         LOG OUT
                     </router-link>
                 </div>
+
             </div>
         </div>
     </div>

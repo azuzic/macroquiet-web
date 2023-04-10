@@ -2,9 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 import { Auth } from "@/services";
 import HomeView from "../views/HomeView.vue";
 import ContactUsView from "../views/ContactUsView.vue";
-import LogIn from "../views/LogIn.vue";
-import Register from "../views/Register.vue";
-import PageNotFound from "../views/PageNotFound.vue";
+import LogIn from "../views/LogInView.vue";
+import Register from "../views/RegisterView.vue";
+import UserProfileView from "../views/UserProfileView.vue";
+import PageNotFound from "../views/PageNotFoundView.vue";
+import AdminPanel from "../views/AdminPanelView.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -27,6 +29,17 @@ const router = createRouter({
             path: "/register",
             name: "Register",
             component: Register,
+        },
+        {
+            path: "/admin-panel",
+            name: "AdminPanel",
+            component: AdminPanel,
+        },
+        {
+            path: "/user/:userName",
+            name: "User",
+            component: UserProfileView,
+            props: true,
         },
         {
             path: "/:pathMatch(.*)*",
