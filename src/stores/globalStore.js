@@ -23,7 +23,6 @@ export const useGlobalStore = defineStore("globalStore", {
         carouselPictures: [],
         timeline: [],
         timelineEditing: "",
-        html: "",
     }),
     actions: {
         async setup() {
@@ -75,13 +74,22 @@ export const useGlobalStore = defineStore("globalStore", {
             this.timeline.unshift({
                 _id: randomBytes,
                 author: "MacroQuiet",
-                date: "9 November, 2022",
+                date: this.date(),
                 icon: "fa-brands fa-youtube",
                 image: null,
                 text: "text",
                 title: "title",
             });
             this.MQupdate();
+        },
+        date() {
+            const date = new Date();
+
+            const day = date.getDate();
+            const month = date.getMonth();
+            const year = date.getFullYear();
+
+            return `${day}.${month}.${year}`;
         },
     },
 });

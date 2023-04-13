@@ -16,7 +16,7 @@
             <MQ_timelineCardEdit v-for="t, id in globalStore.timeline" :t="t" :id="id" :l="globalStore.timeline.length"> {{ t.text }} </MQ_timelineCardEdit>
         </div>
 
-        <MQ_quill v-if="globalStore.timelineEditing != ''"/>
+        <!-- MQ_quill v-if="globalStore.timelineEditing != ''"/-->
     </div>
 </template>
 

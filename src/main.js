@@ -1,23 +1,38 @@
-import { Vue3Mq } from "vue3-mq";
 import { createApp } from "vue";
-import { createPinia } from "pinia";
 import router from "./router";
 import App from "./App.vue";
 
+//GLOBAL STORES
+import { createPinia } from "pinia";
+
+//JS SCREEN RESPONIVNESS
+import { Vue3Mq } from "vue3-mq";
+
+//IMAGE INPUT
 import VImageInput from "vue3-img-input";
 
+//TEXT EDITOR INPUT
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
+//DATE INPUT
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+
+//EMAILJS
 import { init } from "@emailjs/browser";
 
+//GLOBAL STYLE
 import "./style.css";
 
+//PINIA AND VUE
 const pinia = createPinia();
 const app = createApp(App);
 
+//GLOBAL COMPONENTS
 app.component("v-image-input", VImageInput);
 app.component("QuillEditor", QuillEditor);
+app.component("VueDatePicker", VueDatePicker);
 
 app.use(router);
 app.use(pinia);
