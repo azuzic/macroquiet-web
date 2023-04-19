@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="min-h-full max-h-64 max-w-[440px] overflow-y-auto flex flex-col relative" :class="globalStore.timelineEditing != t._id ? 'px-4 pt-2' : ''">
-                    <div v-if="globalStore.timelineEditing != t._id" class="text-sm | w-full text-slate-400 group-hover:text-slate-300 | text-justify grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
+                    <div v-if="globalStore.timelineEditing != t._id" class="textEditor text-sm | w-full text-slate-400 group-hover:text-slate-300 | text-justify grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
                     <!--TEXT EDIT-->
                     <QuillEditor :class="id % 2 == 1 ? 'roundmetop' : ''" class="text-sm text-slate-400 border-0" v-if="globalStore.timelineEditing == t._id" v-model:content="t.text" contentType="html" theme="snow" :toolbar="toolbar" />
                     

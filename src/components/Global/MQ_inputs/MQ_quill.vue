@@ -183,7 +183,7 @@ export default {
     }
 }
 
-ul, ol {
+.textEditor ul, ol {
     padding-left: 21px;
     li {
         margin-left: 8px;

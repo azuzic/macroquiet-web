@@ -38,4 +38,7 @@ export default {
 .carousel__viewport, .carousel__track {
     height: 100%;
 }
+.carousel__slide::before {
+    content: '' !important;
+}
 </style>
