@@ -1,9 +1,10 @@
 import axios from "axios";
 
 let Service = axios.create({
-    baseURL: "https://macroquiet.herokuapp.com/",
-    timeout: 30000,
+    baseURL: "https://macroquiet.herokuapp.com/api/",
+    timeout: 6000,
 });
+
 //Before each sent request to the backend, send the Token in the header:
 Service.interceptors.request.use((request) => {
     let token = Auth.getUserToken();
@@ -14,136 +15,58 @@ Service.interceptors.request.use((request) => {
     }
     return request;
 });
+
 let Auth = {
-    //Get/delete current user from localStorage
-    getCurrentUser() {
+    getLocalStorage() {
         return JSON.parse(localStorage.getItem("user"));
     },
-    //TOKEN
     getUserToken() {
-        let user = this.getCurrentUser();
+        let user = this.getLocalStorage();
         if (user && user.token) return user.token;
         else return false;
     },
-
+    async logInMQ(userData) {
+        return Service.post("auth", userData);
+    },
     logOut() {
         localStorage.removeItem("user");
     },
-    //Extract user data from local storage, without token
-    getCurrentUserData() {
-        let user = this.getCurrentUser();
-        let currentUserData = {
-            username: user.username,
-            email: user.email,
-            admin: user.admin,
-        };
-        return currentUserData;
-    },
+};
 
-    //Get ALL user data from database (including profile picture and settings)
-    async getUserDetails(username) {
-        return await Service.get(`users/${username}`);
+let Public = {
+    async getData(dataName) {
+        return Service.get(`public/data/${dataName}`);
     },
+};
 
-    //REGISTRATION AND AUTHENTICATION
-    registerUser(userData) {
+let User = {
+    async registerUserMQ(userData) {
         return Service.post("users", userData);
     },
-    authenticateUser(userData) {
-        return Service.post("auth/web", userData);
-    },
-    authenticated() {
-        let user = Auth.getCurrentUser();
-        if (user && user.token) {
-            return true;
-        } else return false;
-    },
-
-    //CHANGE USER DATA
-    changeUserPassword(passwordData) {
-        return Service.patch(
-            `users/${this.currentUser.username}/password`,
-            passwordData
-        );
-    },
-    changeUserEmail(userData) {
-        return Service.patch(
-            `users/${this.currentUser.username}/email`,
-            userData
-        );
-    },
-    changeUserProfileDescription(description) {
-        return Service.patch(
-            `users/${this.currentUser.username}/profile/description`,
-            description
-        );
-    },
-    changeUserProfileCoverImage(imageID) {
-        return Service.patch(
-            `users/${this.currentUser.username}/profile/coverImage`,
-            imageID
-        );
-    },
-    changeUserProfileAvatarImage(imageID) {
-        return Service.patch(
-            `users/${this.currentUser.username}/profile/avatarImage`,
-            imageID
-        );
-    },
-
-    //IMAGE MANIPULATION
-    postImage(imageData) {
-        return Service.post("images", imageData);
-    },
-    getImage(id) {
-        return id ? Service.get(`images/${id}`) : "";
-    },
-    deleteImage(id) {
-        return id ? Service.delete(`images/${id}`) : "";
-    },
-
-    //Getters
-    state: {
-        get authenticated() {
-            return Auth.authenticated();
-        },
-    },
-    currentUser: {
-        get getCurrentUserData() {
-            if (Auth.authenticated) return Auth.getCurrentUserData();
-        },
-        get username() {
-            let result = Auth.getCurrentUserData();
-            return result.username;
-        },
+    async getCurrentUserProfile() {
+        return await Service.get("users/current/profile");
     },
 };
 
 let Admin = {
-    async insertDocument(doc, collectionName) {
-        return Service.post(`admin/data/${collectionName}`, doc);
-    },
-    async deleteDocument(id, collectionName) {
-        return Service.delete(`admin/data/${collectionName}?id=${id}`);
-    },
-    fetchData(dataName) {
+    getData(dataName) {
         return Service.get(`admin/data/${dataName}`);
     },
-    //Getters
-    data: {
-        get getTimelinePosts() {
-            return Admin.fetchData("timelinePosts");
-        },
-        get getCarouselPictures() {
-            return Admin.fetchData("carouselPictures");
-        },
-        get getAllUsers() {
-            return Admin.fetchData("users");
-        },
-        get getAllGames() {
-            return Admin.fetchData("gameCards");
-        },
+    async uploadImage(formData) {
+        return await Service.post("admin/image", formData);
+    },
+    async postData(place, data) {
+        return await Service.post(`admin/data/${place}`, data);
+    },
+    async putData(place, data) {
+        return await Service.put(`admin/data/${place}`, data);
+    },
+    async patchData(place, data) {
+        return await Service.patch(`admin/data/${place}`, data);
+    },
+    async deleteData(place, data) {
+        return await Service.delete(`admin/data/${place}`, data);
     },
 };
 
-export { Auth, Admin };
+export { Public, User, Auth, Admin };

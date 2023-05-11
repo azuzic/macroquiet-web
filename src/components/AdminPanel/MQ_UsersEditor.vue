@@ -40,7 +40,7 @@ import MQ_h2_small from "../Global/MQ_h2/MQ_h2_small.vue";
 import Draggable from "vue3-draggable";
 import { useGlobalStore } from '@/stores/globalStore';
 import MQ_quill from "../Global/MQ_inputs/MQ_quill.vue";
-import { Admin } from "@/services/index_new.js";
+import { Admin } from "@/services";
 import defaultUserIcon from "@/assets/portraits/default_user_icon.png";
 import macroQuietIcon from "@/assets/Logos/macroquiet_logo_icon.png";
 import googleIcon from "@/assets/icons/logIn/google.svg";

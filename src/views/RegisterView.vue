@@ -65,7 +65,7 @@ import { object, string } from 'yup';
 import MQ_checkBoxInput from '../components/Global/MQ_inputs/MQ_checkBoxInput.vue';
 import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
 import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
-import { User } from "@/services/index_new.js"
+import { User } from "@/services"
 import MQ_footer from '../components/App/MQ_footer.vue';
 
 let wait = function (seconds) {

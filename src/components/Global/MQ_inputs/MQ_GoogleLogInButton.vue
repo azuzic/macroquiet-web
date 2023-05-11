@@ -12,7 +12,6 @@ import google from "@/assets/icons/logIn/google.svg"
 </template>
 
 <script>
-import { Auth } from "@/services/index_new.js";
 export default {
     name: "MQ_GoogleLogInButton",
     props: { text: String },

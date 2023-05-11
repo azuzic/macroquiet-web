@@ -81,7 +81,7 @@
                             :class="id % 2 == 1 ? 'top-2' : 'bottom-2'" @click="globalStore.timelineEditing = t._id;"></i>
                     <!--SAVE-->
                     <i v-if="globalStore.timelineEditing == t._id" class="fa-solid fa-save text-MQ_light hover:text-MQ_red cursor-pointer fixed z-40 right-3 text-2xl" 
-                        :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="globalStore.timelineEditing = ''; save();"></i>
+                        :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="globalStore.timelineEditing = ''; save(t._id);"></i>
                     <!--CANCEL-->
                     <i v-if="globalStore.timelineEditing == t._id" class="fa-solid fa-circle-xmark text-MQ_light hover:text-MQ_red cursor-pointer fixed z-40 left-3 text-2xl" 
                         :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="globalStore.timelineEditing = ''; reset();"></i>
@@ -165,11 +165,18 @@ export default {
             this.t.title = this.title;
             this.t.date = this.date;
         },
-        save() {
+        save(id) {
             this.html = this.t.text;
             this.icon = this.t.icon;
             this.title = this.t.title;
             this.date = this.t.date;
+            let data = {
+                date: this.t.date,
+                icon: this.t.icon,
+                text: this.t.text,
+                title: this.t.title,
+            }
+            this.globalStore.saveTimelineCard(id, data);
         },
         formatDate(d) {
             const months = {

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Public, User, Admin } from "@/services/index_new.js";
+import { Public, User, Admin } from "@/services";
 import { nextTick } from "vue";
 import cryptoRandomString from "crypto-random-string";
 
@@ -23,7 +23,7 @@ let wait = function (seconds) {
 
 export const useGlobalStore = defineStore("globalStore", {
     state: () => ({
-        edit: "CAROUSEL",
+        edit: "TIMELINE",
         type: "none",
         submitting: false,
         update: true,
@@ -133,23 +133,23 @@ export const useGlobalStore = defineStore("globalStore", {
             });
         },
         async removeTimelineCard(id) {
+            await Admin.deleteData("timeline/" + id);
             this.timeline = this.timeline.filter((item) => item._id !== id);
             this.MQupdate();
         },
+        async saveTimelineCard(id, data) {
+            await Admin.putData("timeline/" + id, data);
+        },
         async addTimelineCard() {
-            let randomBytes = cryptoRandomString({
-                length: 10,
-                type: "base64",
-            });
-            this.timeline.unshift({
-                _id: randomBytes,
-                author: "MacroQuiet",
+            let newTimelineCard = {
                 date: this.date(),
                 icon: "fa-brands fa-youtube",
-                image: null,
                 text: "text",
                 title: "title",
-            });
+            };
+            let response = await Admin.postData("timeline", newTimelineCard);
+            newTimelineCard["_id"] = response;
+            this.timeline.unshift(newTimelineCard);
             this.MQupdate();
         },
         date() {

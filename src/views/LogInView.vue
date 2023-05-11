@@ -71,7 +71,7 @@ import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 import MQ_checkBoxInput from '../components/Global/MQ_inputs/MQ_checkBoxInput.vue';
 import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
-import { Auth } from "@/services/index_new.js";
+import { Auth } from "@/services";
 import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
 import { useGlobalStore } from '@/stores/globalStore'
 import MQ_footerVue from '../components/App/MQ_footer.vue';
