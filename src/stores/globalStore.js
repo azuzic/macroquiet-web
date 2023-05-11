@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
-import { Admin } from "@/services";
-import { toRaw } from "vue";
+import { Public, User } from "@/services/index_new.js";
 import { nextTick } from "vue";
 import cryptoRandomString from "crypto-random-string";
 
@@ -21,17 +20,35 @@ export const useGlobalStore = defineStore("globalStore", {
         edit: "TIMELINE",
         update: true,
         carouselPictures: [],
+        userLocalStorage: {},
+        userProfile: {
+            _id: "",
+            username: "",
+            former_usernames: [],
+            register_method: "",
+            username_last_changed: null,
+            email: "",
+            admin: false,
+            profile: {
+                description: "Hi, I am zuza. Nice to meet you!",
+                image: {
+                    avatar: "",
+                    cover: "",
+                },
+                games: [],
+            },
+        },
         timeline: [],
         timelineEditing: "",
     }),
     actions: {
         async setup() {
-            this.carouselPictures = toRaw(
-                await Admin.data.getCarouselPictures
-            ).data;
-            this.timeline = toRaw(
-                await Admin.data.getTimelinePosts
-            ).data.reverse();
+            this.carouselPictures = await Public.getData("carousel");
+            this.carouselPictures = this.carouselPictures.data;
+            this.timeline = await Public.getData("timeline");
+            this.timeline = this.timeline.data;
+            this.userProfile = await User.getCurrentUserProfile();
+            this.userProfile = this.userProfile.data;
         },
         async MQupdate() {
             this.update = false;
@@ -47,8 +64,7 @@ export const useGlobalStore = defineStore("globalStore", {
                     });
                     this.carouselPictures.push({
                         _id: randomBytes,
-                        handle: image.name,
-                        url: "data:image/png;base64," + base64,
+                        public_url: "data:image/png;base64," + base64,
                     });
                 })
                 .catch((error) => {

@@ -1,35 +1,44 @@
+<script setup>
+import defaultUserIcon from "@/assets/portraits/default_user_icon.png";
+import { useGlobalStore } from '@/stores/globalStore';
+
+const globalStore = useGlobalStore()
+
+</script>
 <template>
     <div tabindex="0" @focusout="!focus ? show = false : ''" @click="show = true" class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
         <div class="h-12 aspect-square rounded-full bg-MQ_dark hover:bg-opacity-100 hover:border-MQ_red border-2 overflow-hidden drop-shadow-MQ | mr-2 lg:mr-8 | transition-all duration-300"
             :class="show ? 'border-MQ_red bg-opacity-100' : 'border-MQ_dark bg-opacity-10'">
-            <img :class="show ? 'scale-150' : 'scale-125'" class="hover:scale-150 | transition-all duration-300 | cursor-pointer" :src="avatarImage">
+            <img :class="show ? 'scale-150' : 'scale-125'" class="hover:scale-150 | transition-all duration-300 | cursor-pointer" 
+                :src="globalStore.userProfile.profile.image.avatar != '' ? globalStore.userProfile.profile.image.avatar : defaultUserIcon">
         </div>
 
-        <div @mouseleave="focus = false" @mouseenter="focus = true" :class="show ? user.admin ? 'w-64 xs:w-80 h-64 xs:h-60' : 'w-64 xs:w-80 h-56 xs:h-60' : 'h-1 w-1 opacity-0'"
+        <div @mouseleave="focus = false" @mouseenter="focus = true" :class="show ? globalStore.userProfile.admin ? 'w-64 xs:w-80 h-64 xs:h-60' : 'w-64 xs:w-80 h-56 xs:h-60' : 'h-1 w-1 opacity-0'"
             class="mt-20 | bg-MQ_dark bg-opacity-60 hover:bg-opacity-90 | drop-shadow-md rounded-lg | overflow-hidden | transition-all duration-700 | absolute top-0 right-4">
             
             <div class="flex flex-col justify-center items-center py-4 px-8">
 
                 <MQ_h2_small :white="true" text=" ">
                     <div class="text-MQ_red text-2xl font-bold">
-                        {{ user.username }} 
+                        {{ globalStore.userProfile.username }} 
                     </div>
                 </MQ_h2_small>
 
                 <div class="text-MQ_light text-xs my-2"> 
-                    {{ user.email }} 
+                    {{ globalStore.userProfile.email }} 
+
                 </div>
 
                 <div class="w-full flex flex-col xs:flex-row justify-center items-center gap-2 xs:gap-8 py-2 xs:py-4">
                     <div class="flex h-min cursor-pointer group" 
-                        @click="this.$router.push({ name: 'User', params: { userName: user.username }, }).catch(() => { });">
+                        @click="this.$router.push({ name: 'User', params: { userName: globalStore.userProfile.username }, }).catch(() => { });">
                         <i :class="'text-MQ_red fa-solid fa-address-card mr-2 text-xl'"></i>
                         <div class="text-MQ_light text-sm h-min flex flex-col items-center">
                             <b class="group-hover:tracking-widest transition-all duration-300 whitespace-nowrap">MY PROFILE</b>
                             <span class="h-[3px] w-0 | rounded-full | group-hover:w-full group-hover:bg-MQ_red group-hover:opacity-100 opacity-50 | transition-all duration-300"></span>
                         </div>
                     </div>
-                    <div v-if="user.admin" class="flex h-min cursor-pointer group"
+                    <div v-if="globalStore.userProfile.admin" class="flex h-min cursor-pointer group"
                         @click="this.$router.push({ path: '/admin-panel' }).catch(() => { });">
                         <i :class="'text-MQ_red fa-solid fa-toolbox mr-2 text-xl'"></i>
                         <div class="text-MQ_light text-sm h-min flex flex-col items-center">
@@ -54,17 +63,12 @@
 
 <script>
 import MQ_h2_small from "../../../components/Global/MQ_h2/MQ_h2_small.vue";
-import { Auth } from "@/services";
 import router from "@/router";
+import { Auth } from "@/services/index_new.js"
 
 export default {
     name: "MQ_profileIcon",
     components: { MQ_h2_small },
-    props: {
-        auth: Object,
-        user: Object,
-        avatarImage: String
-    },
     data() {
         return {
             show: false,
@@ -74,8 +78,8 @@ export default {
     methods: {
         LogOut() {
             Auth.logOut();
-            router.push({ path: "/"});
-            router.go()
+            this.$router.push({ path: "/", replace: true }).catch(() => { });
+            this.$router.go();
         }
     }
 };

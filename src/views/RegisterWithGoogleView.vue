@@ -2,23 +2,12 @@
     <div class="grow flex justify-center items-start pt-16 absolute overflow-y-auto">
         <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
 
-            <MQ_h2 class="w-full" text="Create your MacroQuiet Account" :small="true"/>
+            <MQ_h2 class="w-full" text="Complete your MacroQuiet Account" :small="true"/>
 
             <Form @submit="onSubmit" class="w-full max-w-md flex justify-between px-12 sm:px-6 | transition-all duration-500" :validation-schema="schema">
                 <div class="flex flex-col w-full justify-between items-center gap-2">
 
-                    <!--ALTERNATIVE LOGIN | GOOGLE, APPLE, STEAM, FACEBOOK -->
-                    <div class="flex justify-center items-center gap-4 -mt-2 md:-mt-4 lg:-mt-8">
-                        <MQ_GoogleLogInButton text="Register"/>
-                    </div>
-                    <!--/--/--/--/--/--/--ALTERNATIVE LOGIN END--/--/--/--/--/--/-->
-
-                    <MQ_h2_small :white="true" text="OR" class="mb-8 mt-2 px-4"/>
-
                     <MQ_textInput label="Username" icon="user" :max="24"/>
-                    <MQ_textInput label="E-mail" icon="envelope" />
-                    <MQ_textInput :password="true" label="Password" icon="key" />
-                    <MQ_textInput :password="true" label="Password confirm" icon="key" />
 
                     <div class="w-full relative flex flex-col justify-center mt-2 items-center transition-all duration-500"
                         :class="submitting || type != 'none' ? 'h-16' : 'h-8 delay-500'">
@@ -40,14 +29,6 @@
                         </MQ_alert>
                     </div>
 
-                    <div class="text-sm text-MQ_light transition-all duration-500 relative z-20"
-                        :class="submitting || type != 'none' ? 'opacity-0' : 'opacity-100 delay-500'">
-                        Already have an account?
-                        <router-link class="text-MQ_red hover:underline" to="/login">
-                            Log in here
-                        </router-link> 
-                    </div>
-
                 </div>
             </Form>
 
@@ -56,16 +37,12 @@
 </template>
 
 <script>
-import MQ_textAreaInput from '../components/Global/MQ_inputs/MQ_textAreaInput.vue';
 import MQ_textInput from '../components/Global/MQ_inputs/MQ_textInput.vue';
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
 import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
-import MQ_checkBoxInput from '../components/Global/MQ_inputs/MQ_checkBoxInput.vue';
-import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
 import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
-import { User } from "@/services/index_new.js"
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -74,8 +51,8 @@ let wait = function (seconds) {
 };
 
 export default {
-    name: "Register",
-    components: { MQ_textInput, Form, Field, MQ_h2, MQ_textAreaInput, MQ_alert, MQ_checkBoxInput, MQ_h2_small, MQ_GoogleLogInButton },
+    name: "RegisterWithGoogleView",
+    components: { MQ_textInput, Form, Field, MQ_h2, MQ_alert, MQ_GoogleLogInButton },
     setup() {
         const schema = object({
             "Username": string().required().label("Username")
@@ -84,10 +61,7 @@ export default {
                 })
                 .test(
                     str => str.indexOf(' ') == -1
-                ),
-            "Password": string().required().label("Password"),
-            "Password confirm": string().required().label("Password confirm"),
-            "E-mail": string().required().email().label("Email"),
+                )
         });
         return {
             schema,
@@ -102,14 +76,9 @@ export default {
     methods: {
         async onSubmit(values) {
             if (values) {
-                let userData = {
-                    username: values["Username"],
-                    email: values["E-mail"],
-                    password: values["Password"],
-                }
+                console.log(values);
                 this.submitting = true;
                 try {
-                    await User.registerUserMQ(userData);
                     await wait(2);
                     this.submitting = false;
                     this.type = "success";

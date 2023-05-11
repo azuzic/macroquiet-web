@@ -15,7 +15,7 @@
         <draggable v-if="globalStore.update" v-model="globalStore.carouselPictures" class="flex flex-wrap justify-center gap-4 | p-4 rounded-lg | overflow-y-auto">
             <template v-slot:item="{ item }">
                 <div class="aspect-video | h-16 xs:h-20 md:h-24 lg:h-28 xl:h-36 2xl:h-52 | transition-all duration-300">
-                    <div class="w-full h-full overflow-hidden bg-cover bg-center rounded-md drop-shadow-MQ relative" :style="'background-image: url(' + item.url + ')'">
+                    <div class="w-full h-full overflow-hidden bg-cover bg-center rounded-md drop-shadow-MQ relative" :style="'background-image: url(' + item.public_url + ')'">
                         <div @click="globalStore.removeCarouselPicture( item._id )" class="absolute drop-shadow-MQ top-0.5 right-1 text-MQ_light hover:text-MQ_red font-bold text-xl cursor-pointer">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>

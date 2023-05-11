@@ -19,6 +19,13 @@ let Auth = {
     getCurrentUser() {
         return JSON.parse(localStorage.getItem("user"));
     },
+    //TOKEN
+    getUserToken() {
+        let user = this.getCurrentUser();
+        if (user && user.token) return user.token;
+        else return false;
+    },
+
     logOut() {
         localStorage.removeItem("user");
     },
@@ -50,13 +57,6 @@ let Auth = {
         if (user && user.token) {
             return true;
         } else return false;
-    },
-
-    //TOKEN
-    getUserToken() {
-        let user = this.getCurrentUser();
-        if (user && user.token) return user.token;
-        else return false;
     },
 
     //CHANGE USER DATA

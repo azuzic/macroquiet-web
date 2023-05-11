@@ -12,7 +12,6 @@ export default {
     name: "MQ_alert",
     props: { 
         show: Boolean,
-        message: String,
         icon: String,
         color: String
     },

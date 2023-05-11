@@ -183,7 +183,7 @@ export default {
     }
 }
 
-.textEditor ul, ol {
+/*.textEditor ul, ol {
     padding-left: 21px;
     li {
         margin-left: 8px;
@@ -194,5 +194,5 @@ export default {
             content: "•";
         }
     }
-}
+}*/
 </style>

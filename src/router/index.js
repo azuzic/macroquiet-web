@@ -1,12 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { Auth } from "@/services";
-import HomeView from "../views/HomeView.vue";
-import ContactUsView from "../views/ContactUsView.vue";
-import LogIn from "../views/LogInView.vue";
-import Register from "../views/RegisterView.vue";
-import UserProfileView from "../views/UserProfileView.vue";
-import PageNotFound from "../views/PageNotFoundView.vue";
-import AdminPanel from "../views/AdminPanelView.vue";
+import { Auth } from "@/services/index_new.js";
+import HomeView from "@/views/HomeView.vue";
+import ContactUsView from "@/views/ContactUsView.vue";
+import LogInView from "@/views/LogInView.vue";
+import RegisterView from "@/views/RegisterView.vue";
+import RegisterWithGoogleView from "@/views/RegisterWithGoogleView.vue";
+import UserProfileView from "@/views/UserProfileView.vue";
+import ResetPasswordView from "@/views/ResetPasswordView.vue";
+import PageNotFoundView from "@/views/PageNotFoundView.vue";
+import AdminPanelView from "@/views/AdminPanelView.vue";
+import { useGlobalStore } from "@/stores/globalStore";
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -23,17 +27,22 @@ const router = createRouter({
         {
             path: "/login",
             name: "LogIn",
-            component: LogIn,
+            component: LogInView,
         },
         {
             path: "/register",
             name: "Register",
-            component: Register,
+            component: RegisterView,
+        },
+        {
+            path: "/register-with-google",
+            name: "RegisterWithGoogle",
+            component: RegisterWithGoogleView,
         },
         {
             path: "/admin-panel",
             name: "AdminPanel",
-            component: AdminPanel,
+            component: AdminPanelView,
         },
         {
             path: "/user/:userName",
@@ -42,9 +51,15 @@ const router = createRouter({
             props: true,
         },
         {
+            path: "/reset-password/:token",
+            name: "ResetPassword",
+            component: ResetPasswordView,
+            props: true,
+        },
+        {
             path: "/:pathMatch(.*)*",
             name: "NotFound",
-            component: PageNotFound,
+            component: PageNotFoundView,
         },
     ],
 });
@@ -57,18 +72,19 @@ router.beforeEach((to, from, next) => {
         "/contact-us",
         "/games/doge",
         "/games/stranded-away",
+        "/register-with-google",
     ];
     const adminPages = ["admin-panel"];
     const userRequired = !publicPages.includes(to.path);
     const adminRequired = adminPages.includes(to.path);
 
-    const user = Auth.getCurrentUser();
+    const globalStore = useGlobalStore();
+    globalStore.userLocalStorage = Auth.getLocalStorage();
 
-    if (userRequired && !user) {
-        console.log("sdsd");
+    if (userRequired && !globalStore.userLocalStorage) {
         next("/login");
         return;
-    } else if (adminRequired && !user && !user.admin) {
+    } else if (adminRequired && !globalStore.user && !globalStore.user.admin) {
         next("/");
         return;
     } else next();

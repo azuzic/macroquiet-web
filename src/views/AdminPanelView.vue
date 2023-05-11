@@ -9,6 +9,7 @@
         <div :class="globalStore.edit == 'TIMELINE' ? 'bg-opacity-25' : 'bg-opacity-50'" class="flex bg-MQ_dark rounded-b-lg w-full | transition-all duration-300">
             <MQ_CarouselEditor class="w-full h-full" v-if="globalStore.edit == 'CAROUSEL'"/>
             <MQ_TimelineEditor class="w-full h-full" v-if="globalStore.edit == 'TIMELINE'"/>
+            <MQ_UsersEditor class="w-full h-full" v-if="globalStore.edit == 'USERS'"/>
         </div>
     </div>
 </template>
@@ -19,6 +20,7 @@ import MQ_TimelineEditor from "@/components/AdminPanel/MQ_TimelineEditor.vue"
 import MQ_h2 from "@/components/Global/MQ_h2/MQ_h2.vue"
 import MQ_listButton from "@/components/Global/MQ_buttons/MQ_listButton.vue"
 import { useGlobalStore } from '@/stores/globalStore'
+import MQ_UsersEditor from "../components/AdminPanel/MQ_UsersEditor.vue"
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -28,7 +30,7 @@ let wait = function (seconds) {
 
 export default {
     name: "AdminPanel",
-    components: { MQ_CarouselEditor, MQ_h2, MQ_listButton, MQ_TimelineEditor },
+    components: { MQ_CarouselEditor, MQ_h2, MQ_listButton, MQ_TimelineEditor, MQ_UsersEditor },
     setup() {
         const globalStore = useGlobalStore()
         return { globalStore }
