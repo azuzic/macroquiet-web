@@ -63,7 +63,6 @@ const globalStore = useGlobalStore()
 
 <script>
 import MQ_h2_small from "../../../components/Global/MQ_h2/MQ_h2_small.vue";
-import router from "@/router";
 import { Auth } from "@/services/index_new.js"
 
 export default {

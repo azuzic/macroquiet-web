@@ -9,7 +9,7 @@ const globalStore = useGlobalStore()
 
         <!-- TOP LINKS -->
         <div class="flex overflow-hidden | pt-0 md2:pt-2 ml-12 lg:ml-32 | items-center | gap-4 lg:gap-8 | md:grow h-0 md2:h-full | transition-all duration-300">
-            <!--MQ_listButton v-for="link in links" :key="link.title" :icon="link.icon" :link="link.to" :text="link.title" /-->
+            <MQ_listButton v-for="link in links" :key="link.title" :icon="link.icon" :link="link.to" :text="link.title" />
         </div>
 
         <!-- LOG IN -->

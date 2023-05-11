@@ -79,12 +79,13 @@ router.beforeEach((to, from, next) => {
     const adminRequired = adminPages.includes(to.path);
 
     const globalStore = useGlobalStore();
-    globalStore.userLocalStorage = Auth.getLocalStorage();
+    const userLocalStorage = Auth.getLocalStorage();
+    if (userLocalStorage) globalStore.userLocalStorage = userLocalStorage;
 
-    if (userRequired && !globalStore.userLocalStorage) {
+    if (userRequired && !userLocalStorage) {
         next("/login");
         return;
-    } else if (adminRequired && !globalStore.user && !globalStore.user.admin) {
+    } else if (adminRequired && !userLocalStorage && !userLocalStorage.admin) {
         next("/");
         return;
     } else next();

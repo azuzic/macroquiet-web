@@ -48,4 +48,25 @@ let User = {
     },
 };
 
-export { Public, User, Auth };
+let Admin = {
+    getData(dataName) {
+        return Service.get(`admin/data/${dataName}`);
+    },
+    async uploadImage(formData) {
+        return await Service.post("admin/image", formData);
+    },
+    async postData(place, data) {
+        return await Service.post(`admin/data/${place}`, data);
+    },
+    async putData(place, data) {
+        return await Service.put(`admin/data/${place}`, data);
+    },
+    async patchData(place, data) {
+        return await Service.patch(`admin/data/${place}`, data);
+    },
+    async deleteData(place, data) {
+        return await Service.delete(`admin/data/${place}`, data);
+    },
+};
+
+export { Public, User, Auth, Admin };

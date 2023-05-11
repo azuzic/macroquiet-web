@@ -12,12 +12,10 @@
         </div>
         <div class="min-h-full flex flex-col-reverse absolute w-full">
             <MQ_navigation/> 
-            <MQ_footer/>
-            <router-view class="absolute" v-slot="{ Component, route }">
+            <router-view class="" v-slot="{ Component, route }">
                 <transition name="fade">
                     <component class="absolute w-full h-full" :is="Component" :key="route.path" />
                 </transition>
-                <component class="relative -z-50 opacity-0" :is="Component" :key="route.path" />
             </router-view>  
         </div>
     </div>
@@ -25,10 +23,9 @@
 
 <script>
 import MQ_navigation from './components/App/MQ_navigation.vue';
-import MQ_footer from '@/components/App/MQ_footer.vue';
 
 export default {
     name: "App",
-    components: { MQ_navigation, MQ_footer },
+    components: { MQ_navigation },
 }
 </script>

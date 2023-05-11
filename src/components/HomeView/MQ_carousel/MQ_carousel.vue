@@ -8,7 +8,7 @@
         <MQ_carouselTitle class="mt-8 sm:mt-7 md:mt-4 xl:mt-6 2xl:mt-2 | transition-all duration-300"/>
         <carousel :items-to-show="1" :wrapAround="true" :autoplay="10000" :transition="1000" :mouseDrag="false" :touchDrag="false" class="h-full relative">
             <slide v-for="slide in globalStore.carouselPictures" :key="slide" class="h-full">
-                <div class="h-full w-full overflow-hidden bg-cover" :style="'background-image: url('+slide.public_url+')'">
+                <div class="h-full w-full overflow-hidden bg-cover bg-center" :style="'background-image: url('+slide.public_url+')'">
                     <div class="w-full h-full bg-gradient-to-b from-MQ_dark opacity-25 absolute top-0"></div>
                 </div>
             </slide>

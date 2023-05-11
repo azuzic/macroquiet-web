@@ -1,5 +1,5 @@
 <template>
-    <div class="grow flex justify-center items-start pt-16 absolute overflow-y-auto">
+    <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto">
         <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
 
             <MQ_h2 class="w-full" text="Log in to your MacroQuiet Account" :small="true"/>
@@ -38,11 +38,11 @@
                             :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
 
                         <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
-                            class="absolute top-0">
+                            class="absolute w-full top-0">
                             <b>Wrong username or password!</b>
                         </MQ_alert>
                         <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
-                            class="absolute top-0">
+                            class="absolute w-full top-0">
                             <b>Logged in successfully!</b>
                         </MQ_alert>
                     </div>
@@ -57,8 +57,8 @@
 
                 </div>
             </Form>
-
         </div>
+        <MQ_footerVue/>
     </div>
 </template>
 
@@ -74,6 +74,7 @@ import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
 import { Auth } from "@/services/index_new.js";
 import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
 import { useGlobalStore } from '@/stores/globalStore'
+import MQ_footerVue from '../components/App/MQ_footer.vue';
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -83,7 +84,7 @@ let wait = function (seconds) {
 
 export default {
     name: "LogIn",
-    components: { MQ_textInput, Form, Field, MQ_h2, MQ_textAreaInput, MQ_alert, MQ_checkBoxInput, MQ_h2_small, MQ_GoogleLogInButton },
+    components: { MQ_textInput, Form, Field, MQ_h2, MQ_textAreaInput, MQ_alert, MQ_checkBoxInput, MQ_h2_small, MQ_GoogleLogInButton, MQ_footerVue },
     setup() {
         const globalStore = useGlobalStore()
         const schema = object({
@@ -121,6 +122,7 @@ export default {
                     this.type = "success";
                     await wait(2);
                     this.type = "none";
+                    await this.globalStore.setup();
                     this.$router.push({ path: "/", replace: true }).catch(() => { });
                 } catch (e) {
                     console.error("Error sending message! ", e);

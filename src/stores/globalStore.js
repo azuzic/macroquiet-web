@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Public, User } from "@/services/index_new.js";
+import { Public, User, Admin } from "@/services/index_new.js";
 import { nextTick } from "vue";
 import cryptoRandomString from "crypto-random-string";
 
@@ -15,12 +15,26 @@ function readFile(file) {
     });
 }
 
+let wait = function (seconds) {
+    return new Promise((resolveFn) => {
+        setTimeout(resolveFn, seconds * 1000);
+    });
+};
+
 export const useGlobalStore = defineStore("globalStore", {
     state: () => ({
-        edit: "TIMELINE",
+        edit: "CAROUSEL",
+        type: "none",
+        submitting: false,
         update: true,
         carouselPictures: [],
-        userLocalStorage: {},
+        carouselID: "",
+        userLocalStorage: {
+            token: "",
+            email: "",
+            username: "",
+            admin: false,
+        },
         userProfile: {
             _id: "",
             username: "",
@@ -43,12 +57,17 @@ export const useGlobalStore = defineStore("globalStore", {
     }),
     actions: {
         async setup() {
-            this.carouselPictures = await Public.getData("carousel");
-            this.carouselPictures = this.carouselPictures.data;
+            let response = await Public.getData("carousel");
+            if (response.data.length != 0) {
+                this.carouselID = response.data[0]._id;
+                this.carouselPictures = response.data[0].CarouselPictures;
+            }
             this.timeline = await Public.getData("timeline");
-            this.timeline = this.timeline.data;
-            this.userProfile = await User.getCurrentUserProfile();
-            this.userProfile = this.userProfile.data;
+            this.timeline = this.timeline.data.reverse();
+            if (this.userLocalStorage.token != "") {
+                this.userProfile = await User.getCurrentUserProfile();
+                this.userProfile = this.userProfile.data;
+            }
         },
         async MQupdate() {
             this.update = false;
@@ -56,27 +75,62 @@ export const useGlobalStore = defineStore("globalStore", {
             this.update = true;
         },
         async addCarouselPicture(image) {
-            await readFile(image)
-                .then((base64) => {
-                    let randomBytes = cryptoRandomString({
-                        length: 10,
-                        type: "base64",
-                    });
-                    this.carouselPictures.push({
-                        _id: randomBytes,
-                        public_url: "data:image/png;base64," + base64,
-                    });
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+            this.submitting = true;
             this.MQupdate();
+            try {
+                let formData = new FormData();
+                formData.append("image", image);
+                formData.append("route", "carousel");
+
+                let response = await Admin.uploadImage(formData);
+
+                await readFile(image)
+                    .then((base64) => {
+                        let randomBytes = cryptoRandomString({
+                            length: 10,
+                            type: "base64",
+                        });
+                        this.carouselPictures.push({
+                            _id: randomBytes,
+                            public_url: response.data.public_url,
+                        });
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+                this.MQupdate();
+
+                await Admin.patchData("carousel/" + this.carouselID, {
+                    CarouselPictures: this.carouselPictures,
+                });
+                await wait(1);
+                console.log("Request sent successfully!");
+                this.submitting = false;
+                this.type = "success";
+                await wait(2);
+                this.type = "none";
+            } catch (e) {
+                console.error("Error sending message! ", e);
+                await wait(1);
+                this.submitting = false;
+                this.type = "warning";
+                await wait(2);
+                this.type = "none";
+            }
         },
         async removeCarouselPicture(id) {
             this.carouselPictures = this.carouselPictures.filter(
                 (item) => item._id !== id
             );
+            await Admin.patchData("carousel/" + this.carouselID, {
+                CarouselPictures: this.carouselPictures,
+            });
             this.MQupdate();
+        },
+        async updateCarousel() {
+            await Admin.patchData("carousel/" + this.carouselID, {
+                CarouselPictures: this.carouselPictures,
+            });
         },
         async removeTimelineCard(id) {
             this.timeline = this.timeline.filter((item) => item._id !== id);

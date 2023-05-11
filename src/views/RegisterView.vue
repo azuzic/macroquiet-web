@@ -1,5 +1,5 @@
 <template>
-    <div class="grow flex justify-center items-start pt-16 absolute overflow-y-auto">
+    <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto">
         <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
 
             <MQ_h2 class="w-full" text="Create your MacroQuiet Account" :small="true"/>
@@ -50,8 +50,8 @@
 
                 </div>
             </Form>
-
         </div>
+        <MQ_footer/>
     </div>
 </template>
 
@@ -66,6 +66,7 @@ import MQ_checkBoxInput from '../components/Global/MQ_inputs/MQ_checkBoxInput.vu
 import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
 import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
 import { User } from "@/services/index_new.js"
+import MQ_footer from '../components/App/MQ_footer.vue';
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -75,7 +76,7 @@ let wait = function (seconds) {
 
 export default {
     name: "Register",
-    components: { MQ_textInput, Form, Field, MQ_h2, MQ_textAreaInput, MQ_alert, MQ_checkBoxInput, MQ_h2_small, MQ_GoogleLogInButton },
+    components: { MQ_textInput, Form, Field, MQ_h2, MQ_textAreaInput, MQ_alert, MQ_checkBoxInput, MQ_h2_small, MQ_GoogleLogInButton, MQ_footer },
     setup() {
         const schema = object({
             "Username": string().required().label("Username")

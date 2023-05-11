@@ -4,6 +4,7 @@
         <MQ_featuredGames/>
         <MQ_aboutUs/>
         <MQ_timeline/>
+        <MQ_footer/>
     </div>
 </template>
 

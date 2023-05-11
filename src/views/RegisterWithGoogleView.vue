@@ -1,6 +1,6 @@
 <template>
-    <div class="grow flex justify-center items-start pt-16 absolute overflow-y-auto">
-        <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
+    <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto">
+        <div class="flex grow pb-96 flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
 
             <MQ_h2 class="w-full" text="Complete your MacroQuiet Account" :small="true"/>
 
@@ -33,6 +33,7 @@
             </Form>
 
         </div>
+        <MQ_footer/>
     </div>
 </template>
 
@@ -43,6 +44,7 @@ import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
+import MQ_footer from '../components/App/MQ_footer.vue';
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -52,7 +54,7 @@ let wait = function (seconds) {
 
 export default {
     name: "RegisterWithGoogleView",
-    components: { MQ_textInput, Form, Field, MQ_h2, MQ_alert, MQ_GoogleLogInButton },
+    components: { MQ_textInput, Form, Field, MQ_h2, MQ_alert, MQ_GoogleLogInButton, MQ_footer },
     setup() {
         const schema = object({
             "Username": string().required().label("Username")

@@ -2,16 +2,18 @@
     <div class="flex flex-col w-full p-4 gap-4">
         <div class="w-full text-center px-8">
             <MQ_h2_small :white="true" text=" ">
-                <p class="text-base sm:text-lg md:text-xl text-MQ_light">Macroquiet users</p>
+                <p class="text-base sm:text-lg md:text-xl text-MQ_light">Current Users</p>
                 <p class="text-xs text-MQ_red">Click user to open profile</p>
             </MQ_h2_small>
             <div class="w-full flex flex-col gap-1">
                 <div v-for="(user, i) in allUsers" class="flex flex-col text-MQ_light justify-center items-start">
                     <div class="flex text-MQ_light justify-start items-center">
 
-                        <div class="text-MQ_light font-bold text-2xl w-16">{{ i + 1 + "." }}</div>
-                        <img class="h-7 aspect-square rounded-full mr-6" src="https://picsum.photos/100/100" alt=""> 
+                        <img class="h-7 aspect-square rounded-full mr-1" :src="user.register_method == 'MacroQuiet' ? macroQuietIcon : googleIcon">
 
+                        <div class="text-MQ_light font-bold text-2xl w-12 text-right mr-4">{{ i + 1 + "." }}</div>
+                        <img class="h-7 aspect-square rounded-full mr-6" :src="user.profile.image.avatar != '' ? user.profile.image.avatar : defaultUserIcon" alt=""> 
+ 
                         <RouterLink :to="'/user/'+ user.username">
                             <div class="text-MQ_red text-xl font-bold hover:underline cursor-pointer w-48 text-left"> {{ user.username }} </div> 
                         </RouterLink>
@@ -36,9 +38,12 @@ import MQ_h2 from "@/components/Global/MQ_h2/MQ_h2.vue";
 import MQ_timelineCardEdit from "@/components/HomeView/MQ_timeline/MQ_timelineCardEdit.vue";
 import MQ_h2_small from "../Global/MQ_h2/MQ_h2_small.vue";
 import Draggable from "vue3-draggable";
-import { useGlobalStore } from '@/stores/globalStore'
+import { useGlobalStore } from '@/stores/globalStore';
 import MQ_quill from "../Global/MQ_inputs/MQ_quill.vue";
-import { Admin } from "@/services";
+import { Admin } from "@/services/index_new.js";
+import defaultUserIcon from "@/assets/portraits/default_user_icon.png";
+import macroQuietIcon from "@/assets/Logos/macroquiet_logo_icon.png";
+import googleIcon from "@/assets/icons/logIn/google.svg";
 
 export default {
     name: "MQ_UsersEditor",
@@ -49,12 +54,12 @@ export default {
         }
     },
     async mounted() {
-        this.allUsers = await Admin.data.getAllUsers;
+        this.allUsers = await Admin.getData("users?=");
         this.allUsers = this.allUsers.data;
     },  
     setup() {
         const globalStore = useGlobalStore()
-        return { globalStore }
+        return { globalStore, defaultUserIcon, macroQuietIcon, googleIcon }
     },
 }
 </script>

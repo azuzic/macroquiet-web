@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonabout:blank#blockedts.googleapis.com/css2?family=Roboto&display=swap');
 .googleFont {
     font-family: 'Roboto', sans-serif;
 }

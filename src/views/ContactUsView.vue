@@ -1,6 +1,6 @@
 <template>
-    <div class="grow flex justify-center items-start pt-16 px-12 absolute overflow-y-auto">
-        <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
+    <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto">
+        <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 py-2 px-14 | w-full">
             
             <MQ_h2 :small="true" class="w-full" text="Contact us!"/>
 
@@ -40,6 +40,7 @@
                 src="src/assets/icons/trader_robot_idle.gif" :class="left ? '' : 'opacity-0'">
             
         </div>
+        <MQ_footer/>
     </div>
 </template>
 
@@ -52,6 +53,7 @@ import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 import emailjs from "@emailjs/browser";
+import MQ_footer from '../components/App/MQ_footer.vue';
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -61,7 +63,7 @@ let wait = function (seconds) {
 
 export default {
     name: "ContactUsView",
-    components: { MQ_textInput, Form, Field, MQ_h2, MQ_dropdownInput, MQ_textAreaInput, MQ_alert },
+    components: { MQ_textInput, Form, Field, MQ_h2, MQ_dropdownInput, MQ_textAreaInput, MQ_alert, MQ_footer },
     setup() {
         const schema = object({
             "Name": string().required().label("Name"),
