@@ -59,18 +59,17 @@
 </template>
 
 <script>
-import { MqResponsive } from "vue3-mq";
-import MQ_h2_small from "@/Global/MQ_h2/MQ_h2_small.vue";
-import Draggable from "vue3-draggable";
-import { useCarouselStore } from '@/stores/carouselStore'
+import MQ_h2_small from "@/components/Global/MQ_h2/MQ_h2_small.vue";
 import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import defaultUserIcon from "@/assets/portraits/default_user_icon.png";
 import StrandedAwayIcon from "@/assets/icons/gameIcons/StrandedAwayIcon.png";
 import DogeIcon from "@/assets/icons/gameIcons/DogeIcon.png";
+import { useCarouselStore } from '@/stores/carouselStore'
+import Draggable from "vue3-draggable";
 
 export default {
     name: "MQ_CarouselEditor",
-    components: { MqResponsive, MQ_h2_small, Draggable, MQ_alert },
+    components: { MQ_h2_small, Draggable, MQ_alert },
     props: {},
     setup() {
         const carouselStore = useCarouselStore()

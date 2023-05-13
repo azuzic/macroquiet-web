@@ -19,16 +19,14 @@
 </template>
 
 <script>
-import MQ_h2 from "@/components/Global/MQ_h2/MQ_h2.vue";
 import MQ_timelineCardEdit from "@/components/HomeView/MQ_timeline/MQ_timelineCardEdit.vue";
-import MQ_h2_small from "@/Global/MQ_h2/MQ_h2_small.vue";
-import Draggable from "vue3-draggable";
+import MQ_h2_small from "@/components/Global/MQ_h2/MQ_h2_small.vue";
+import MQ_quill from "@/components/Global/MQ_inputs/MQ_quill.vue";
 import { useTimelineStore } from '@/stores/timelineStore'
-import MQ_quill from "@/Global/MQ_inputs/MQ_quill.vue";
 
 export default {
     name: "MQ_TimelineEditor",
-    components: { MQ_h2, MQ_timelineCardEdit, MQ_h2_small, Draggable, MQ_quill },
+    components: { MQ_timelineCardEdit, MQ_h2_small, MQ_quill },
     setup() {
         const timelineStore = useTimelineStore()
         return { timelineStore }

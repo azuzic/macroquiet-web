@@ -34,32 +34,20 @@
 </template>
 
 <script>
-import MQ_h2 from "@/components/Global/MQ_h2/MQ_h2.vue";
-import MQ_timelineCardEdit from "@/components/HomeView/MQ_timeline/MQ_timelineCardEdit.vue";
-import MQ_h2_small from "@/Global/MQ_h2/MQ_h2_small.vue";
-import Draggable from "vue3-draggable";
-import { useGlobalStore } from '@/stores/globalStore';
-import MQ_quill from "@/Global/MQ_inputs/MQ_quill.vue";
-import { Admin } from "@/services";
+import MQ_h2_small from "@/components/Global/MQ_h2/MQ_h2_small.vue";
 import defaultUserIcon from "@/assets/portraits/default_user_icon.png";
 import macroQuietIcon from "@/assets/Logos/macroquiet_logo_icon.png";
 import googleIcon from "@/assets/icons/logIn/google.svg";
+import { Admin } from "@/services";
 
 export default {
     name: "MQ_UsersEditor",
-    components: { MQ_h2, MQ_timelineCardEdit, MQ_h2_small, Draggable, MQ_quill },
-    data() {
-        return {
-            allUsers: "",
-        }
-    },
+    components: { MQ_h2_small },
+    data() { return { allUsers: "", } },
+    setup() { return { defaultUserIcon, macroQuietIcon, googleIcon } },
     async mounted() {
         this.allUsers = await Admin.getData("users?=");
         this.allUsers = this.allUsers.data;
     },  
-    setup() {
-        const globalStore = useGlobalStore()
-        return { globalStore, defaultUserIcon, macroQuietIcon, googleIcon }
-    },
 }
 </script>
