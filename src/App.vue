@@ -1,7 +1,15 @@
 <script setup>
-    import { useGlobalStore } from '@/stores/globalStore';
-    const globalStore = useGlobalStore()
-    globalStore.setup()
+import { useCarouselStore } from '@/stores/carouselStore'
+import { useTimelineStore } from '@/stores/timelineStore'
+import { useGlobalStore } from '@/stores/globalStore';
+
+const carouselStore = useCarouselStore()
+const globalStore = useGlobalStore()
+const timelineStore = useTimelineStore()
+
+carouselStore.setup()
+timelineStore.setup()
+globalStore.setup()
 </script>
 
 <template>

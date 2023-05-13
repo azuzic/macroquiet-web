@@ -41,16 +41,16 @@
 
 <script>
 import axios from 'axios';
-import MQ_textAreaInput from '../components/Global/MQ_inputs/MQ_textAreaInput.vue';
-import MQ_textInput from '../components/Global/MQ_inputs/MQ_textInput.vue';
+import MQ_textAreaInput from '@/components/Global/MQ_inputs/MQ_textAreaInput.vue';
+import MQ_textInput from '@/components/Global/MQ_inputs/MQ_textInput.vue';
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
 import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
-import MQ_checkBoxInput from '../components/Global/MQ_inputs/MQ_checkBoxInput.vue';
-import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
-import MQ_GoogleLogInButton from '../components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
-import MQ_footer from '../components/App/MQ_footer.vue';
+import MQ_checkBoxInput from '@/components/Global/MQ_inputs/MQ_checkBoxInput.vue';
+import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
+import MQ_GoogleLogInButton from '@/components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
+import MQ_footer from '@/components/App/MQ_footer.vue';
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {

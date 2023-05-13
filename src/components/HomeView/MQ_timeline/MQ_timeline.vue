@@ -1,6 +1,6 @@
 <script setup>
-    import { useGlobalStore } from '@/stores/globalStore'
-    const globalStore = useGlobalStore()
+import { useTimelineStore } from '@/stores/timelineStore'
+const timelineStore = useTimelineStore()
 </script>
 
 <template>
@@ -8,7 +8,7 @@
         <MQ_h2 text="WHAT'S BEEN GOING ON"/>
 
         <div class="snap-x snap-proximity flex w-0 min-w-full grow h-[760px] items-center pl-16 pr-48 overflow-x-scroll">
-            <MQ_timelineCard v-for="t, id in globalStore.timeline" :t="t" :id="id" :l="globalStore.timeline.length"> {{ t.text }} </MQ_timelineCard>
+            <MQ_timelineCard v-for="t, id in timelineStore.timeline" :t="t" :id="id" :l="timelineStore.timeline.length"> {{ t.text }} </MQ_timelineCard>
         </div>
 
     </div>

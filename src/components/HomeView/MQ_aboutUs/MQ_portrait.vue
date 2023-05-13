@@ -17,10 +17,6 @@ export default {
         imageSrc: String,
         name: String
     },
-    data() {
-        return {
-            hover: false
-        }
-    }
+    data() { return { hover: false } }
 }
 </script>

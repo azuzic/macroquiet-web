@@ -17,8 +17,8 @@
 
             <div v-if="id != l - 1" class="w-1 h-5 rounded-full bg-MQ_lighter absolute flex justify-center items-center" :class="id % 2 == 0 ? '-bottom-8' : '-top-8'">
                 <!--DATE-->
-                <div v-if="globalStore.timelineEditing != t._id" class="whitespace-nowrap absolute text-sm text-MQ_red font-bold" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> {{ formatDateReverse(t.date) }} </div>
-                <div v-else class="whitespace-nowrap absolute text-sm text-MQ_red font-bold flex justify-center items-center" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> 
+                <div v-if="timelineStore.timelineEditing != t._id && !deletePrompt" class="whitespace-nowrap absolute text-sm text-MQ_red font-bold" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> {{ formatDateReverse(t.date) }} </div>
+                <div v-else-if="!deletePrompt" class="whitespace-nowrap absolute text-sm text-MQ_red font-bold flex justify-center items-center" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> 
                     <VueDatePicker dark :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="absolute w-36 z-10 peer" v-model="t.date"
                         text-input model-type="dd.mm.yyyy" auto-apply :enable-time-picker="false"/>
                     <div :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="outline-none border-[1px] border-slate-700 peer-hover:border-MQ_red text-center bg-MQ_dark bg-opacity-75 w-36 
@@ -26,16 +26,23 @@
                     type="text">{{ formatDateReverse(t.date) }}</div> 
                 </div>
                 <!--DELETE-->
-                <div v-if="globalStore.timelineEditing == ''" 
-                    @click="globalStore.removeTimelineCard(t._id)" class="absolute drop-shadow-MQ text-MQ_lighter hover:text-MQ_red font-bold text-xl cursor-pointer"
+                <div v-if="timelineStore.timelineEditing == '' || deletePrompt" class="absolute drop-shadow-MQ text-MQ_lighter hover:text-MQ_red font-bold text-xl | flex justify-center items-center"
                     :class="id % 2 == 0 ? 'top-[70px]' : 'bottom-[70px]'">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i v-if="!deletePrompt" @click="deletePrompt = true; timelineStore.timelineEditing = 'deletePrompt';" class="fa-solid fa-trash-can cursor-pointer mt-1"></i>
+                    <div v-else class="absolute w-fit px-5 py-1 bg-MQ_dark bg-opacity-50 | flex flex-col justify-center items-center
+                        hover:text-MQ_light rounded-xl | text-sm" :class="id % 2 == 0 ? 'mt-1' : 'mb-1'">
+                        <div class="whitespace-nowrap font-normal text-MQ_light">Are you sure?</div>
+                        <div class="w-full flex justify-evenly gap-2">
+                            <div @click="deletePrompt = false; timelineStore.timelineEditing = '';" class="hover:font-bold font-normal text-MQ_red hover:underline cursor-pointer">NO</div>
+                            <div @click="deletePrompt = false; timelineStore.removeTimelineCard(t._id);" class="hover:font-bold font-normal text-MQ_green hover:underline cursor-pointer">YES</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div v-else class="w-1 h-4 ml-2 rounded-full bg-MQ_lighter absolute flex justify-center items-center" :class="id % 2 == 0 ? '-bottom-[26px]' : '-top-[26px]'">
                 <!--DATE-->
-                <div v-if="globalStore.timelineEditing != t._id" class="whitespace-nowrap absolute text-xl text-MQ_red font-bold underline" :class="id % 2 == 0 ? 'top-14' : 'bottom-14'"> {{ formatDateReverse(t.date) }} </div>
-                <div v-else class="whitespace-nowrap absolute text-xl text-MQ_red font-bold flex justify-center items-center" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> 
+                <div v-if="timelineStore.timelineEditing != t._id && !deletePrompt" class="whitespace-nowrap absolute text-xl text-MQ_red font-bold underline" :class="id % 2 == 0 ? 'top-14' : 'bottom-14'"> {{ formatDateReverse(t.date) }} </div>
+                <div v-else-if="!deletePrompt" class="whitespace-nowrap absolute text-xl text-MQ_red font-bold flex justify-center items-center" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> 
                     <VueDatePicker dark :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="absolute w-40 z-10 peer" v-model="t.date" 
                         text-input model-type="dd.mm.yyyy" auto-apply :enable-time-picker="false"/>
                     <div :class="id % 2 == 0 ? 'top-2' : 'bottom-2' " class="outline-none border-[1px] border-slate-700 peer-hover:border-MQ_red text-center bg-MQ_dark bg-opacity-75 w-40 
@@ -43,19 +50,26 @@
                     type="text">{{ formatDateReverse(t.date) }}</div> 
                 </div>
                 <!--DELETE-->
-                <div v-if="globalStore.timelineEditing == ''" 
-                    @click="globalStore.removeTimelineCard(t._id)" class="absolute drop-shadow-MQ text-MQ_lighter hover:text-MQ_red font-bold text-3xl cursor-pointer"
+                <div v-if="timelineStore.timelineEditing == '' || deletePrompt" class="absolute drop-shadow-MQ text-MQ_lighter hover:text-MQ_red font-bold text-3xl mt-1 | flex justify-center items-center"
                     :class="id % 2 == 0 ? 'top-[88px]' : 'bottom-[80px]'">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i v-if="!deletePrompt" @click="deletePrompt = true; timelineStore.timelineEditing = 'deletePrompt';" class="fa-solid fa-trash-can"></i>
+                    <div v-else class="absolute w-fit px-5 py-1 bg-MQ_dark bg-opacity-50 | flex flex-col justify-center items-center cursor-pointer
+                        hover:text-MQ_light rounded-xl | text-sm" :class="id % 2 == 0 ? 'mt-1' : 'mb-1'">
+                        <div class="whitespace-nowrap font-normal text-MQ_light">Are you sure?</div>
+                        <div class="w-full flex justify-evenly gap-2">
+                            <div @click="deletePrompt = false; timelineStore.timelineEditing = '';" class="hover:font-bold font-normal text-MQ_red hover:underline cursor-pointer">NO</div>
+                            <div @click="deletePrompt = false; timelineStore.removeTimelineCard(t._id);" class="hover:font-bold font-normal text-MQ_green hover:underline cursor-pointer">YES</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="min-w-fit | snap-center flex flex-col | group | bg-MQ_dark bg-opacity-25 | drop-shadow-md hover:drop-shadow-MQ border-MQ_red border-2 | transition-all duration-500"
-                :class="[id % 2 == 1 ? 'self-start flex-col-reverse rounded-b-xl' : 'self-end flex-col rounded-t-xl', globalStore.timelineEditing == t._id ? 'border-opacity-100' : 'border-opacity-0']">
+                :class="[id % 2 == 1 ? 'self-start flex-col-reverse rounded-b-xl' : 'self-end flex-col rounded-t-xl', timelineStore.timelineEditing == t._id ? 'border-opacity-100' : 'border-opacity-0']">
 
-                <div :class="[globalStore.timelineEditing == t._id ? id % 2 == 1 ? 'rounded-b-xl border-t-[1px]' : 'rounded-t-xl border-b-[1px]' : id % 2 == 1 ? 'rounded-b-xl' : 'rounded-t-xl']" 
+                <div :class="[timelineStore.timelineEditing == t._id ? id % 2 == 1 ? 'rounded-b-xl border-t-[1px]' : 'rounded-t-xl border-b-[1px]' : id % 2 == 1 ? 'rounded-b-xl' : 'rounded-t-xl']" 
                     class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-[150px] xs:min-w-[300px] max-w-[300px] xs:max-w-md | transition-all duration-500 | border-slate-700">
-                    <div v-if="globalStore.timelineEditing != t._id" class="scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
+                    <div v-if="timelineStore.timelineEditing != t._id" class="scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
                         <i :class="t.icon" class="text-MQ_red"></i>
                         {{ t.title }} 
                     </div>
@@ -71,20 +85,20 @@
                     </div>
                 </div>
 
-                <div class="min-h-full max-h-64 max-w-[440px] overflow-y-auto flex flex-col relative" :class="globalStore.timelineEditing != t._id ? 'px-4 pt-2' : ''">
-                    <div v-if="globalStore.timelineEditing != t._id" class="textEditor text-sm | w-full text-slate-400 group-hover:text-slate-300 | text-justify grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
+                <div class="min-h-full max-h-64 max-w-[440px] overflow-y-auto flex flex-col relative" :class="timelineStore.timelineEditing != t._id ? 'px-4 pt-2' : ''">
+                    <div v-if="timelineStore.timelineEditing != t._id" class="textEditor text-sm | w-full text-slate-400 group-hover:text-slate-300 | text-justify grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
                     <!--TEXT EDIT-->
-                    <QuillEditor :class="id % 2 == 1 ? 'roundmetop' : ''" class="text-sm text-slate-400 border-0" v-if="globalStore.timelineEditing == t._id" v-model:content="t.text" contentType="html" theme="snow" :toolbar="toolbar" />
+                    <QuillEditor :class="id % 2 == 1 ? 'roundmetop' : ''" class="text-sm text-slate-400 border-0" v-if="timelineStore.timelineEditing == t._id" v-model:content="t.text" contentType="html" theme="snow" :toolbar="toolbar" />
                     
                     <!--EDIT-->
-                    <i v-if="globalStore.timelineEditing != t._id && globalStore.timelineEditing == ''" class="fa-solid fa-edit text-MQ_light hover:text-MQ_red cursor-pointer fixed z-50 bottom-2 right-3 text-2xl" 
-                            :class="id % 2 == 1 ? 'top-2' : 'bottom-2'" @click="globalStore.timelineEditing = t._id;"></i>
+                    <i v-if="timelineStore.timelineEditing != t._id && timelineStore.timelineEditing == ''" class="fa-solid fa-edit text-MQ_light hover:text-MQ_red cursor-pointer fixed z-50 bottom-2 right-3 text-2xl" 
+                            :class="id % 2 == 1 ? 'top-2' : 'bottom-2'" @click="timelineStore.timelineEditing = t._id;"></i>
                     <!--SAVE-->
-                    <i v-if="globalStore.timelineEditing == t._id" class="fa-solid fa-save text-MQ_light hover:text-MQ_red cursor-pointer fixed z-40 right-3 text-2xl" 
-                        :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="globalStore.timelineEditing = ''; save(t._id);"></i>
+                    <i v-if="timelineStore.timelineEditing == t._id" class="fa-solid fa-save text-MQ_light hover:text-MQ_red cursor-pointer fixed z-40 right-3 text-2xl" 
+                        :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="timelineStore.timelineEditing = ''; save(t._id);"></i>
                     <!--CANCEL-->
-                    <i v-if="globalStore.timelineEditing == t._id" class="fa-solid fa-circle-xmark text-MQ_light hover:text-MQ_red cursor-pointer fixed z-40 left-3 text-2xl" 
-                        :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="globalStore.timelineEditing = ''; reset();"></i>
+                    <i v-if="timelineStore.timelineEditing == t._id" class="fa-solid fa-circle-xmark text-MQ_light hover:text-MQ_red cursor-pointer fixed z-40 left-3 text-2xl" 
+                        :class="id % 2 == 1 ? 'bottom-16' : 'bottom-2'" @click="timelineStore.timelineEditing = ''; reset();"></i>
                 </div>
 
             </div>
@@ -95,17 +109,21 @@
 </template>
 
 <script>
-import { useGlobalStore } from '@/stores/globalStore'
+import { useTimelineStore } from '@/stores/timelineStore'
 export default {
     name: "MQ_timelineCardEdit",
-    components: { },
     props: {
         t: Object,
         id: Number,
         l: Number,
     },
+    setup() {
+        const timelineStore = useTimelineStore()
+        return { timelineStore }
+    },
     data() {
         return {
+            deletePrompt: false,
             html: this.t.text,
             title: this.t.title,
             icon: this.t.icon,
@@ -154,10 +172,6 @@ export default {
             ]
         }
     },
-    setup() {
-        const globalStore = useGlobalStore()
-        return { globalStore }
-    },
     methods: {
         reset() {
             this.t.text = this.html;
@@ -176,7 +190,7 @@ export default {
                 text: this.t.text,
                 title: this.t.title,
             }
-            this.globalStore.saveTimelineCard(id, data);
+            this.timelineStore.saveTimelineCard(id, data);
         },
         formatDate(d) {
             const months = {

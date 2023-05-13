@@ -35,11 +35,7 @@ import { Field, ErrorMessage } from 'vee-validate';
 export default {
     name: "MQ_textInput",
     components: { Field, ErrorMessage },
-    data() {
-        return {
-            hide: true
-        }
-    },
+    data() { return {  hide: true } },
     props: {
         label: String,
         rules: Object,

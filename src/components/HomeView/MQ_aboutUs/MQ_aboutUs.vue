@@ -29,7 +29,6 @@
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
 import MQ_portrait from './MQ_portrait.vue';
 
-
 export default {
     name: "MQ_aboutUs",
     components: {

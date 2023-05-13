@@ -45,15 +45,15 @@
 </template>
 
 <script>
-import MQ_dropdownInput from '../components/Global/MQ_inputs/MQ_dropdownInput.vue';
-import MQ_textAreaInput from '../components/Global/MQ_inputs/MQ_textAreaInput.vue';
-import MQ_textInput from '../components/Global/MQ_inputs/MQ_textInput.vue';
+import MQ_dropdownInput from '@/components/Global/MQ_inputs/MQ_dropdownInput.vue';
+import MQ_textAreaInput from '@/components/Global/MQ_inputs/MQ_textAreaInput.vue';
+import MQ_textInput from '@/components/Global/MQ_inputs/MQ_textInput.vue';
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
 import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 import emailjs from "@emailjs/browser";
-import MQ_footer from '../components/App/MQ_footer.vue';
+import MQ_footer from '@/components/App/MQ_footer.vue';
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {

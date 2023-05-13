@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import MQ_footer from '../components/App/MQ_footer.vue';
-import MQ_h2_small from '../components/Global/MQ_h2/MQ_h2_small.vue';
+import MQ_footer from '@/components/App/MQ_footer.vue';
+import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
 
 export default {
     name: "PageNotFound",

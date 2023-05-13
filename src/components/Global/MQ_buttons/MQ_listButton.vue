@@ -10,12 +10,7 @@
 </template>
 
 <script>
-let wait = function (seconds) {
-    return new Promise((resolveFn) => {
-        setTimeout(resolveFn, seconds * 1000);
-    });
-};
-
+let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 export default {
     name: "MQ_listButton",
     props: { 
@@ -38,9 +33,7 @@ export default {
             if (id == null) return;
 
             try {
-                document.getElementById(id).scrollIntoView({
-                    behavior: "smooth",
-                });
+                document.getElementById(id).scrollIntoView({ behavior: "smooth", });
                 this.drawer = false;
             } catch (e) { }
         },

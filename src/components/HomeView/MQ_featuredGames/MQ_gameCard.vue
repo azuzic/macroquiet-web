@@ -1,8 +1,13 @@
+<script setup>
+import { useGameCardStore } from '@/stores/gameCardStore'
+const gameCardStore = useGameCardStore()
+</script>
+
 <template>
     <div class="min-w-[240px] | w-[240px] h-[300px] lg:w-[300px] lg:h-[360px] xl:w-[340px] xl:h-[380px] 2xl:w-[350px] 2xl:h-[420px] | snap-center
     flex flex-col overflow-hidden | group | rounded-t-lg | bg-MQ_dark bg-opacity-75 hover:bg-opacity-60 | drop-shadow-md hover:drop-shadow-MQ | transition-all duration-500">
         
-        <div class="min-h-32 lg:min-h-40 xl:min-h-44 2xl:min-h-48
+        <div @click="" class="min-h-32 lg:min-h-40 xl:min-h-44 2xl:min-h-48
         vignette flex justify-center items-center | bg-center bg-size-auto_100 group-hover:bg-size-auto_110 | border-b-[2px] border-MQ_dark group-hover:border-MQ_red | transition-all duration-500"
         :style="'background-image: url('+ image +')'">
             <div class="w-full h-full | transition-all duration-500 | bg-gradient-to-bl from-MQ_red via-transparent to-MQ_dark opacity-25 | bg-size-200_200 bg-pos-0 group-hover:bg-pos-100 | cursor-pointer"></div>
