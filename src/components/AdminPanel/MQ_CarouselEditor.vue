@@ -35,9 +35,10 @@
             </MQ_alert>
         </div>
 
-        <draggable :change="carouselStore.updateCarousel()" v-if="carouselStore.update" v-model="carouselStore.carouselPictures.pictures" class="flex flex-wrap justify-center gap-4 | p-4 rounded-lg | overflow-y-auto">
+        <draggable :change="carouselStore.updateCarousel()" v-if="carouselStore.update" v-model="carouselStore.carouselPictures.pictures" 
+            class="flex flex-wrap justify-center gap-4 | py-4 rounded-lg | overflow-y-auto">
             <template v-slot:item="{ item }">
-                <div class="aspect-video | h-16 xs:h-20 md:h-24 lg:h-28 xl:h-36 2xl:h-48 | transition-all duration-300">
+                <div class="aspect-video | h-16 xs:h-28 md:h-24 lg:h-28 xl:h-36 2xl:h-48 | transition-all duration-300">
                     <div class="w-full h-full overflow-hidden bg-cover bg-center rounded-md drop-shadow-MQ relative | flex justify-center items-center" :style="'background-image: url(' + item.public_url + ')'">
                         <div v-if="!carouselStore.submitting && carouselStore.carouselEditing == ''" class="absolute drop-shadow-MQ top-0.5 right-1 text-MQ_light hover:text-MQ_red font-bold text-xl cursor-pointer">
                             <i @click="carouselStore.carouselEditing = item._id" class="fa-solid fa-trash-can"></i>

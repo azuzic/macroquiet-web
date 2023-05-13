@@ -1,7 +1,7 @@
 <template>
     <div class="grow flex flex-col justify-between items-start pt-16 overflow-y-auto">
         <div class="flex grow flex-col items-center justify-top | w-full h-fit | pt-16 pb-32 | px-4 md:px-16 lg:px-32 xl:px-36 2xl:px-64 | transition-all duration-300">
-            <MQ_h2 class="w-full mb-4" text="ADMIN PANEL"/>
+            <MQ_h2 class="w-full mb-8 sm:mb-4" text="ADMIN PANEL"/>
             <div class="flex justify-center items-center bg-MQ_dark bg-opacity-75 rounded-t-lg w-full py-4 -mt-8 gap-8">
                 <MQ_listButton class="z-20" :selected="globalStore.edit == 'CAROUSEL'" @click="globalStore.setEdit('CAROUSEL')" icon="panorama" text="CAROUSEL" />
                 <MQ_listButton class="z-20" :selected="globalStore.edit == 'TIMELINE'" @click="globalStore.setEdit('TIMELINE')"  icon="timeline" text="TIMELINE" />
