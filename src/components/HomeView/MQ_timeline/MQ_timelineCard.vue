@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="px-4 min-h-full max-h-64 flex flex-col overflow-scroll pt-2">
-                    <div class="text-sm | w-full text-slate-400 group-hover:text-slate-300 | text-justify grow | transition-all duration-500" v-html="t.text"></div>
+                    <div class="text-sm | w-full text-slate-400 group-hover:text-slate-300 |  grow | transition-all duration-500" v-html="t.text"></div>
                 </div>
 
             </div>

@@ -126,6 +126,9 @@ export default {
             svg {filter: brightness(0%);}
         }
     }
+    .ql-picker-option, .ql-picker-item {
+        svg {filter: brightness(100%) !important ;}
+    }
 }
 
 .ql-editor {
