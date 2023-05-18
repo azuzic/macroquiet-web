@@ -73,7 +73,7 @@
                         <i :class="t.icon" class="text-MQ_red"></i>
                         {{ t.title }} 
                     </div>
-                    <div v-else class="flex  items-center justify-center scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title">
+                    <div v-else class="flex items-center justify-start scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title">
                         <!--ICONS-->
                         <i @click="showIcons = !showIcons;" :class="t.icon" class="text-MQ_red hover:text-MQ_light relative | transition-all">
                             <div @mouseleave ="showIcons = false" :class="id % 2 == 1 ? 'bottom-10' : 'top-10'" v-if="showIcons" class="fixed left-4 z-50 w-fit h-fit bg-MQ_dark border-[1px] border-slate-600 p-2 rounded-md gap-2 grid grid-cols-7">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="min-h-full max-h-64 max-w-[440px] overflow-y-auto flex flex-col relative" :class="timelineStore.timelineEditing != t._id ? 'px-4 pt-2' : ''">
+                <div class="min-h-full max-h-64 min-w-[334px] max-w-[440px] overflow-y-auto flex flex-col relative" :class="timelineStore.timelineEditing != t._id ? 'px-4 pt-2' : ''">
                     <div v-if="timelineStore.timelineEditing != t._id" class="textEditor text-sm | w-full text-slate-400 group-hover:text-slate-300 |  grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
                     <!--TEXT EDIT-->
                     <QuillEditor :class="id % 2 == 1 ? 'roundmetop' : ''" class="text-sm text-slate-400 border-0" v-if="timelineStore.timelineEditing == t._id" v-model:content="t.text" contentType="html" theme="snow" :toolbar="toolbar" />

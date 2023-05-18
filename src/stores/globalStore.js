@@ -7,6 +7,7 @@ export const useGlobalStore = defineStore("globalStore", {
         //UPDATING
         edit: "",
         update: true,
+        editing: false,
 
         //USER
         userLocalStorage: {

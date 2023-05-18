@@ -1,16 +1,9 @@
-<script setup>
-import defaultUserIcon from "@/assets/portraits/default_user_icon.png";
-import { useGlobalStore } from '@/stores/globalStore';
-
-const globalStore = useGlobalStore()
-
-</script>
 <template>
     <div tabindex="0" @focusout="!focus ? show = false : ''" @click="show = true" class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
         <div class="h-12 aspect-square rounded-full bg-MQ_dark hover:bg-opacity-100 hover:border-MQ_red border-2 overflow-hidden drop-shadow-MQ | mr-2 lg:mr-8 | transition-all duration-300"
             :class="show ? 'border-MQ_red bg-opacity-100' : 'border-MQ_dark bg-opacity-10'">
             <img :class="show ? 'scale-150' : 'scale-125'" class="hover:scale-150 | transition-all duration-300 | cursor-pointer" 
-                :src="globalStore.userProfile.profile.image.avatar != '' ? globalStore.userProfile.profile.image.avatar : defaultUserIcon">
+                :src="readImage">
         </div>
 
         <div @mouseleave="focus = false" @mouseenter="focus = true" :class="show ? globalStore.userProfile.admin ? 'w-64 xs:w-80 h-64 xs:h-60' : 'w-64 xs:w-80 h-56 xs:h-60' : 'h-1 w-1 opacity-0'"
@@ -26,7 +19,6 @@ const globalStore = useGlobalStore()
 
                 <div class="text-MQ_light text-xs my-2"> 
                     {{ globalStore.userProfile.email }} 
-
                 </div>
 
                 <div class="w-full flex flex-col xs:flex-row justify-center items-center gap-2 xs:gap-8 py-2 xs:py-4">
@@ -62,17 +54,21 @@ const globalStore = useGlobalStore()
 </template>
 
 <script>
+import userIcon from "@/assets/portraits/default_user_icon.png";
+import { useGlobalStore } from '@/stores/globalStore';
 import MQ_h2_small from "@/components/Global/MQ_h2/MQ_h2_small.vue";
 import { Auth } from "@/services"
 
 export default {
     name: "MQ_profileIcon",
     components: { MQ_h2_small },
-    data() {
-        return {
-            show: false,
-            focus: false,
-        }
+    data() { return {
+        show: false,
+        focus: false,
+    } },
+    setup() {
+        const globalStore = useGlobalStore()
+        return { globalStore, userIcon }
     },
     methods: {
         LogOut() {
@@ -80,6 +76,18 @@ export default {
             this.$router.push({ path: "/", replace: true }).catch(() => { });
             this.$router.go();
         }
+    },
+    computed: {
+        readImage() {
+            if (!this.globalStore.editing) {
+                if (this.globalStore.userProfile.profile.image.avatar == '') return this.userIcon;
+                return this.globalStore.userProfile.profile.image.avatar;
+            }
+            if (this.globalStore.userProfile.profile.image.avatar == '') return this.userIcon;
+            else if (typeof(this.globalStore.userProfile.profile.image.avatar) == "string") return this.globalStore.userProfile.profile.image.avatar;
+            let file = URL.createObjectURL(this.globalStore.userProfile.profile.image.avatar);
+            return file;
+        },
     }
 };
 </script>

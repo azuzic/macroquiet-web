@@ -10,9 +10,9 @@ const gameStore = useGameStore();
             <!--USER COVER & ICON-->
             <MQ_UserCoverAndIcon/>
 
-            <hr class="border-2 border-MQ_light drop-shadow-MQ relative z-10 w-full">
+            <hr class="border-2 border-MQ_light drop-shadow-MQ relative z-10 w-full"> 
 
-            <div class="flex text-MQ_light w-full px-96 mt-4 mb-16">
+            <div class="flex text-MQ_light w-full | mt-4 mb-16 | sm:px-16 lg:px-96">
                 <div class="w-full h-full relative z-10">
                     <!--PLAYED GAMES-->
                     <div class="px-4 py-2 flex flex-col gap-6">

@@ -133,6 +133,30 @@ let User = {
             console.warn(detailedError);
         }
     },
+    async putChangeProfileDescription(data) {
+        try {
+            return Service.put("users/profile/description", data);
+        } catch (error) {
+            let detailedError = {
+                functionName: "User - putChangeProfileDescription",
+                data: data,
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
+    async putChangeProfileImage(data) {
+        try {
+            return Service.put("users/profile/image", data);
+        } catch (error) {
+            let detailedError = {
+                functionName: "User - putChangeProfileImage",
+                data: data,
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
 };
 
 let Admin = {

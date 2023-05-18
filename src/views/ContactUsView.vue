@@ -76,7 +76,7 @@ export default {
     },
     data() {
         return {
-            list: ["Registration problem", "Achievements problem", "Bug report", "Suggestion", "Cooperation", "Other"],
+            list: ["Registration problem", "Authentification problem", "User profile problem", "Achievements problem", "Bug report", "Suggestion", "Cooperation", "Report User", "Other"],
             left: false,
             submitting: false,
             type: "none"
