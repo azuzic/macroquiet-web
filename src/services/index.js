@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 let Service = axios.create({
     baseURL: "https://macroquiet.herokuapp.com/api/",
@@ -7,7 +8,7 @@ let Service = axios.create({
 
 //Before each sent request to the backend, send the Token in the header:
 Service.interceptors.request.use((request) => {
-    let token = Auth.getUserToken();
+    let token = Auth.getLocalStorage().token;
     try {
         request.headers["Authorization"] = "Bearer " + token;
     } catch (e) {
@@ -18,12 +19,12 @@ Service.interceptors.request.use((request) => {
 
 let Auth = {
     getLocalStorage() {
-        return JSON.parse(localStorage.getItem("user"));
-    },
-    getUserToken() {
-        let user = this.getLocalStorage();
-        if (user && user.token) return user.token;
-        else return false;
+        let user = JSON.parse(localStorage.getItem("user"));
+        if (user) {
+            let decodedToken = jwt_decode(user.token);
+            if (Date.now() >= decodedToken.exp * 1000) return false;
+            return user;
+        } else return false;
     },
     async logInMQ(userData) {
         try {
@@ -50,6 +51,18 @@ let Public = {
             let detailedError = {
                 functionName: "Public - getData",
                 dataName: dataName,
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
+    async postEmailForPasswordReset(email) {
+        try {
+            return Service.post("users/resetpassword", email);
+        } catch (error) {
+            let detailedError = {
+                functionName: "Public - postEmailForPasswordReset",
+                email: email,
                 error: error,
             };
             console.warn(detailedError);

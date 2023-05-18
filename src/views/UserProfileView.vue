@@ -1,101 +1,66 @@
+<script setup>
+import { useGameStore } from '@/stores/gameStore'
+const gameStore = useGameStore();
+</script>
+
 <template>
-    <div class="h-full flex flex-col">
-        <div class="h-[240px] xs:h-[280px] sm:h-[340px] md:h-[400px] | overflow-hidden relative | transition-all duration-300">
-            <carousel :items-to-show="1" :wrapAround="true" :autoplay="0" :transition="0" :mouseDrag="false" :touchDrag="false" class="h-full relative">
-                <slide class="h-full">
-                    <div class="h-full w-full overflow-hidden bg-cover bg-center relative" :style="'background-image: url(@/src/assets/bg.jpg)'">
-                        <div class="w-full h-full bg-gradient-to-t from-MQ_blue opacity-70 absolute top-0"></div>
+    <div class="grow flex flex-col justify-between items-start absolute overflow-y-auto">
+        <div class="flex flex-col | justify-center items-center | w-full">
 
-                        <div class="flex absolute left-64 bottom-2 justify-center items-baseline">
-                            <div class="w-32 aspect-square overflow-hidden drop-shadow-MQ z-50">
-                                <img class="absolute w-full rendering-pixelated" src="@/assets/portraits/Portret_Alesandro_Big-noBG.png" alt="">
-                            </div>
-                            <div class="text-MQ_lighter relative drop-shadow-MQ"> 
-                                <div class="absolute text-3xl  left-8 -top-14 text-MQ_red font-bold"> {{ user.username }} </div>
-                                <div class="absolute text-base left-8 -top-6  text-MQ_light" > {{ user.email }} </div>
-                            </div>
+            <!--USER COVER & ICON-->
+            <MQ_UserCoverAndIcon/>
+
+            <hr class="border-2 border-MQ_light drop-shadow-MQ relative z-10 w-full">
+
+            <div class="flex text-MQ_light w-full px-96 mt-4 mb-16">
+                <div class="w-full h-full relative z-10">
+                    <!--PLAYED GAMES-->
+                    <div class="px-4 py-2 flex flex-col gap-6">
+
+                        <MQ_ProfileBlock>Played games</MQ_ProfileBlock>
+
+                        <div class="flex flex-col gap-6">
+                            <MQ_PlayedGame v-for="game in gameStore.games" :game="game"/>
                         </div>
+
+                        <MQ_ProfileBlock>User settings</MQ_ProfileBlock>
+                        <MQ_ProfileBlock>
+                            <div class="flex justify-between mt-4">
+                                <div class="flex">
+                                    <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
+                                        hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
+                                        Change Password
+                                    </div>
+                                    <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
+                                        hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
+                                        Change Username
+                                    </div>
+                                </div>
+                                <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-red-700 hover:bg-MQ_dark | text-MQ_dark hover:text-MQ_lighter
+                                        border-MQ_dark border-2 rounded | transition-all duration-300 cursor-pointer w-fit | hover:border-MQ_lighter">
+                                    DELETE ACOUNT
+                                </div>
+                            </div>
+                        </MQ_ProfileBlock>
+
                     </div>
-                </slide>
-            </carousel>
-        </div>
-
-        <hr class="border-2 border-MQ_light drop-shadow-MQ relative z-10">
-
-        <div class="flex px-64 text-MQ_light grow mb-48 relative overflow-x-hidden">
-            <div class="sss absolute pr-[512px] w-full h-full flex flex-col-reverse z-50">
-                <div class="sss2 z-50"> </div>
-            </div>
-            <!--hr class="border-2 border-MQ_light drop-shadow-MQ relative grow h-full"/-->
-            <div class="w-full h-full bg-gradient-to-b from-MQ_dark to-MQ_darkblue opacity-90 px-8 pt-4 flex flex-col">
-                <div class="text-3xl text-MQ_red font-bold my-4"> About me </div>
-                <div class="text-base">
-                    {{ user.profile.description }} <br>
                 </div>
-                <div class="text-3xl text-MQ_red font-bold my-4"> Played games </div>
-                 <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-                     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
             </div>
-            <!--hr class="border-2 border-MQ_light drop-shadow-MQ relative grow h-full"/-->
-        </div>
         
         
+            </div>
+        <MQ_footer/>
     </div>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue3-carousel'
-import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
-
-import { Auth } from "@/services";
-import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
+import MQ_footer from '@/components/App/MQ_footer.vue';
+import MQ_UserCoverAndIcon from '@/components/UserProfile/MQ_UserCoverAndIcon.vue';
+import MQ_PlayedGame from '@/components/UserProfile/MQ_PlayedGame.vue';
+import MQ_ProfileBlock from '../components/UserProfile/MQ_ProfileBlock.vue';
 
 export default {
     name: "UserProfileView",
-    components: { Carousel, Slide, MQ_h2, MQ_h2_small },
-    data() { 
-        return {
-            currentUser: null,
-            auth: Auth.state,
-            user: {
-                username: "",
-                email: "",
-                admin: false,
-                profile: {
-                    description: "",
-                    games: [],
-                },
-            },
-            canEdit: false,
-            tokenUser: Auth.currentUser.getCurrentUserData.username,
-        } 
-    },
-    async mounted() {
-        this.currentUser = this.$route.params.userName;
-
-        await this.getUserDetails();
-    },
-    methods: {
-        async getUserDetails() {
-            if (this.auth.authenticated) {
-                let result = await Auth.getUserDetails(this.currentUser);
-                this.user = result.data.userData;
-
-                if (this.tokenUser === this.$route.params.userName) {
-                    this.canEdit = true;
-                }
-            }
-        },
-    },
+    components: { MQ_footer, MQ_UserCoverAndIcon, MQ_PlayedGame, MQ_ProfileBlock },
 }
 </script>
-
-<style lang="scss" scoped>
-.sss {
-    .sss2 {
-        pointer-events: none;
-        background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(13, 26, 36, 1) 90%);
-        height: 1em;
-    }
-}
-</style>

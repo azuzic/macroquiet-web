@@ -35,11 +35,19 @@ export const useGlobalStore = defineStore("globalStore", {
     }),
     actions: {
         async setup() {
-            let response = await User.getCurrentUserProfile();
-            if (response) {
-                this.userProfile = response.userData.data;
-                this.edit = response.token.edit;
-                this.MQupdate();
+            try {
+                let response = await User.getCurrentUserProfile();
+                if (response) {
+                    this.userProfile = response.userData.data;
+                    this.edit = response.token.edit;
+                    this.MQupdate();
+                }
+            } catch (error) {
+                let detailedError = {
+                    functionName: "globalStore - setup",
+                    error: error,
+                };
+                console.warn(detailedError);
             }
         },
         async MQupdate() {

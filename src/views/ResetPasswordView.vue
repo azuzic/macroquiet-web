@@ -5,7 +5,7 @@
 
             <MQ_h2 class="w-full" text="Reset your password" :small="true"/>
 
-            <Form @submit="onSubmit" class="w-full max-w-md flex justify-between px-12 sm:px-6 | transition-all duration-500" :validation-schema="schema">
+            <Form v-if="this.$route.params.token != 'enter-email'" @submit="onSubmit" class="w-full max-w-md flex justify-between px-12 sm:px-6 | transition-all duration-500" :validation-schema="schema">
                 <div class="flex flex-col w-full justify-between items-center gap-2">
 
                     <MQ_textInput :password="true" label="Password" icon="key" />
@@ -22,12 +22,47 @@
                             <div class="absolute h-full left-0 w-0 group-hover:w-full bg-MQ_light group-hover:bg-MQ_red | transition-all duration-500"></div>
                         </button>
                         <img class="absolute | animate-spin_slow transition-all duration-500"
-                            src="src/assets/Logos/macroquiet_logo_icon.png"
+                            src="@/assets/Logos/macroquiet_logo_icon.png"
                             :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
 
+                        <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
+                            class="absolute w-full top-0">
+                            <b>Error reseting password!</b>
+                        </MQ_alert>
                         <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
                             class="absolute top-0">
                             <b>Password reset successfully!</b>
+                        </MQ_alert>
+                    </div>
+
+                </div>
+            </Form>
+            <Form v-else @submit="onSubmit2" class="w-full max-w-md flex justify-between px-12 sm:px-6 | transition-all duration-500" :validation-schema="schema2">
+                <div class="flex flex-col w-full justify-between items-center gap-2">
+
+                    <MQ_textInput label="E-mail" icon="envelope" />
+
+                    <div class="w-full relative flex flex-col justify-center mt-2 items-center transition-all duration-500"
+                        :class="submitting || type != 'none' ? 'h-16' : 'h-8 delay-500'">
+                        <button @click="onSubmit2()"
+                            class="h-8 w-full group relative z-10 | flex flex-col justify-center overflow-hidden items-center | rounded-md bg-MQ_dark bg-opacity-25 drop-shadow-MQ | transition-all duration-500"
+                            :class="submitting || type != 'none' ? 'opacity-0 delay-0' : 'opacity-100 delay-500'">
+                            <div class="px-5 h-full | text-MQ_light group-hover:text-MQ_dark | group-hover:font-bold | z-10 | transition-all duration-500 | flex items-center text-sm">
+                                Send
+                            </div>
+                            <div class="absolute h-full left-0 w-0 group-hover:w-full bg-MQ_light group-hover:bg-MQ_red | transition-all duration-500"></div>
+                        </button>
+                        <img class="absolute | animate-spin_slow transition-all duration-500"
+                            src="@/assets/Logos/macroquiet_logo_icon.png"
+                            :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
+
+                        <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
+                            class="absolute w-full top-0">
+                            <b>Error sending email!</b>
+                        </MQ_alert>
+                        <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
+                            class="absolute top-0">
+                            <b>A password reset email has been sent if such an account exists.</b>
                         </MQ_alert>
                     </div>
 
@@ -51,6 +86,7 @@ import MQ_checkBoxInput from '@/components/Global/MQ_inputs/MQ_checkBoxInput.vue
 import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
 import MQ_GoogleLogInButton from '@/components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
 import MQ_footer from '@/components/App/MQ_footer.vue';
+import { Public } from "@/services";
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -66,8 +102,11 @@ export default {
             "Password": string().required().label("Password"),
             "Password confirm": string().required().label("Password confirm"),
         });
+        const schema2 = object({
+            "E-mail": string().required().email().label("Email"),
+        });
         return {
-            schema,
+            schema, schema2
         };
     },
     data() {
@@ -86,6 +125,29 @@ export default {
                     await wait(2);
                     this.submitting = false;
                     await axios.post('/api/reset-password', { password: values.password, token: this.token });
+                    console.log(response);
+                    this.type = "success";
+                    await wait(2);
+                    this.type = "none";
+                } catch (e) {
+                    await wait(2);
+                    this.submitting = false;
+                    this.type = "warning";
+                    await wait(2);
+                    this.type = "none";
+                    console.error("Error sending message!");
+                }
+            }
+        },
+        async onSubmit2(values) {
+            if (values) {
+                console.log(values);
+                this.submitting = true;
+                try {
+                    await wait(2);
+                    this.submitting = false;
+                    let response = Public.postEmailForPasswordReset({ email: values['E-mail'] });
+                    console.log(response);
                     this.type = "success";
                     await wait(2);
                     this.type = "none";

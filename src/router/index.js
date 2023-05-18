@@ -51,7 +51,7 @@ const router = createRouter({
             props: true,
         },
         {
-            path: "/reset-password/:token",
+            path: "/reset-password/:token(.*)",
             name: "ResetPassword",
             component: ResetPasswordView,
             props: true,
@@ -73,6 +73,7 @@ router.beforeEach((to, from, next) => {
         "/games/doge",
         "/games/stranded-away",
         "/register-with-google",
+        "/reset-password/enter-email",
     ];
     const adminPages = ["admin-panel"];
     const userRequired = !publicPages.includes(to.path);
