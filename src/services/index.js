@@ -68,6 +68,18 @@ let Public = {
             console.warn(detailedError);
         }
     },
+    async putResetPassword(data) {
+        try {
+            return Service.put("users/resetpassword", data);
+        } catch (error) {
+            let detailedError = {
+                functionName: "Public - putResetPassword",
+                data: data,
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
 };
 
 let User = {
@@ -76,7 +88,7 @@ let User = {
             return Service.post("users", userData);
         } catch (error) {
             let detailedError = {
-                functionName: "Public - registerUserMQ",
+                functionName: "User - registerUserMQ",
                 userData: userData,
                 error: error,
             };
@@ -91,7 +103,31 @@ let User = {
             return { userData: userData, token: token };
         } catch (error) {
             let detailedError = {
-                functionName: "Public - getCurrentUserProfile",
+                functionName: "User - getCurrentUserProfile",
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
+    async putChangePassword(data) {
+        try {
+            return Service.put("users/current/password", data);
+        } catch (error) {
+            let detailedError = {
+                functionName: "User - putChangePassword",
+                data: data,
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
+    async putChangeUsername(data) {
+        try {
+            return Service.put("users/current/username", data);
+        } catch (error) {
+            let detailedError = {
+                functionName: "User - putChangeUsername",
+                data: data,
                 error: error,
             };
             console.warn(detailedError);

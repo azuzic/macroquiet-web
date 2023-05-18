@@ -40,11 +40,11 @@
 
                         <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
                             class="absolute w-full top-0">
-                            <b>Wrong username or password!</b>
+                            <b>{{ response }}!</b>
                         </MQ_alert>
                         <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
                             class="absolute w-full top-0">
-                            <b>Logged in successfully!</b>
+                            <b>{{ response }}</b>
                         </MQ_alert>
                     </div>
 
@@ -94,13 +94,13 @@ export default {
     data() {
         return {
             submitting: false,
-            type: "none" 
+            type: "none",
+            response: "",
         }
     },
     methods: {
         async onSubmit(values) {
             if (values) {
-                console.log();
                 this.submitting = true;
                 
                 let userData = {
@@ -110,13 +110,13 @@ export default {
                 };
                 try {
                     let tokenData = await Auth.logInMQ(userData);
+                    this.response = "Successfully logged in!";
                     if (localStorage.user) localStorage.removeItem("user");
 
                     tokenData.data["edit"] = this.globalStore.edit;
                     localStorage.setItem("user", JSON.stringify(tokenData.data));
 
                     await wait(1);
-                    console.log("Request sent successfully!");
                     this.submitting = false;
                     this.type = "success";
                     await wait(2);
@@ -124,6 +124,7 @@ export default {
                     await this.globalStore.setup();
                     this.$router.push({ path: "/", replace: true }).catch(() => { });
                 } catch (e) {
+                    this.response = e.response.data.error;
                     console.error("Error sending message! ", e);
                     await wait(1);
                     this.submitting = false;

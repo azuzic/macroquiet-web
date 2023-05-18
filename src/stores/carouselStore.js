@@ -65,7 +65,6 @@ export const useCarouselStore = defineStore("carouselStore", {
                 formData.append("route", "carousel");
 
                 let response = await Admin.uploadImage(formData);
-                console.log(response);
 
                 await readFile(image)
                     .then(() => {
@@ -87,7 +86,6 @@ export const useCarouselStore = defineStore("carouselStore", {
                     pictures: this.carouselPictures.pictures,
                 });
                 await wait(1);
-                console.log("Request sent successfully!");
                 this.submitting = false;
                 this.type = "success";
                 await wait(2);

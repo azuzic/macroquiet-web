@@ -27,14 +27,18 @@ const gameStore = useGameStore();
                         <MQ_ProfileBlock>
                             <div class="flex justify-between mt-4">
                                 <div class="flex">
-                                    <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
-                                        hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
-                                        Change Password
-                                    </div>
-                                    <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
-                                        hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
-                                        Change Username
-                                    </div>
+                                    <RouterLink to="/change-password">
+                                        <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
+                                            hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
+                                            Change Password
+                                        </div>
+                                    </RouterLink>
+                                    <RouterLink to="/change-username">
+                                        <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
+                                            hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
+                                            Change Username
+                                        </div>
+                                    </RouterLink>
                                 </div>
                                 <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-red-700 hover:bg-MQ_dark | text-MQ_dark hover:text-MQ_lighter
                                         border-MQ_dark border-2 rounded | transition-all duration-300 cursor-pointer w-fit | hover:border-MQ_lighter">

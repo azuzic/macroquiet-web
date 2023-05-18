@@ -68,7 +68,6 @@ export default {
     methods: {
         async onSubmit(values) {
             if (values) {
-                console.log(values);
                 this.submitting = true;
                 try {
                     await wait(2);

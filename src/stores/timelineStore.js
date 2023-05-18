@@ -24,7 +24,6 @@ export const useTimelineStore = defineStore("timelineStore", {
         },
         //TIMELINE
         async removeTimelineCard(id) {
-            console.log(id);
             await Admin.deleteData("timeline/" + id);
             this.timeline = this.timeline.filter((item) => item._id !== id);
             this.MQupdate();

@@ -27,11 +27,11 @@
 
                         <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
                             class="absolute w-full top-0">
-                            <b>Error reseting password!</b>
+                            <b>{{ response }}</b>
                         </MQ_alert>
                         <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
                             class="absolute top-0">
-                            <b>Password reset successfully!</b>
+                            <b>{{ response }}</b>
                         </MQ_alert>
                     </div>
 
@@ -58,11 +58,11 @@
 
                         <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
                             class="absolute w-full top-0">
-                            <b>Error sending email!</b>
+                            <b>{{ response }}</b>
                         </MQ_alert>
                         <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
                             class="absolute top-0">
-                            <b>A password reset email has been sent if such an account exists.</b>
+                            <b>{{ response }}</b>
                         </MQ_alert>
                     </div>
 
@@ -75,13 +75,12 @@
 </template>
 
 <script>
-import axios from 'axios';
 import MQ_textAreaInput from '@/components/Global/MQ_inputs/MQ_textAreaInput.vue';
 import MQ_textInput from '@/components/Global/MQ_inputs/MQ_textInput.vue';
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
 import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { Form, Field } from 'vee-validate';
-import { object, string } from 'yup';
+import * as Yup from 'yup';
 import MQ_checkBoxInput from '@/components/Global/MQ_inputs/MQ_checkBoxInput.vue';
 import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
 import MQ_GoogleLogInButton from '@/components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
@@ -98,12 +97,12 @@ export default {
     name: "ResetPasswordView",
     components: { MQ_textInput, Form, Field, MQ_h2, MQ_textAreaInput, MQ_alert, MQ_checkBoxInput, MQ_h2_small, MQ_GoogleLogInButton, MQ_footer },
     setup() {
-        const schema = object({
-            "Password": string().required().label("Password"),
-            "Password confirm": string().required().label("Password confirm"),
+        const schema = Yup.object({
+            "Password": Yup.string().required().label("Password"),
+            "Password confirm": Yup.string().required().label("Password confirm").oneOf([Yup.ref('Password'), null], 'Passwords must match'),
         });
-        const schema2 = object({
-            "E-mail": string().required().email().label("Email"),
+        const schema2 = Yup.object({
+            "E-mail": Yup.string().required().email().label("Email"),
         });
         return {
             schema, schema2
@@ -114,22 +113,24 @@ export default {
             token: this.$route.query.token, // Get the token from the URL
             submitting: false,
             type: "none",
+            response: "",
         };
     },
     methods: {
         async onSubmit(values) {
             if (values) {
-                console.log(values);
                 this.submitting = true;
                 try {
                     await wait(2);
+                    this.response = await Public.putResetPassword({ token: this.$route.params.token, new_password: values['Password'] });
+                    this.response = this.response.data.message;
                     this.submitting = false;
-                    await axios.post('/api/reset-password', { password: values.password, token: this.token });
-                    console.log(response);
                     this.type = "success";
                     await wait(2);
                     this.type = "none";
+                    this.$router.replace("/login")
                 } catch (e) {
+                    this.response = e.response.data.error;
                     await wait(2);
                     this.submitting = false;
                     this.type = "warning";
@@ -141,17 +142,17 @@ export default {
         },
         async onSubmit2(values) {
             if (values) {
-                console.log(values);
                 this.submitting = true;
                 try {
                     await wait(2);
+                    this.response = await Public.postEmailForPasswordReset({ email: values['E-mail'] });
+                    this.response = this.response.data.message;
                     this.submitting = false;
-                    let response = Public.postEmailForPasswordReset({ email: values['E-mail'] });
-                    console.log(response);
                     this.type = "success";
                     await wait(2);
                     this.type = "none";
                 } catch (e) {
+                    this.response = e.response.data.error;
                     await wait(2);
                     this.submitting = false;
                     this.type = "warning";

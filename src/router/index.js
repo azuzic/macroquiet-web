@@ -7,6 +7,8 @@ import RegisterView from "@/views/RegisterView.vue";
 import RegisterWithGoogleView from "@/views/RegisterWithGoogleView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
 import ResetPasswordView from "@/views/ResetPasswordView.vue";
+import ChangePasswordView from "@/views/ChangePasswordView.vue";
+import ChangeUsernameView from "@/views/ChangeUsernameView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import AdminPanelView from "@/views/AdminPanelView.vue";
 import { useGlobalStore } from "@/stores/globalStore";
@@ -57,6 +59,18 @@ const router = createRouter({
             props: true,
         },
         {
+            path: "/change-password",
+            name: "ChangePassword",
+            component: ChangePasswordView,
+            props: true,
+        },
+        {
+            path: "/change-username",
+            name: "ChangeUsername",
+            component: ChangeUsernameView,
+            props: true,
+        },
+        {
             path: "/:pathMatch(.*)*",
             name: "NotFound",
             component: PageNotFoundView,
@@ -75,6 +89,7 @@ router.beforeEach((to, from, next) => {
         "/register-with-google",
         "/reset-password/enter-email",
     ];
+    const passwordReset = to.path.includes("reset-password");
     const adminPages = ["admin-panel"];
     const userRequired = !publicPages.includes(to.path);
     const adminRequired = adminPages.includes(to.path);
@@ -83,7 +98,7 @@ router.beforeEach((to, from, next) => {
     const userLocalStorage = Auth.getLocalStorage();
     if (userLocalStorage) globalStore.userLocalStorage = userLocalStorage;
 
-    if (userRequired && !userLocalStorage) {
+    if (userRequired && !userLocalStorage && !passwordReset) {
         next("/login");
         return;
     } else if (adminRequired && !userLocalStorage && !userLocalStorage.admin) {
