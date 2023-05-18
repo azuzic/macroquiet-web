@@ -5,7 +5,7 @@
             <Field type="text" :name="label" :rules="rules" v-slot="{ field, errorMessage }" v-model="value">
 
                 <input v-bind="field" @focusout="!focus ? show = false : ''" @click="show = true" :placeholder="value" readonly
-                    class="block py-2.5 px-0 w-full text-sm bg-transparent appearance-none focus:outline-none focus:ring-0 peer caret-transparent" 
+                    class="block py-2.5 px-0 w-full text-sm bg-transparent appearance-none focus:outline-none focus:ring-0 peer caret-transparent cursor-pointer" 
                     :class="errorMessage ? 'text-MQ_red' : 'text-slate-300'"/>
 
                 <div class="h-[0.25px] w-full rounded-full absolute transition-all duration-300 -mt-0.5" :class="errorMessage ? 'bg-MQ_red' : 'peer-hover:bg-slate-400 bg-slate-500 peer-focus:bg-MQ_light peer-focus:hover:bg-MQ_light'"></div>

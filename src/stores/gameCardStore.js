@@ -20,12 +20,6 @@ export const useGameCardStore = defineStore("gameCardStore", {
                     "Stranded Away is a 2D pixel art singleplayer: platform-jumper, puzzle and action game. " +
                     "You are playing as a mysterious space traveller who's looking for long gone inhabitants of planet Athion. ",
             },
-            {
-                image: "src/assets/gameCards/wizardsKingdomGameCard.png",
-                title: "Wizards Kingdom",
-                availability: "IN  DEVELOPMENT ...",
-                description: "New upcoming RTS game",
-            },
         ],
     }),
     actions: {},
