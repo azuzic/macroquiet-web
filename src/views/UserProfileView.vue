@@ -12,7 +12,7 @@ const gameStore = useGameStore();
 
             <hr class="border-2 border-MQ_light drop-shadow-MQ relative z-10 w-full"> 
 
-            <div class="flex text-MQ_light w-full | mt-4 mb-16 | sm:px-16 lg:px-96">
+            <div class="flex text-MQ_light w-full | mt-4 mb-16 | xs:px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 2xl:px-80 3xl:px-96 | transition-all duration-300">
                 <div class="w-full h-full relative z-10">
                     <!--PLAYED GAMES-->
                     <div class="px-4 py-2 flex flex-col gap-6">
@@ -25,8 +25,8 @@ const gameStore = useGameStore();
 
                         <MQ_ProfileBlock>User settings</MQ_ProfileBlock>
                         <MQ_ProfileBlock>
-                            <div class="flex justify-between mt-4">
-                                <div class="flex">
+                            <div class="flex justify-center sm:justify-between items-center mt-4 flex-wrap">
+                                <div class="flex flex-wrap justify-center items-center">
                                     <RouterLink to="/change-password">
                                         <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
                                             hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
@@ -61,7 +61,7 @@ const gameStore = useGameStore();
 import MQ_footer from '@/components/App/MQ_footer.vue';
 import MQ_UserCoverAndIcon from '@/components/UserProfile/MQ_UserCoverAndIcon.vue';
 import MQ_PlayedGame from '@/components/UserProfile/MQ_PlayedGame.vue';
-import MQ_ProfileBlock from '../components/UserProfile/MQ_ProfileBlock.vue';
+import MQ_ProfileBlock from '@/components/UserProfile/MQ_ProfileBlock.vue';
 
 export default {
     name: "UserProfileView",

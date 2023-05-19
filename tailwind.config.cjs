@@ -12,6 +12,7 @@ module.exports = {
             screens: {
                 xs: "480px",
                 md2: "860px",
+                "3xl": "1680px",
             },
             animation: {
                 spin_slow: "spin 3s linear infinite",

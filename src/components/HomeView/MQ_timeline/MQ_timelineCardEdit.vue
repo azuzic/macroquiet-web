@@ -68,7 +68,7 @@
                 :class="[id % 2 == 1 ? 'self-start flex-col-reverse rounded-b-xl' : 'self-end flex-col rounded-t-xl', timelineStore.timelineEditing == t._id ? 'border-opacity-100' : 'border-opacity-0']">
 
                 <div :class="[timelineStore.timelineEditing == t._id ? id % 2 == 1 ? 'rounded-b-xl border-t-[1px]' : 'rounded-t-xl border-b-[1px]' : id % 2 == 1 ? 'rounded-b-xl' : 'rounded-t-xl']" 
-                    class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-[150px] xs:min-w-[300px] max-w-[300px] xs:max-w-md | transition-all duration-500 | border-slate-700">
+                    class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-full xs:min-w-[300px] max-w-[300px] xs:max-w-md | transition-all duration-500 | border-slate-700">
                     <div v-if="timelineStore.timelineEditing != t._id" class="scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
                         <i :class="t.icon" class="text-MQ_red"></i>
                         {{ t.title }} 

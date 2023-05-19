@@ -95,6 +95,7 @@ export default {
     .input {
         opacity: 0;
         margin-left: -128px;
+        height: 100%;
         cursor: pointer !important;
     }
 }

@@ -15,9 +15,9 @@ export const useGameStore = defineStore("gameStore", {
                 timePlayed: 2,
                 lastTimePlayed: "17.02.",
                 trophies: [
-                    { unlocked: false, name: "Home", image: images.Doge.Bolt },
+                    { unlocked: false, name: "Bolt", image: images.Doge.Bolt },
                     { unlocked: true, name: "Home", image: images.Doge.Home },
-                    { unlocked: true, name: "Home", image: images.Doge.OHKO },
+                    { unlocked: true, name: "OHKO", image: images.Doge.OHKO },
                 ],
             },
             {

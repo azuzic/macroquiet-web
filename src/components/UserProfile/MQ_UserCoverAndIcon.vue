@@ -1,57 +1,57 @@
 <template>
-    <div class="bg-center bg-cover h-[240px] xs:h-[280px] sm:h-[340px] md:h-[400px] | overflow-hidden relative | transition-all duration-300
-        w-full sm:px-16 lg:px-96 | flex justify-between items-end" :style="'background-image: url(' + readImageCover + ');'">
+    <div class="bg-center bg-cover h-[280px] sm:h-[340px] md:h-[400px] | overflow-hidden relative | transition-all duration-300 w-full
+        xs:px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 2xl:px-80 3xl:px-96 | flex justify-between items-end" :style="'background-image: url(' + readImageCover + ');'">
         <div class="w-full h-full bg-gradient-to-b from-MQ_dark opacity-25 absolute top-0 left-0"></div>
         <div class="w-full h-full bg-gradient-to-t from-MQ_dark opacity-25 absolute top-0 left-0"></div>
-        <v-image-input v-if="globalStore.editing" class="MQ_upload absolute peer overflow-hidden z-50 centered" :class="globalStore.editing ? 'opacity-100 w-36 h-10' : 'opacity-0 w-16 h-0'"
+        <v-image-input class="MQ_upload absolute peer overflow-hidden z-50 centered" :class="globalStore.editing ? 'opacity-100 w-36 h-10' : 'opacity-0 w-16 h-0 pointer-events-none'"
         @change="updateUserProfileCover(image)" v-model="globalStore.userProfile.profile.image.cover"/>
-        <div class="text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red border-2 rounded overflow-hidden flex justify-center items-center
+        <div class="text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red border-2 rounded overflow-hidden flex justify-center items-center
             transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ absolute centered"
-            :class="globalStore.editing ? 'opacity-100 w-36 h-10' : 'opacity-0 w-16 h-0'">
+            :class="globalStore.editing ? 'opacity-100 w-32 sm:w-36 h-9 sm:h-10' : 'opacity-0 w-16 h-0'">
             CHANGE COVER
         </div>
-        <div class="p-4 flex grow justify-start items-start">
+        <div class="pl-2 sm:pl-4 py-2 sm:py-4 flex grow justify-start items-end | transition-all duration-300">
             <!--USER ICON-->
-            <div class="w-32 aspect-square rounded-md bg-cover bg-center | flex justify-center items-center | relative px-4 drop-shadow-MQ overflow-hidden" 
+            <div class="w-24 sm:w-32 aspect-square rounded-md bg-cover bg-center | flex justify-center items-center | relative px-4 drop-shadow-MQ overflow-hidden | transition-all duration-300" 
                 :style="'background-image: url(' + readImageAvatar + ');'">
                 <div class="absolute bg-MQ_dark w-full h-full transition-all duration-300" :class="globalStore.editing ? 'bg-opacity-75' : 'bg-opacity-0'"></div>
-                <v-image-input v-if="globalStore.editing" class="MQ_upload absolute peer overflow-hidden z-[200]" :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0'"
+                <v-image-input class="MQ_upload absolute peer overflow-hidden z-[200]" :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0 pointer-events-none'"
                 @change="updateUserProfileAvatar(image)" v-model="globalStore.userProfile.profile.image.avatar"/>
-                <div class="px-5 py-1.5 | text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red rounded flex justify-center items-center
+                <div class="px-5 py-1.5 | text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red rounded flex justify-center items-center
                     transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ"
                     :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0'">
                     CHANGE <br> AVATAR
                 </div>
             </div>
-            <div class="flex flex-col items-start pl-4 gap-4 grow h-32">
-                <div class="text-2xl text-MQ_red flex justify-center items-center gap-2 drop-shadow-MQ"> 
+            <div class="flex flex-col items-start pl-2 sm:pl-4 gap-1 sm:gap-4 grow h-24 sm:h-32 | transition-all duration-300">
+                <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center gap-2 drop-shadow-MQ z-10"> 
                     <!--USERNAME-->
                     <i v-if="globalStore.userProfile.admin" class="fa-solid fa-shield text-MQ_green"></i> {{ globalStore.userProfile.username }} 
                     <i @click="showPreviousUsername = !showPreviousUsername" :class="showPreviousUsername ? '-scale-100' : ''"
-                        class="fa-solid fa-caret-down text-sm mb-1 cursor-pointer hover:text-MQ_light relative peer">
+                        class="fa-solid fa-caret-down text-xs sm:text-sm mb-1 cursor-pointer hover:text-MQ_light relative peer z-50">
                         <div @mouseleave ="showPreviousUsername = false" v-if="showPreviousUsername" 
-                            class="absolute right-4 z-50 w-fit h-fit bg-MQ_dark bg-opacity-25 p-2 rounded-md gap-1 flex flex-col
+                            class="absolute right-4 z-50 w-fit h-fit bg-MQ_dark bg-opacity-40 p-2 rounded-md gap-1 flex flex-col
                                 text-MQ_light font-normal cursor-default -scale-100 text-xs">
-                            <div class="whitespace-nowrap underline text-sm"> Previous usernames: </div>
+                            <div class="whitespace-nowrap underline text-xs sm:text-sm"> Previous usernames: </div>
                             <div v-for="u in globalStore.userProfile.former_usernames">{{u}}</div>
                         </div>
                     </i>
                 </div>
                 <!--DESCRIPTION-->
-                <div class="text-MQ_light text-sm w-full grow relative drop-shadow-MQ"> 
+                <div class="text-MQ_light text-xs sm:text-sm w-full grow relative drop-shadow-MQ | transition-all duration-300"> 
                     <textarea v-model="globalStore.userProfile.profile.description" placeholder=" " :disabled="!globalStore.editing"
-                        class="block w-full text-sm bg-MQ_light rounded-t-md appearance-none absolute -mx-2 p-2 z-10
+                        class="block w-full text-xs sm:text-sm bg-MQ_light rounded-t-md appearance-none absolute -mx-1 sm:-mx-2 p-1 sm:p-2 z-10
                         outline-none peer caret-MQ_light resize-none | transition-all duration-300" :maxlength="1000" rows="4"
                         :class="[globalStore.editing ? 'bg-opacity-5' : 'bg-opacity-0', submitting || type != 'none' ? 'h-0 opacity-0 delay-0' : 'h-full opacity-100']"></textarea>
                     <img class="absolute | animate-spin_slow transition-all duration-500"
                         src="@/assets/Logos/macroquiet_logo_icon.png"
                         :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
                     <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
-                        class="absolute w-full top-0">
+                        class="absolute w-full h-14 sm:h-auto top-0 text-xs sm:text-lg">
                         <b>{{ response }}!</b>
                     </MQ_alert>
                     <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
-                        class="absolute w-full top-0">
+                        class="absolute w-full h-14 sm:h-auto top-0 text-xs sm:text-lg">
                         <b>{{ response }}</b>
                     </MQ_alert>
                 </div>
@@ -59,13 +59,14 @@
     
         </div>
 
-        <div class="flex flex-col text-center">
-            <div v-if="globalStore.editing && !submitting && type == 'none'" class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent | text-MQ_light
+        <div class="flex flex-col text-center ml-1">
+            <div class="px-5 py-1.5 mr-2 sm:mr-4 mb-4 | text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light overflow-hidden flex justify-center items-center
                 	border-MQ_red border-2 rounded | transition-all duration-300 | hover:bg-MQ_red hover:text-MQ_dark hover:font-bold cursor-pointer drop-shadow-MQ"
+                    :class="[!submitting && type == 'none' && globalStore.editing ? 'opacity-100 h-8 sm:h-9' : 'opacity-0 h-0 pointer-events-none']"
                 @click="cancel()">
                 Cancel
             </div>
-            <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent | text-MQ_light drop-shadow-MQ
+            <div class="px-5 py-1.5 mr-2 sm:mr-4 mb-4 | text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light drop-shadow-MQ
                 border-MQ_red border-2 rounded | transition-all duration-300"
                 :class="!submitting && type == 'none' ? 'hover:bg-MQ_red hover:text-MQ_dark hover:font-bold cursor-pointer' : 'opacity-25'"
                 @click="!submitting && type == 'none' ? save() : ''">
