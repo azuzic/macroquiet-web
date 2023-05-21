@@ -6,7 +6,7 @@
             <MQ_h2 class="w-full" text="ABOUT US"/>
 
             <div class="text-center text-MQ_light px-2 max-w-2xl">
-                <h1 class="text-lg md:text-xl | transition-all duration-500">We are a two person Indie Game Developer Studio from <b class="text-red-400">Cro</b><b class="text-slate-200">at</b><b class="text-blue-400">ia</b>.</h1>
+                <h1 class="text-lg md:text-xl | transition-all duration-500">We are a two person Indie Game Developer Studio from <b class="text-red-400">Cro</b><b class="text-MQ_lighter">at</b><b class="text-blue-400">ia</b>.</h1>
                 <h2 class="text-sm md:text-base my-2 md:my-4 | transition-all duration-500">
                   It all started in the summer of 2021. when two friends and colleagues decided they wanted to create video games and fulfil their lifelong dreams.
                 </h2>

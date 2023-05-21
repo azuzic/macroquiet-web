@@ -47,7 +47,7 @@ export const useCarouselStore = defineStore("carouselStore", {
                 this.carouselPictures = this.carousels.filter(
                     (carousel) => carousel.active
                 )[0];
-                this.activeCarouselID = this.carouselPictures._id;
+                this.activeCarouselID = this.carouselPictures._id; 
             }
             this.MQupdate();
         },
@@ -139,5 +139,12 @@ export const useCarouselStore = defineStore("carouselStore", {
                 console.warn("!!!setCurrentCarousel!!!");
             }
         },
+        changeStyle(value) {
+            switch (value) {
+                case "Stranded Away": this.carouselPictures = this.carousels[0]; break;
+                case "Doge": this.carouselPictures = this.carouselPictures = this.carousels[1]; break;
+                default: this.carouselPictures = this.carousels[0]; break;
+            }
+        }
     },
 });

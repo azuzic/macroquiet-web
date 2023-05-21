@@ -19,7 +19,7 @@
                     <MQ_textInput :password="true" label="Password" icon="key" />
                     <div class="text-xs text-MQ_light transition-all duration-500 flex justify-end w-full -mt-2 mb-2 relative z-20"
                         :class="submitting || type != 'none' ? 'opacity-0' : 'opacity-100 delay-500'">
-                        <router-link class="text-slate-500 hover:underline hover:text-slate-400" to="/reset-password/enter-email">
+                        <router-link class="text-MQ_light text-opacity-40 hover:underline hover:text-MQ_light | transition-all duration-300" to="/reset-password/enter-email">
                             Forgot your password?
                         </router-link> 
                     </div>

@@ -1,3 +1,7 @@
+<script setup>
+
+
+</script>
 <template>
     <div class="flex h-min cursor-pointer group | transition-all duration-300" :class="selected ? 'rounded-full bg-MQ_red | px-3 -my-1 pt-1.5 pb-0.5' : ''">
         <i class="text-xl mr-2 | transition-all duration-300" :class="selected ? 'text-MQ_darkhover fa-solid fa-'+icon+'' : 'text-MQ_red fa-solid fa-' + icon + ''"></i>
@@ -10,6 +14,8 @@
 </template>
 
 <script>
+import { useCarouselStore } from '@/stores/carouselStore'
+import { useGlobalStore } from '@/stores/globalStore'
 let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 export default {
     name: "MQ_listButton",
@@ -18,6 +24,11 @@ export default {
         icon: String,
         text: String,
         link: String
+    },
+    setup() {
+        const globalStore = useGlobalStore();
+        const carouselStore = useCarouselStore();
+        return { globalStore, carouselStore }
     },
     methods: {
         async scroll(id) {
@@ -33,6 +44,9 @@ export default {
             if (id == null) return;
 
             try {
+                this.globalStore.changeStyle('default'); 
+                this.carouselStore.changeStyle('default');
+                await wait(0.1);
                 document.getElementById(id).scrollIntoView({ behavior: "smooth", });
                 this.drawer = false;
             } catch (e) { }

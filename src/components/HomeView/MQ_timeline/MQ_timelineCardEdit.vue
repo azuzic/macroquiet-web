@@ -21,7 +21,7 @@
                 <div v-else-if="!deletePrompt" class="whitespace-nowrap absolute text-sm text-MQ_red font-bold flex justify-center items-center" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> 
                     <VueDatePicker dark :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="absolute w-36 z-10 peer" v-model="t.date"
                         text-input model-type="dd.mm.yyyy" auto-apply :enable-time-picker="false"/>
-                    <div :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="outline-none border-[1px] border-slate-700 peer-hover:border-MQ_red text-center bg-MQ_dark bg-opacity-75 w-36 
+                    <div :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="outline-none border-[1px] border-MQ_light border-opacity-25 peer-hover:border-MQ_red text-center bg-MQ_dark bg-opacity-75 w-36 
                                                                               rounded-md py-1 whitespace-nowrap absolute text-sm text-MQ_red font-bold transition-all duration-300" 
                     type="text">{{ formatDateReverse(t.date) }}</div> 
                 </div>
@@ -45,7 +45,7 @@
                 <div v-else-if="!deletePrompt" class="whitespace-nowrap absolute text-xl text-MQ_red font-bold flex justify-center items-center" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> 
                     <VueDatePicker dark :class="id % 2 == 0 ? 'top-0' : 'bottom-0'" class="absolute w-40 z-10 peer" v-model="t.date" 
                         text-input model-type="dd.mm.yyyy" auto-apply :enable-time-picker="false"/>
-                    <div :class="id % 2 == 0 ? 'top-2' : 'bottom-2' " class="outline-none border-[1px] border-slate-700 peer-hover:border-MQ_red text-center bg-MQ_dark bg-opacity-75 w-40 
+                    <div :class="id % 2 == 0 ? 'top-2' : 'bottom-2' " class="outline-none border-[1px] border-MQ_light border-opacity-25 peer-hover:border-MQ_red text-center bg-MQ_dark bg-opacity-75 w-40 
                                                                                 rounded-md py-1 whitespace-nowrap absolute text-xl text-MQ_red font-bold transition-all duration-300" 
                     type="text">{{ formatDateReverse(t.date) }}</div> 
                 </div>
@@ -68,27 +68,27 @@
                 :class="[id % 2 == 1 ? 'self-start flex-col-reverse rounded-b-xl' : 'self-end flex-col rounded-t-xl', timelineStore.timelineEditing == t._id ? 'border-opacity-100' : 'border-opacity-0']">
 
                 <div :class="[timelineStore.timelineEditing == t._id ? id % 2 == 1 ? 'rounded-b-xl border-t-[1px]' : 'rounded-t-xl border-b-[1px]' : id % 2 == 1 ? 'rounded-b-xl' : 'rounded-t-xl']" 
-                    class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-full xs:min-w-[300px] max-w-[300px] xs:max-w-md | transition-all duration-500 | border-slate-700">
-                    <div v-if="timelineStore.timelineEditing != t._id" class="scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
+                    class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-full xs:min-w-[300px] max-w-[300px] xs:max-w-md | transition-all duration-500 | border-MQ_light border-opacity-25">
+                    <div v-if="timelineStore.timelineEditing != t._id" class="scrollbar-h-1 text-lg | w-full text-MQ_light group-hover:text-MQ_lighter font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
                         <i :class="t.icon" class="text-MQ_red"></i>
                         {{ t.title }} 
                     </div>
-                    <div v-else class="flex items-center justify-start scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title">
+                    <div v-else class="flex items-center justify-start scrollbar-h-1 text-lg | w-full text-MQ_light group-hover:text-MQ_lighter font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title">
                         <!--ICONS-->
                         <i @click="showIcons = !showIcons;" :class="t.icon" class="text-MQ_red hover:text-MQ_light relative | transition-all">
-                            <div @mouseleave ="showIcons = false" :class="id % 2 == 1 ? 'bottom-10' : 'top-10'" v-if="showIcons" class="fixed left-4 z-50 w-fit h-fit bg-MQ_dark border-[1px] border-slate-600 p-2 rounded-md gap-2 grid grid-cols-7">
+                            <div @mouseleave ="showIcons = false" :class="id % 2 == 1 ? 'bottom-10' : 'top-10'" v-if="showIcons" class="fixed left-4 z-50 w-fit h-fit bg-MQ_dark border-[1px] border-MQ_light border-opacity-30 p-2 rounded-md gap-2 grid grid-cols-7">
                                 <i v-for="icon in icons" @click="t.icon = icon;" :class="icon + ' text-MQ_light hover:text-MQ_red cursor-pointer transition-all'"></i>
                             </div>
                         </i>
                         <!--TITLE-->
-                        <input class="outline-none border-none bg-transparent uppercase title ml-1" type="text" v-model="t.title">
+                        <input class="outline-none border-none w-full bg-transparent uppercase title ml-1" type="text" v-model="t.title">
                     </div>
                 </div>
 
                 <div class="min-h-full max-h-64 min-w-[334px] max-w-[440px] overflow-y-auto flex flex-col relative" :class="timelineStore.timelineEditing != t._id ? 'px-4 pt-2' : ''">
-                    <div v-if="timelineStore.timelineEditing != t._id" class="textEditor text-sm | w-full text-slate-400 group-hover:text-slate-300 |  grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
+                    <div v-if="timelineStore.timelineEditing != t._id" class="textEditor text-sm | w-full text-MQ_light text-opacity-75 group-hover:text-MQ_light group-hover:text-opacity-100 |  grow | transition-all duration-500 | pb-4" v-html="t.text"></div>
                     <!--TEXT EDIT-->
-                    <QuillEditor :class="id % 2 == 1 ? 'roundmetop' : ''" class="text-sm text-slate-400 border-0" v-if="timelineStore.timelineEditing == t._id" v-model:content="t.text" contentType="html" theme="snow" :toolbar="toolbar" />
+                    <QuillEditor :class="id % 2 == 1 ? 'roundmetop' : ''" class="text-sm text-MQ_light text-opacity-75 border-0" v-if="timelineStore.timelineEditing == t._id" v-model:content="t.text" contentType="html" theme="snow" :toolbar="toolbar" />
                     
                     <!--EDIT-->
                     <i v-if="timelineStore.timelineEditing != t._id && timelineStore.timelineEditing == ''" class="fa-solid fa-edit text-MQ_light hover:text-MQ_red cursor-pointer fixed z-50 bottom-2 right-3 text-2xl" 

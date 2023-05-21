@@ -103,6 +103,16 @@ module.exports = {
                     "-4px 0px 0px white",
                 ],
             },
+            boxShadow: {
+                vignette: [
+                    "inset 0px 0px 32px rgba(0,0,0,0.75)",
+                    "inset 0px 0px 8px rgba(0,0,0,1)",
+                ],
+                vignette_light: [
+                    "inset 0px 0px 32px rgba(105,55,55,0.5)",
+                    "inset 0px 0px 8px rgba(105,55,55,0.75)",
+                ],
+            },
         },
     },
     plugins: [
@@ -116,6 +126,26 @@ module.exports = {
                 MQ_blue: "#15171e",
                 MQ_light: "#cbd5e1",
                 MQ_lighter: "#e2e8f0",
+            },
+            stranded: {
+                MQ_dark: "#06060a",
+                MQ_darkhover: "#13131f",
+                MQ_darkblue: "#0f1119",
+                MQ_red: "#EF5350",
+                MQ_green: "#16a34a",
+                MQ_blue: "#15171e",
+                MQ_light: "#cbd5e1",
+                MQ_lighter: "#e2e8f0",
+            },
+            doge: {
+                MQ_dark: "#0a2830",
+                MQ_darkhover: "#213141",
+                MQ_darkblue: "#50445c",
+                MQ_red: "#fb445a",
+                MQ_green: "#bfc86f",
+                MQ_blue: "#243144",
+                MQ_light: "#fffaff",
+                MQ_lighter: "#fffdfe",
             },
         }),
         require("tailwind-scrollbar")({ nocompatible: true }),

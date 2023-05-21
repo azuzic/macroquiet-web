@@ -26,7 +26,7 @@
                         </div>
                         
                     </div>
-                    <hr class="border-t-[1px] border-slate-800 relative z-10 w-full mt-1"/>
+                    <hr class="border-t-[1px] border-MQ_light border-opacity-25 relative z-10 w-full mt-1"/>
                 </div>
             </div>
         </div>

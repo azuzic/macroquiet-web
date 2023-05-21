@@ -16,7 +16,9 @@
 </html>
 
 <style>
-* { font-family: "Poppins", sans-serif; }
+.Poppins {
+    font-family: "Poppins", sans-serif;
+}
 ::-webkit-scrollbar { width: 6px; }
 html body::-webkit-scrollbar-track { background: black; }
 ::-webkit-scrollbar-thumb {
@@ -39,24 +41,31 @@ input:-webkit-autofill:active {
 
 @font-face {
   font-family: pdark;
-  src: url("src/assets/fonts/pdark.ttf");
+  src: url("@/assets/fonts/pdark.ttf");
 }
 @font-face {
   font-family: logo_font;
-  src: url("src/assets/fonts/logo.ttf");
+  src: url("@/assets/fonts/logo.ttf");
+}
+@font-face {
+  font-family: EHSMB;
+  src: url("@/assets/fonts/EHSMB.TTF");
+}
+@font-face {
+  font-family: Squarewave;
+  src: url("@/assets/fonts/Squarewave.ttf");
+}
+.Squarewave {
+  font-family: Squarewave;
+}
+.EHSMB {
+  font-family: EHSMB;
 }
 .p-dark {
   font-family: pdark;
 }
 .logo_font {
   font-family: logo_font;
-}
-.main {
-    background-image: url("src/assets/background/night_sky.gif");
-    background-size: 480px;
-}
-.vignette {
-	box-shadow: inset 0px 0px 32px rgba(0,0,0,0.75), inset 0px 0px 8px rgba(0,0,0,1);
 }
 .rendering-auto { image-rendering: auto; }
 .rendering-crisp-edges { image-rendering: crisp-edges; }
@@ -86,5 +95,21 @@ html, body, #app {
 }
 .ql-align-justify {
   text-align: justify !important;
+}
+
+.main {
+    background-image: url("src/assets/background/night_sky.gif");
+    background-size: 480px 270px;
+    background-position: center;
+}
+.main-stranded {
+    background-image: url("src/assets/background/night_sky.gif");
+    background-size: 480px 270px;
+    background-position: center;
+}
+.main-doge {
+    background-image: url("src/assets/background/doge_bg.jpg");
+    background-size: 1920px 720px;
+    background-position: center;
 }
 </style>

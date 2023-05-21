@@ -26,14 +26,14 @@
                 :class="id % 2 == 1 ? 'self-start flex-col-reverse' : 'self-end flex-col'">
 
                 <div class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-[150px] xs:min-w-[300px] max-w-[300px] xs:max-w-md | transition-all duration-500">
-                    <div class="scrollbar-h-1 text-lg | w-full text-slate-300 group-hover:text-slate-200 font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
+                    <div class="scrollbar-h-1 text-lg | w-full text-MQ_light group-hover:text-MQ_lighter font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title"> 
                         <i :class="t.icon" class="text-MQ_red"></i>
                         {{ t.title }} 
                     </div>
                 </div>
 
                 <div class="px-4 min-h-full max-h-64 flex flex-col overflow-scroll pt-2">
-                    <div class="text-sm | w-full text-slate-400 group-hover:text-slate-300 |  grow | transition-all duration-500" v-html="t.text"></div>
+                    <div class="text-sm | w-full text-MQ_light text-opacity-75 group-hover:text-MQ_light group-hover:text-opacity-100 |  grow | transition-all duration-500" v-html="t.text"></div>
                 </div>
 
             </div>

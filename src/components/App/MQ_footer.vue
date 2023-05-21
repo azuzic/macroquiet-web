@@ -3,7 +3,7 @@
 
         <div class="flex flex-col justify-center items-center">
             <b class="text-MQ_red text-sm mb-1">MacroQuiet Game Development</b>
-            <div class="text-slate-400 text-xs flex justify-center items-center">Copyright <div class="ml-1 text-lg -mb-2 -mt-2">©</div> {{ new Date().getFullYear() }}</div>
+            <div class="text-MQ_light text-opacity-75 text-xs flex justify-center items-center">Copyright <div class="ml-1 text-lg -mb-2 -mt-2 Poppins">©</div> {{ new Date().getFullYear() }}</div>
 
             <MQ_h2_small/>
 

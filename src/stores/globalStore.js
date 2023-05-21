@@ -8,9 +8,10 @@ export const useGlobalStore = defineStore("globalStore", {
         edit: "",
         update: true,
         editing: false,
+        style: [],
 
         //USER
-        userLocalStorage: {
+        userLocalStorage: { 
             token: "",
             email: "",
             username: "",
@@ -37,6 +38,7 @@ export const useGlobalStore = defineStore("globalStore", {
     actions: {
         async setup() {
             try {
+                this.changeStyle("default");
                 let response = await User.getCurrentUserProfile();
                 if (response) {
                     this.userProfile = response.userData.data;
@@ -62,5 +64,12 @@ export const useGlobalStore = defineStore("globalStore", {
             tokenData["edit"] = value;
             localStorage.setItem("user", JSON.stringify(tokenData));
         },
+        changeStyle(value) {
+            switch (value) {
+                case "Stranded Away": this.style = ["theme-stranded Squarewave", "main-stranded", "bg-MQ_dark", "shadow-vignette"]; break;
+                case "Doge": this.style = ["theme-doge EHSMB font-bold", "main-doge", "", "shadow-vignette_light"]; break;
+                default: this.style = ["theme-default Poppins", "main", "bg-MQ_dark", "shadow-vignette"]; break;
+            }
+        }
     },
 });

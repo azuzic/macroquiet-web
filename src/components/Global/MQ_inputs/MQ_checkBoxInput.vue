@@ -1,9 +1,9 @@
 <template>
-    <div class="w-full flex items-center gap-2 relative z-10">
+    <div class="w-full flex items-center gap-2 relative z-10 drop-shadow-MQ">
         <i @click="handleChange(value)" 
-            class="text-2xl text-slate-400 hover:text-MQ_lighter | transition-all duration-300 | cursor-pointer"
+            class="text-2xl text-MQ_light text-opacity-75 hover:text-MQ_lighter | transition-all duration-300 | cursor-pointer"
             :class="checked ? 'fa-solid fa-square-check' : 'fa-regular fa-square'"></i>
-        <div class="text-slate-400 text-sm">  
+        <div class="text-MQ_light text-opacity-75 text-sm">  
             {{ label }}
         </div>
     </div>
