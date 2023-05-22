@@ -1,7 +1,3 @@
-<script setup>
-
-
-</script>
 <template>
     <div class="flex h-min cursor-pointer group | transition-all duration-300" :class="selected ? 'rounded-full bg-MQ_red | px-3 -my-1 pt-1.5 pb-0.5' : ''">
         <i class="text-xl mr-2 | transition-all duration-300" :class="selected ? 'text-MQ_darkhover fa-solid fa-'+icon+'' : 'text-MQ_red fa-solid fa-' + icon + ''"></i>

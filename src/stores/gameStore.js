@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import Doge from "@/assets/gameCards/dogeGameCard.png";
-import StrandedAway from "@/assets/gameCards/strandedAwayGameCard.png";
-import WizardsKingdom from "@/assets/gameCards/wizardsKingdomGameCard.png";
+import StrandedAway from "@/assets/gameCards/strandedAwayGameCard.png"
 
 import { images } from "@/stores/images.js";
 

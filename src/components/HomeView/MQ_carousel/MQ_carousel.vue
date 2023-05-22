@@ -3,12 +3,12 @@
     const carouselStore = useCarouselStore()
 </script>
 
-<template>
+<template> 
     <div class="h-[240px] xs:h-[280px] sm:h-[340px] md:h-[400px] lg:h-[460px] xl:h-[520px] 2xl:h-[600px] | overflow-hidden relative | transition-all duration-300">
         <MQ_carouselTitle class="mt-8 sm:mt-7 md:mt-4 xl:mt-6 2xl:mt-2 | transition-all duration-300"/>
         <carousel :items-to-show="1" :wrapAround="true" :autoplay="10000" :transition="1000" :mouseDrag="false" :touchDrag="false" class="h-full relative">
-            <slide v-for="slide in carouselStore.carouselPictures.pictures" :key="slide" class="h-full">
-                <div class="h-full w-full overflow-hidden bg-cover bg-center" :style="'background-image: url('+slide.public_url+')'">
+            <slide v-for="p in carouselStore.pictures" class="h-full">
+                <div class="h-full w-full overflow-hidden bg-cover bg-center" :style="'background-image: url('+p+')'">
                     <div class="w-full h-full bg-gradient-to-b from-MQ_dark opacity-25 absolute top-0"></div>
                 </div>
             </slide>
