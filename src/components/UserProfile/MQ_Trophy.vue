@@ -1,8 +1,8 @@
 <script setup>
-import hiddenTrophyDefault from '@/assets/gameCards/trophies/hidden_trophy.svg'
-import hiddenTrophyDoge from '@/assets/gameCards/trophies/hidden_trophy_doge.svg'
+import hiddenTrophyDefault from '@/assets/games/trophies/hidden_trophy.svg'
+import hiddenTrophyDoge from '@/assets/games/trophies/hidden_trophy_doge.svg'
 import { useGlobalStore } from '@/stores/globalStore'
-const hiddenTrophy = { "main" : hiddenTrophyDefault, "main-doge" : hiddenTrophyDoge};
+const hiddenTrophy = { "main" : hiddenTrophyDefault, "main-doge" : hiddenTrophyDoge, "main-stranded" : hiddenTrophyDefault};
 const globalStore = useGlobalStore()
 </script>
 <template>

@@ -27,13 +27,10 @@
 
 <script>
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
-import MQ_portrait from './MQ_portrait.vue';
+import MQ_portrait from '@/components/HomeView/MQ_aboutUs/MQ_portrait.vue';
 
 export default {
     name: "MQ_aboutUs",
-    components: {
-        MQ_h2,
-        MQ_portrait
-    },
+    components: { MQ_h2, MQ_portrait },
 };
 </script>

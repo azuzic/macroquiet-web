@@ -1,6 +1,6 @@
 <script setup>
-import { useGameCardStore } from '@/stores/gameCardStore'
-const gameCardStore = useGameCardStore()
+import { useGameStore } from '@/stores/gameStore'
+const gameStore = useGameStore()
 </script>
 
 <template>
@@ -8,8 +8,8 @@ const gameCardStore = useGameCardStore()
 
         <MQ_h2 text="FEATURED GAMES"/>
         <div class="snap-x snap-mandatory flex w-0 min-w-full grow lg:flex-wrap | md:justify-center | overflow-x-auto text-MQ_light | px-16 lg:px-4 py-4 -mt-4 | gap-3 lg:gap-6 2xl:gap-8 | transition-all duration-300">
-            <MQ_gameCard v-for="g, id in gameCardStore.gameCards" :image="g.image" :title="g.title" :availability="g.availability" :description="g.description" 
-            :class="id==0 ? 'snap-start' : id-1== gameCardStore.gameCards.length ? 'snap-end' : 'snap-center'"/>
+            <MQ_gameCard v-for="g, id in gameStore.gameCards" :game="g"
+            :class="id==0 ? 'snap-start' : id-1== gameStore.gameCards.length ? 'snap-end' : 'snap-center'"/>
         </div>
 
     </div>

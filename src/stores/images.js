@@ -1,29 +1,29 @@
 //TROPHIES
 //DOGE
-import Bolt from "@/assets/gameCards/trophies/Doge/Bolt.png";
-import Home from "@/assets/gameCards/trophies/Doge/Home.png";
-import OHKO from "@/assets/gameCards/trophies/Doge/OHKO.png";
+import Bolt from "@/assets/games/trophies/Doge/Bolt.png";
+import Home from "@/assets/games/trophies/Doge/Home.png";
+import OHKO from "@/assets/games/trophies/Doge/OHKO.png";
 //STRANDED AWAY
-import Abyss from "@/assets/gameCards/trophies/StrandedAway/Abyss.png";
-import BabySteps from "@/assets/gameCards/trophies/StrandedAway/BabySteps.png";
-import Beginning from "@/assets/gameCards/trophies/StrandedAway/Beginning.png";
-import Celestial from "@/assets/gameCards/trophies/StrandedAway/Celestial.png";
-import ConfusingEscape from "@/assets/gameCards/trophies/StrandedAway/ConfusingEscape.png";
-import Dedication from "@/assets/gameCards/trophies/StrandedAway/Dedication.png";
-import Doom from "@/assets/gameCards/trophies/StrandedAway/Doom.png";
-import DownwardSpiral from "@/assets/gameCards/trophies/StrandedAway/DownwardSpiral.png";
-import Exploration from "@/assets/gameCards/trophies/StrandedAway/Exploration.png";
-import HalfWayThere from "@/assets/gameCards/trophies/StrandedAway/Halfwaythere.png";
-import HastaLaVista from "@/assets/gameCards/trophies/StrandedAway/Hastalavista.png";
-import Higher from "@/assets/gameCards/trophies/StrandedAway/Higher.png";
-import KingofJumping from "@/assets/gameCards/trophies/StrandedAway/KingofJumping.png";
-import Light from "@/assets/gameCards/trophies/StrandedAway/Light.png";
-import MasterClock from "@/assets/gameCards/trophies/StrandedAway/Masterclock.png";
-import Monopoly from "@/assets/gameCards/trophies/StrandedAway/Monopoly.png";
-import Neverending from "@/assets/gameCards/trophies/StrandedAway/Neverending.png";
-import NotEnoughBoxes from "@/assets/gameCards/trophies/StrandedAway/NotEnoughBoxes.png";
-import PapersPlease from "@/assets/gameCards/trophies/StrandedAway/Papersplease.png";
-import UnoReverse from "@/assets/gameCards/trophies/StrandedAway/Unoreverse.png";
+import Abyss from "@/assets/games/trophies/StrandedAway/Abyss.png";
+import BabySteps from "@/assets/games/trophies/StrandedAway/BabySteps.png";
+import Beginning from "@/assets/games/trophies/StrandedAway/Beginning.png";
+import Celestial from "@/assets/games/trophies/StrandedAway/Celestial.png";
+import ConfusingEscape from "@/assets/games/trophies/StrandedAway/ConfusingEscape.png";
+import Dedication from "@/assets/games/trophies/StrandedAway/Dedication.png";
+import Doom from "@/assets/games/trophies/StrandedAway/Doom.png";
+import DownwardSpiral from "@/assets/games/trophies/StrandedAway/DownwardSpiral.png";
+import Exploration from "@/assets/games/trophies/StrandedAway/Exploration.png";
+import HalfWayThere from "@/assets/games/trophies/StrandedAway/Halfwaythere.png";
+import HastaLaVista from "@/assets/games/trophies/StrandedAway/Hastalavista.png";
+import Higher from "@/assets/games/trophies/StrandedAway/Higher.png";
+import KingofJumping from "@/assets/games/trophies/StrandedAway/KingofJumping.png";
+import Light from "@/assets/games/trophies/StrandedAway/Light.png";
+import MasterClock from "@/assets/games/trophies/StrandedAway/Masterclock.png";
+import Monopoly from "@/assets/games/trophies/StrandedAway/Monopoly.png";
+import Neverending from "@/assets/games/trophies/StrandedAway/Neverending.png";
+import NotEnoughBoxes from "@/assets/games/trophies/StrandedAway/NotEnoughBoxes.png";
+import PapersPlease from "@/assets/games/trophies/StrandedAway/Papersplease.png";
+import UnoReverse from "@/assets/games/trophies/StrandedAway/Unoreverse.png";
 
 //CAROUSEL
 //DOGE
@@ -47,17 +47,39 @@ import SaC7 from "@/assets/carousel/StrandedAway/7.jpg";
 import SaC8 from "@/assets/carousel/StrandedAway/8.jpg";
 import SaC9 from "@/assets/carousel/StrandedAway/9.jpg";
 
+//GAME
+//DOGE
+import GAME_DOGE_bone from "@/assets/games/page/Doge/bone.png";
+import GAME_DOGE_dogeArt from "@/assets/games/page/Doge/dogeArt.png";
+import GAME_DOGE_dogeArt2 from "@/assets/games/page/Doge/dogeArt2.png";
+import GAME_DOGE_dogeCatcher from "@/assets/games/page/Doge/dogeCatcher.png";
+import GAME_DOGE_dogeConcept from "@/assets/games/page/Doge/dogeConcept.jpg";
+import GAME_DOGE_snack from "@/assets/games/page/Doge/snack.png";
+//STRANDED AWAY
+import GAME_STRANDEDAWAY_player_idle from "@/assets/games/page/StrandedAway/player_idle.gif";
+
+//CARD
+import CARD_DOGE from "@/assets/games/dogeGameCard.png";
+import CARD_STRANDEDAWAY from "@/assets/games/strandedAwayGameCard.png"
+
 const images = {
-    StrandedAway: {
-        Abyss, BabySteps, Beginning, Celestial, ConfusingEscape, Dedication, Doom, DownwardSpiral,
-        Exploration, HalfWayThere, HastaLaVista, Higher, KingofJumping, Light, MasterClock, Monopoly,
-        Neverending, NotEnoughBoxes, PapersPlease,  UnoReverse,
+    GameTrophy: {
+        StrandedAway: {
+            Abyss, BabySteps, Beginning, Celestial, ConfusingEscape, Dedication, Doom, DownwardSpiral,
+            Exploration, HalfWayThere, HastaLaVista, Higher, KingofJumping, Light, MasterClock, Monopoly,
+            Neverending, NotEnoughBoxes, PapersPlease,  UnoReverse,
+        },
+        Doge: { Bolt, Home, OHKO },
     },
-    Doge: { Bolt, Home, OHKO },
     Carousel: {
         StrandedAway: [SaC1, SaC2, SaC3, SaC4, SaC5, SaC6, SaC7, SaC8, SaC9],
         Doge: [DogeC1, DogeC2, DogeC3, DogeC4, DogeC5, DogeC6, DogeC7, DogeC8, DogeC9],
-    }
+    },
+    GamePage: {
+        StrandedAway: { GAME_STRANDEDAWAY_player_idle },
+        Doge: {GAME_DOGE_bone, GAME_DOGE_dogeArt, GAME_DOGE_dogeArt2, GAME_DOGE_dogeCatcher, GAME_DOGE_dogeConcept, GAME_DOGE_snack},
+    },
+    GameCard: { CARD_DOGE, CARD_STRANDEDAWAY }
 };
 
 export { images };

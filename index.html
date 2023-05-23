@@ -16,16 +16,20 @@
 </html>
 
 <style>
+:root {
+  --thumb: #192739;
+  --thumb: #192739;
+}
 .Poppins {
     font-family: "Poppins", sans-serif;
 }
 ::-webkit-scrollbar { width: 6px; }
 html body::-webkit-scrollbar-track { background: black; }
 ::-webkit-scrollbar-thumb {
-    background: #192739;
+    background: var(--thumb);
     border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: #39516b; }
+::-webkit-scrollbar-thumb:hover { background: var(--thumbhover); }
 ::-webkit-scrollbar-corner { background: #0000; }
 
 input:-webkit-autofill,
@@ -34,6 +38,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: all 0s 50000s;
 }
+
 ::selection {
   color: rgb(239, 83, 80);
   background: rgba(239, 83, 80, 0.2);

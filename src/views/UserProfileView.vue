@@ -20,7 +20,7 @@ const gameStore = useGameStore();
                         <MQ_ProfileBlock>Played games</MQ_ProfileBlock>
 
                         <div class="flex flex-col gap-6">
-                            <MQ_PlayedGame v-for="game in gameStore.games" :game="game"/>
+                            <MQ_PlayedGame v-for="game in gameStore.gameData" :game="game"/> 
                         </div>
 
                         <MQ_ProfileBlock>User settings</MQ_ProfileBlock>

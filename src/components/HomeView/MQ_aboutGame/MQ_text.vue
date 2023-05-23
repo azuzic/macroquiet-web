@@ -1,5 +1,5 @@
 <template>
-    <div id="about" class="relative">
+    <div id="about" class="relative mb-16">
         <div class="absolute bg-gradient-to-b from-MQ_dark to-MQ_darkblue w-full h-full opacity-90"></div>
         <hr class="border-2 border-MQ_light drop-shadow-MQ relative">
         <div class="flex flex-col items-center pb-12">
@@ -17,14 +17,10 @@
 
 <script>
 import MQ_h2 from '@/components/Global/MQ_h2/MQ_h2.vue';
-import MQ_portrait from './MQ_portrait.vue';
 
 export default {
-    name: "MQ_aboutGame",
+    name: "MQ_text",
     props: { title: String, text: String },
-    components: {
-        MQ_h2,
-        MQ_portrait
-    },
+    components: { MQ_h2 },
 };
 </script>
