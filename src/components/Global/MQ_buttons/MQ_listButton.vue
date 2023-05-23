@@ -19,7 +19,7 @@ export default {
         selected: Boolean,
         icon: String,
         text: String,
-        link: String
+        link: String 
     },
     setup() {
         const globalStore = useGlobalStore();

@@ -17,20 +17,21 @@
 
 <style>
 :root {
-  --thumb: #192739;
-  --thumb: #192739;
+  --thumb: #EF5350;
+  --thumbhover: #cbd5e1;
+  --thumbbg: #06060a;
 }
 .Poppins {
     font-family: "Poppins", sans-serif;
 }
 ::-webkit-scrollbar { width: 6px; }
-html body::-webkit-scrollbar-track { background: black; }
+html body::-webkit-scrollbar-track { background: var(--thumbbg); }
 ::-webkit-scrollbar-thumb {
     background: var(--thumb);
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--thumbhover); }
-::-webkit-scrollbar-corner { background: #0000; }
+::-webkit-scrollbar-corner { background: var(--thumbbg); }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -40,8 +41,8 @@ input:-webkit-autofill:active {
 }
 
 ::selection {
-  color: rgb(239, 83, 80);
-  background: rgba(239, 83, 80, 0.2);
+  color: var(--thumbbg);
+  background: var(--thumb);
 }
 
 @font-face {
@@ -108,9 +109,8 @@ html, body, #app {
     background-position: center;
 }
 .main-stranded {
-    background-image: url("src/assets/background/night_sky.gif");
-    background-size: 480px 270px;
-    background-position: center;
+    background: content-box url("src/assets/games/page/StrandedAway/bg.png") center/150% auto no-repeat,
+    content-box url("src/assets/background/night_sky.gif") center/480px 270px;
 }
 .main-doge {
     background-image: url("src/assets/background/doge_bg.jpg");

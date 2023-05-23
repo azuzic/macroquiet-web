@@ -43,7 +43,7 @@
                 <MQ_h2_small />
                 <div class="flex grow md:grow-0 items-center justify-end | transition-all duration-300 mt-4">
                     <router-link to="" @click="LogOut()" class="px-5 py-1.5 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
-                        hover:font-bold | border-MQ_red border-2 rounded-full | transition-all duration-300">
+                        hover:font-bold | border-MQ_red border-2 rounded-full | transition-all duration-300 | flex justify-center items-center cursor-pointer">
                         LOG OUT
                     </router-link>
                 </div>

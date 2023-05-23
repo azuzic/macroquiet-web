@@ -68,19 +68,22 @@ export const useGlobalStore = defineStore("globalStore", {
             var root = document.documentElement;
             switch (value) {
                 case "Stranded Away": 
-                    this.style = ["theme-stranded Squarewave tracking-wider", "main-stranded", "bg-MQ_dark", "shadow-vignette"]; 
+                    this.style = ["theme-stranded Squarewave tracking-wider SA_cursor", "main-stranded", "bg-MQ_dark", "shadow-vignette"]; 
                     root.style.setProperty("--thumb",       "#16a34a");
                     root.style.setProperty("--thumbhover",  "#EF5350");
+                    root.style.setProperty("--thumbbg",     "#06060a");
                     break;
                 case "Doge": 
                     this.style = ["theme-doge EHSMB font-bold tracking-wider", "main-doge", "", "shadow-vignette_light"]; 
                     root.style.setProperty("--thumb",       "#bfc86f");
                     root.style.setProperty("--thumbhover",  "#fb445a");
+                    root.style.setProperty("--thumbbg",     "#0a2830");
                     break;
                 default: 
                     this.style = ["theme-default Poppins", "main", "bg-MQ_dark", "shadow-vignette"]; 
-                    root.style.setProperty("--thumb",       "#192739");
-                    root.style.setProperty("--thumbhover",  "#39516b");
+                    root.style.setProperty("--thumb",       "#EF5350");
+                    root.style.setProperty("--thumbhover",  "#cbd5e1");
+                    root.style.setProperty("--thumbbg",     "#06060a");
                     break;
             }
             this.MQupdate();

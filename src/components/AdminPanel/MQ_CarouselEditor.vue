@@ -16,7 +16,7 @@
             <template v-slot:item="{ item }">
                 <div class="aspect-video | h-16 xs:h-28 md:h-24 lg:h-28 xl:h-36 2xl:h-48 | transition-all duration-300">
                     <div class="w-full h-full overflow-hidden bg-cover bg-center rounded-md drop-shadow-MQ relative | flex justify-center items-center
-                        border-3 border-MQ_red border-opacity-0 hover:border-opacity-25 active:border-opacity-100 | transition-all duration-300" 
+                        border-3 border-MQ_red border-opacity-0 hover:border-opacity-100 active:border-opacity-100 | transition-all duration-300" 
                         :style="'background-image: url(' + item + ')'"></div>
                 </div>
             </template>

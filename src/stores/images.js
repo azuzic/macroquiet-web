@@ -56,7 +56,25 @@ import GAME_DOGE_dogeCatcher from "@/assets/games/page/Doge/dogeCatcher.png";
 import GAME_DOGE_dogeConcept from "@/assets/games/page/Doge/dogeConcept.jpg";
 import GAME_DOGE_snack from "@/assets/games/page/Doge/snack.png";
 //STRANDED AWAY
-import GAME_STRANDEDAWAY_player_idle from "@/assets/games/page/StrandedAway/player_idle.gif";
+import GAME_SA_player_idle from "@/assets/games/page/StrandedAway/player_idle.gif";
+import GAME_SA_land from "@/assets/games/page/StrandedAway/land.jpg";
+import GAME_SA_cave from "@/assets/games/page/StrandedAway/cave.jpg";
+import GAME_SA_swamp from "@/assets/games/page/StrandedAway/swamp.jpg";
+import GAME_SA_1_coin from "@/assets/games/page/StrandedAway/1_coin_pickup.gif";
+import GAME_SA_5_coin from "@/assets/games/page/StrandedAway/5_coin_pickup.gif";
+import GAME_SA_10_coin from "@/assets/games/page/StrandedAway/10_coin_pickup.gif";
+import GAME_SA_50_coin from "@/assets/games/page/StrandedAway/50_coin_pickup.gif";
+import GAME_SA_items from "@/assets/games/page/StrandedAway/items.png";
+import GAME_SA_scene from "@/assets/games/page/StrandedAway/scene.gif";
+import GAME_SA_Spitter from "@/assets/games/page/StrandedAway/Acid_Spitter_Walk.gif";
+import GAME_SA_Lizard from "@/assets/games/page/StrandedAway/Alien_Lizard_Walk.gif";
+import GAME_SA_Turret from "@/assets/games/page/StrandedAway/turret_activate.gif";
+import GAME_SA_challenge from "@/assets/games/page/StrandedAway/challenge.jpg";
+import GAME_SA_bg from "@/assets/games/page/StrandedAway/bg.png";
+import GAME_SA_mouse_aim from "@/assets/games/page/StrandedAway/mouse_aim.jpg";
+import GAME_SA_mouse_aim2 from "@/assets/games/page/StrandedAway/mouse_aim2.jpg";
+import GAME_SA_mouse_point from "@/assets/games/page/StrandedAway/mouse_point.jpg";
+import GAME_SA_mouse_point2 from "@/assets/games/page/StrandedAway/mouse_point2.jpg";
 
 //CARD
 import CARD_DOGE from "@/assets/games/dogeGameCard.png";
@@ -76,7 +94,10 @@ const images = {
         Doge: [DogeC1, DogeC2, DogeC3, DogeC4, DogeC5, DogeC6, DogeC7, DogeC8, DogeC9],
     },
     GamePage: {
-        StrandedAway: { GAME_STRANDEDAWAY_player_idle },
+        StrandedAway: { GAME_SA_player_idle, GAME_SA_land, GAME_SA_cave, GAME_SA_swamp, GAME_SA_scene, 
+                        GAME_SA_1_coin, GAME_SA_5_coin, GAME_SA_10_coin, GAME_SA_50_coin, 
+                        GAME_SA_items, GAME_SA_Spitter, GAME_SA_Lizard, GAME_SA_Turret, GAME_SA_challenge,
+                        GAME_SA_bg, GAME_SA_mouse_aim, GAME_SA_mouse_aim2, GAME_SA_mouse_point, GAME_SA_mouse_point2 },
         Doge: {GAME_DOGE_bone, GAME_DOGE_dogeArt, GAME_DOGE_dogeArt2, GAME_DOGE_dogeCatcher, GAME_DOGE_dogeConcept, GAME_DOGE_snack},
     },
     GameCard: { CARD_DOGE, CARD_STRANDEDAWAY }

@@ -22,12 +22,14 @@
                         class="text-2xl | bg-MQ_dark bg-opacity-75 drop-shadow-md | mx-2 p-2 w-12 | group-hover:rounded-r-md | transition-all duration-300"></i>
 
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </template>
 
 <script>
+import { useCarouselStore } from '@/stores/carouselStore'
+import { useGlobalStore } from '@/stores/globalStore'
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
         setTimeout(resolveFn, seconds * 1000);
@@ -35,8 +37,11 @@ let wait = function (seconds) {
 };
 export default {
     name: "MQ_navigationSide",
-    props: {
-        links: Array,
+    props: { links: Array, },
+    setup() {
+        const globalStore = useGlobalStore();
+        const carouselStore = useCarouselStore();
+        return { globalStore, carouselStore }
     },
     methods: {
         async scroll(id) {
@@ -52,9 +57,10 @@ export default {
             if (id == null) return;
 
             try {
-                document.getElementById(id).scrollIntoView({
-                    behavior: "smooth",
-                });
+                this.globalStore.changeStyle('default'); 
+                this.carouselStore.changeStyle('default');
+                await wait(0.1);
+                document.getElementById(id).scrollIntoView({ behavior: "smooth", });
                 this.drawer = false;
             } catch (e) { }
         },
