@@ -27,15 +27,17 @@
                 <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center gap-2 drop-shadow-MQ z-10"> 
                     <!--USERNAME-->
                     <i v-if="globalStore.userProfile.admin" class="fa-solid fa-shield text-MQ_green"></i> {{ globalStore.userProfile.username }} 
-                    <i @click="showPreviousUsername = !showPreviousUsername" :class="showPreviousUsername ? '-scale-100' : ''"
-                        class="fa-solid fa-caret-down text-xs sm:text-sm mb-1 cursor-pointer hover:text-MQ_light relative peer z-50">
+                    <div>
+                        <i @click="showPreviousUsername = !showPreviousUsername" :class="showPreviousUsername ? '-scale-100' : ''"
+                            class="fa-solid fa-caret-down text-xs sm:text-sm mb-1 cursor-pointer hover:text-MQ_light relative peer z-50">
+                        </i>
                         <div @mouseleave ="showPreviousUsername = false" v-if="showPreviousUsername" 
-                            class="absolute right-4 z-50 w-fit h-fit bg-MQ_dark bg-opacity-40 p-2 rounded-md gap-1 flex flex-col
-                                text-MQ_light font-normal cursor-default -scale-100 text-xs">
-                            <div class="whitespace-nowrap underline text-xs sm:text-sm"> Previous usernames: </div>
+                            class="absolute left-32 -top-8 z-50 w-fit h-fit bg-MQ_dark bg-opacity-40 p-2 rounded-md gap-1 flex flex-col
+                                text-MQ_light font-normal cursor-default text-xs">
+                            <div class="whitespace-nowrap text-xs sm:text-sm"> Previous usernames: </div>
                             <div v-for="u in globalStore.userProfile.former_usernames">{{u}}</div>
                         </div>
-                    </i>
+                    </div>
                 </div>
                 <!--DESCRIPTION-->
                 <div class="text-MQ_light text-xs sm:text-sm w-full grow relative drop-shadow-MQ | transition-all duration-300"> 
