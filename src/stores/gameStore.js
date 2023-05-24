@@ -156,7 +156,7 @@ export const useGameStore = defineStore("gameStore", {
                                     <img src="`+images.GamePage.Doge.GAME_DOGE_dogeArt2+`">
                                 </div>
                             <p class="mt-3">Play now and help doge find his way home!</p></br>
-                                <a href="https://macroquiet.itch.io/stranded-away" target="_blank" class="text-MQ_green hover:text-MQ_red cursor-pointer font-bold text-lg 
+                                <a href="https://macroquiet.itch.io/doge" target="_blank" class="text-MQ_green hover:text-MQ_red cursor-pointer font-bold text-lg 
                                 underline underline-offset-2 hover:underline-offset-4 hover:tracking-widest transition-all duration-300">
                                 <i class="fa-solid fa-download mr-2"></i>Download game</a>`
                 },
@@ -178,8 +178,8 @@ export const useGameStore = defineStore("gameStore", {
                             You can also pick up the <span class="text-MQ_red">dog food</span> to heal. <span class="text-MQ_red">Dog catchers</span> will start chasing you when you approach them. Dodge their attacks by jumping.
                                 <div class="flex justify-center items-center"><img src="`+images.GamePage.Doge.GAME_DOGE_dogeCatcher+`"></div>
                                 
-                                <p class="mt-3">Doge game contains <span class="text-MQ_red">3 achievements</span> which will displayed on your profile when you activate them!</p></br>
-                                <a href="https://macroquiet.itch.io/stranded-away" target="_blank" class="text-MQ_green hover:text-MQ_red cursor-pointer font-bold text-lg 
+                                <p class="mt-3">Doge game contains <span class="text-MQ_red">3 achievements</span> which will be displayed on your profile when you activate them!</p></br>
+                                <a href="https://macroquiet.itch.io/doge" target="_blank" class="text-MQ_green hover:text-MQ_red cursor-pointer font-bold text-lg 
                                 underline underline-offset-2 hover:underline-offset-4 hover:tracking-widest transition-all duration-300">
                                 <i class="fa-solid fa-download mr-2"></i>Download game</a>`
                 },

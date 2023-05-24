@@ -2,7 +2,7 @@
     <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto">
         <div class="flex grow pb-96 flex-col | justify-center items-center bg-red | bg-opacity-30 p-2 | w-full">
 
-            <MQ_h2 class="w-full" text="Complete your MacroQuiet Account" :small="true"/>
+            <MQ_h2 class="w-full" text="Complete your account" :small="true"/>
 
             <Form @submit="onSubmit" class="w-full max-w-md flex justify-between px-12 sm:px-6 | transition-all duration-500" :validation-schema="schema">
                 <div class="flex flex-col w-full justify-between items-center gap-2">
