@@ -16,10 +16,10 @@
         <div class="absolute -right-[74px] h-32 w-32 | flex justify-center" :class="id % 2 == 0 ? 'bottom-11' : 'top-11'">
 
             <div v-if="id != l - 1" class="w-1 h-5 rounded-full bg-MQ_lighter absolute flex justify-center items-center" :class="id % 2 == 0 ? '-bottom-8' : '-top-8'">
-                <div class="whitespace-nowrap absolute text-sm text-MQ_red font-bold" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> {{ t.date }} </div>
+                <div class="whitespace-nowrap absolute text-sm text-MQ_red font-bold" :class="id % 2 == 0 ? 'top-12' : 'bottom-12'"> {{ formatDateReverse(t.date) }} </div>
             </div>
             <div v-else class="w-1 h-4 ml-2 rounded-full bg-MQ_lighter absolute flex justify-center items-center" :class="id % 2 == 0 ? '-bottom-[26px]' : '-top-[26px]'">
-                <div class="whitespace-nowrap absolute text-xl text-MQ_red font-bold underline" :class="id % 2 == 0 ? 'top-14' : 'bottom-14'"> {{ t.date }} </div>
+                <div class="whitespace-nowrap absolute text-xl text-MQ_red font-bold underline" :class="id % 2 == 0 ? 'top-14' : 'bottom-14'"> {{ formatDateReverse(t.date)}} </div>
             </div>
 
             <div class="min-w-fit | snap-center flex flex-col overflow-hidden | group | rounded-t-lg | bg-MQ_dark bg-opacity-25 | drop-shadow-md hover:drop-shadow-MQ | transition-all duration-500"
@@ -49,6 +49,36 @@ export default {
         t: Object,
         id: Number,
         l: Number,
+    },
+    methods: {
+        formatDateReverse(d) {
+            const months = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+            ];
+
+            let day = d.slice(0, 2).replace(/\./g, ' ').trim();
+            if (day[0] == '0')
+                day = day[1];
+            let monthIndex = d.slice(-7, -4).replace(/\./g, ' ').trim();
+            if (monthIndex[0] == '0') 
+                monthIndex = monthIndex[1];
+            let year = d.slice(-4).trim();
+
+            let month = months[monthIndex];
+
+            return `${day} ${month}, ${year}`;
+        }
     }
 }
 </script>

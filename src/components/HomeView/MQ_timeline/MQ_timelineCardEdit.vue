@@ -207,14 +207,13 @@ export default {
                 "November": 11,
                 "December": 12,
             };
-
             const day = d.slice(0, 2).replace(/\./g, ' ').trim();
             const monthIndex = d.replace(/[0-9]/g, '').trim().slice(0, -1);
             const year = d.slice(-4).trim();
             const month = months[monthIndex];
             if (month != undefined) {
-                this.t.date = `${day}/${month}/${year}`;
-                return `${day}/${month}/${year}`;
+                this.t.date = `${day}.${month}.${year}`;
+                return `${day}.${month}.${year}`;
             }
             else return d;
         },
