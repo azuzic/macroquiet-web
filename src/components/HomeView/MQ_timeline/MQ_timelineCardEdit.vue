@@ -213,8 +213,8 @@ export default {
             const year = d.slice(-4).trim();
             const month = months[monthIndex];
             if (month != undefined) {
-                this.t.date = `${day}.${month}.${year}`;
-                return `${day}.${month}.${year}`;
+                this.t.date = `${day}/${month}/${year}`;
+                return `${day}/${month}/${year}`;
             }
             else return d;
         },

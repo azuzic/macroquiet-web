@@ -1,5 +1,5 @@
 <template>
-    <div tabindex="0" @focusout="!focus ? show = false : ''" @click="show = true" class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
+    <div tabindex="0" @focusout="!focus ? show = false : ''" @click="show = !show" class="flex grow md:grow-0 items-center justify-end | transition-all duration-300">
         <div class="h-12 aspect-square rounded-full bg-MQ_dark hover:bg-opacity-100 hover:border-MQ_red border-2 overflow-hidden drop-shadow-MQ | mr-2 lg:mr-8 | transition-all duration-300"
             :class="show ? 'border-MQ_red bg-opacity-100' : 'border-MQ_dark bg-opacity-10'">
             <img :class="show ? 'scale-150' : 'scale-125'" class="hover:scale-150 | transition-all duration-300 | cursor-pointer" 
