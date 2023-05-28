@@ -26,7 +26,11 @@
             <div class="flex flex-col items-start pl-2 sm:pl-4 gap-1 sm:gap-4 grow h-24 sm:h-32 | transition-all duration-300">
                 <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center gap-2 drop-shadow-MQ z-10"> 
                     <!--USERNAME-->
-                    <i v-if="globalStore.userProfile.admin" class="fa-solid fa-shield text-MQ_green"></i> {{ globalStore.userProfile.username }} 
+                    <div class="relative">
+                        <i v-if="globalStore.userProfile.admin" class="fa-solid fa-shield text-MQ_green peer"></i> 
+                        <MQ_Tooltip>ADMIN</MQ_Tooltip>
+                    </div>
+                    {{ $route.params.userName == globalStore.userProfile.username ? globalStore.userProfile.username : globalStore.showProfile.username }} 
                     <div class="relative">
                         <i @click="showPreviousUsername = !showPreviousUsername" :class="showPreviousUsername ? '-scale-100' : ''"
                             class="fa-solid fa-caret-down text-xs sm:text-sm mb-1 cursor-pointer hover:text-MQ_light relative peer z-50">
@@ -35,16 +39,20 @@
                             class="absolute left-4 -top-12 z-50 w-fit h-fit bg-MQ_dark bg-opacity-40 p-2 rounded-md gap-1 flex flex-col
                                 text-MQ_light font-normal cursor-default text-xs">
                             <div class="whitespace-nowrap text-xs sm:text-sm"> Previous usernames: </div>
-                            <div v-for="u in globalStore.userProfile.former_usernames">{{u}}</div>
+                            <div v-for="u in ($route.params.userName == globalStore.userProfile.username ? globalStore.userProfile.former_usernames : globalStore.showProfile.former_usernames)">{{u}}</div>
                         </div>
                     </div>
                 </div>
                 <!--DESCRIPTION-->
                 <div class="text-MQ_light text-xs sm:text-sm w-full grow relative drop-shadow-MQ | transition-all duration-300"> 
-                    <textarea v-model="globalStore.userProfile.profile.description" placeholder=" " :disabled="!globalStore.editing"
+                    <textarea v-if="$route.params.userName == globalStore.userProfile.username" v-model="globalStore.userProfile.profile.description" placeholder=" " :disabled="!globalStore.editing"
                         class="block w-full text-xs sm:text-sm bg-MQ_dark rounded-t-md appearance-none absolute -mx-1 sm:-mx-2 p-1 sm:p-2 z-10
                         outline-none peer caret-MQ_light resize-none | transition-all duration-300 border-MQ_light border-opacity-5 focus:border-opacity-25" :maxlength="1000" rows="4"
                         :class="[globalStore.editing ? 'bg-opacity-10 border' : 'bg-opacity-0', submitting || type != 'none' ? 'h-0 opacity-0 delay-0' : 'h-full opacity-100']"></textarea>
+                    <textarea v-else v-model="globalStore.showProfile.profile.description" placeholder=" " :disabled="!globalStore.editing"
+                        class="block w-full text-xs sm:text-sm bg-MQ_dark rounded-t-md appearance-none absolute -mx-1 sm:-mx-2 p-1 sm:p-2 z-10
+                        outline-none peer caret-MQ_light resize-none | transition-all duration-300 border-MQ_light border-opacity-5 focus:border-opacity-25" :maxlength="1000" rows="4"
+                        :class="[globalStore.editing ? 'bg-opacity-10 border' : 'bg-opacity-0', submitting || type != 'none' ? 'h-0 opacity-0 delay-0' : 'h-full opacity-100']"></textarea>    
                     <img class="absolute | animate-spin_slow transition-all duration-500"
                         src="@/assets/Logos/macroquiet_logo_icon.png"
                         :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
@@ -61,7 +69,7 @@
     
         </div>
 
-        <div class="flex flex-col text-center ml-1">
+        <div v-if="$route.params.userName == globalStore.userProfile.username" class="flex flex-col text-center ml-1">
             <div class="px-5 py-1.5 mr-2 sm:mr-4 mb-4 | text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light overflow-hidden flex justify-center items-center
                 	border-MQ_red border-2 rounded | transition-all duration-300 | hover:bg-MQ_red hover:text-MQ_dark hover:font-bold cursor-pointer drop-shadow-MQ"
                     :class="[!submitting && type == 'none' && globalStore.editing ? 'opacity-100 h-8 sm:h-9' : 'opacity-0 h-0 pointer-events-none']"
@@ -85,12 +93,13 @@ import MQ_textAreaInput from '@/components/Global/MQ_inputs/MQ_textAreaInput.vue
 import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { User } from "@/services";
 import { useGlobalStore } from '@/stores/globalStore';
+import MQ_Tooltip from '@/components/Global/MQ_Tooltip.vue';
 
 let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 
 export default {
     name: "MQ_UserCoverAndIcon",  
-    components: { MQ_textAreaInput, MQ_alert },
+    components: { MQ_textAreaInput, MQ_alert, MQ_Tooltip },
     setup() {
         const globalStore = useGlobalStore()
         return { globalStore, userCover, userIcon }
@@ -107,25 +116,35 @@ export default {
         tempCoverSave: "",
     } },
     computed: {
-        readImageAvatar() {                 
-            if (!this.globalStore.editing) {  
+        readImageAvatar() {      
+            if (this.$route.params.userName == this.globalStore.userProfile.username) {           
+                if (!this.globalStore.editing) {  
+                    if (this.globalStore.userProfile.profile.image.avatar == '') return this.userIcon;
+                    return this.globalStore.userProfile.profile.image.avatar;
+                }
                 if (this.globalStore.userProfile.profile.image.avatar == '') return this.userIcon;
-                return this.globalStore.userProfile.profile.image.avatar;
+                else if (typeof (this.globalStore.userProfile.profile.image.avatar) == "string") return this.globalStore.userProfile.profile.image.avatar;
+                let file = URL.createObjectURL(this.globalStore.userProfile.profile.image.avatar);
+                return file;
+            } else {
+                if (this.globalStore.showProfile.profile.image.avatar == '') return this.userIcon; 
+                return this.globalStore.showProfile.profile.image.avatar;
             }
-            if (this.globalStore.userProfile.profile.image.avatar == '') return this.userIcon;
-            else if (typeof (this.globalStore.userProfile.profile.image.avatar) == "string") return this.globalStore.userProfile.profile.image.avatar;
-            let file = URL.createObjectURL(this.globalStore.userProfile.profile.image.avatar);
-            return file;
         },
         readImageCover() {
-            if (!this.globalStore.editing) {
+            if (this.$route.params.userName == this.globalStore.userProfile.username) {        
+                if (!this.globalStore.editing) {
+                    if (this.globalStore.userProfile.profile.image.cover == '') return this.userCover;
+                    return this.globalStore.userProfile.profile.image.cover;
+                }
                 if (this.globalStore.userProfile.profile.image.cover == '') return this.userCover;
-                return this.globalStore.userProfile.profile.image.cover;
+                else if (typeof (this.globalStore.userProfile.profile.image.cover) == "string") return this.globalStore.userProfile.profile.image.cover;
+                let file = URL.createObjectURL(this.globalStore.userProfile.profile.image.cover);
+                return file;
+            } else {
+                if (this.globalStore.showProfile.profile.image.cover == '') return this.userCover; 
+                return this.globalStore.showProfile.profile.image.cover;
             }
-            if (this.globalStore.userProfile.profile.image.cover == '') return this.userCover;
-            else if (typeof (this.globalStore.userProfile.profile.image.cover) == "string") return this.globalStore.userProfile.profile.image.cover;
-            let file = URL.createObjectURL(this.globalStore.userProfile.profile.image.cover);
-            return file;
         },
     },
     methods: {

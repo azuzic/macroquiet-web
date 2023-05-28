@@ -201,13 +201,41 @@ export const useGameStore = defineStore("gameStore", {
                     type:   "text",
                     title:  "GAMEPLAY",
                     text:   `You are playing as a space traveler, explore beautiful <span class="text-MQ_red">Athion</span> land, cave and swamp.
-                                <div class="w-full flex justify-center my-4">
-                                    <img width="30%" class="border-MQ_light border-l-2 border-t-2 border-b-2 rounded-l-lg" 
-                                        src="`+images.GamePage.StrandedAway.GAME_SA_land+`">
-                                    <img width="30%" class="border-MQ_light border-2" src="`+images.GamePage.StrandedAway.GAME_SA_cave+`">
-                                    <img width="30%" class="border-MQ_light border-r-2 border-t-2 border-b-2 rounded-r-lg" 
-                                        src="`+images.GamePage.StrandedAway.GAME_SA_swamp+`">
-                                </div> 
+                                <div class="flex w-full justify-center">
+                                    <div class="w-full justify-center items-center my-4 h-96 max-w-2xl border-MQ_light border-2 rounded-lg overflow-hidden relative">
+
+                                        <div class="group/item w-full h-0 absolute flex imgg">
+                                            <div class="bg-cover bg-left group-hover/item:border-r-2 border-MQ_light group-hover/item:w-full w-1/3 h-96 transition-all duration-500" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_land+`)"></div>
+
+                                            <div class="bg-cover bg-center group-hover/item:w-0 group-hover/item:border-0 w-1/3 h-0 transition-all duration-500" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_cave+`)"></div>
+
+                                            <div class="bg-cover bg-right group-hover/item:w-0 w-1/3 h-0 transition-all duration-500" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_swamp+`)"></div>
+                                        </div>
+                                        <div class="group/apple w-full h-0 absolute flex transition-all duration-500 peer peer-hover:w-0 right-0">
+                                            <div class="bg-cover bg-left group-hover/apple:w-0 w-1/3 h-0 transition-all duration-500 pointer-events-none" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_land+`)"></div>
+
+                                            <div class="bg-cover bg-center border-x-2 border-MQ_light group-hover/apple:w-full w-1/3 h-96 transition-all duration-500" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_cave+`)"></div>
+
+                                            <div class="bg-cover bg-right group-hover/apple:w-0 w-1/3 h-0 transition-all duration-500 pointer-events-none" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_swamp+`)"></div>
+                                        </div>
+                                        <div class="group/banana w-full h-0 absolute flex transition-all duration-500 peer-hover:w-0 right-0">
+                                            <div class="bg-cover bg-left group-hover/banana:w-0 w-1/3 h-0 transition-all duration-500 pointer-events-none" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_land+`)"></div>
+
+                                            <div class="bg-cover bg-center group-hover/banana:w-0 group-hover/banana:border-0 w-1/3 h-0 transition-all duration-500 pointer-events-none" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_cave+`)"></div>
+
+                                            <div class="bg-cover bg-right group-hover/banana:border-l-2 border-MQ_light group-hover/banana:w-full w-1/3 h-96 transition-all duration-500" 
+                                                style="background-image: url(`+images.GamePage.StrandedAway.GAME_SA_swamp+`)"></div>
+                                        </div>               
+                                    </div> 
+                                </div>
                             Search for materials in <span class="text-MQ_red">chests</span> and craft yourself various items in order to survive. 
                                 <div class="w-full flex justify-center my-4">
                                     <img class="rendering-pixelated w-96" src="`+images.GamePage.StrandedAway.GAME_SA_items+`">

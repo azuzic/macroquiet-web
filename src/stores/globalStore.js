@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { User } from "@/services";
 import { nextTick } from "vue";
-
+let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 export const useGlobalStore = defineStore("globalStore", {
     state: () => ({
         //UPDATING
@@ -34,6 +34,23 @@ export const useGlobalStore = defineStore("globalStore", {
                 games: [],
             },
         },
+        showProfile: {
+            _id: "",
+            username: "",
+            former_usernames: [],
+            register_method: "",
+            username_last_changed: null,
+            email: "",
+            admin: false,
+            profile: {
+                description: "Hi, I am zuza. Nice to meet you!",
+                image: {
+                    avatar: "",
+                    cover: "",
+                },
+                games: [],
+            },
+        }
     }),
     actions: {
         async setup() {
@@ -42,6 +59,7 @@ export const useGlobalStore = defineStore("globalStore", {
                 let response = await User.getCurrentUserProfile();
                 if (response) {
                     this.userProfile = response.userData.data;
+                    this.showProfile = response.userData.data;
                     this.edit = response.token.edit;
                     this.MQupdate();
                 }
@@ -77,7 +95,7 @@ export const useGlobalStore = defineStore("globalStore", {
                     this.style = ["theme-doge EHSMB font-bold tracking-wider", "main-doge", "", "shadow-vignette_light"]; 
                     root.style.setProperty("--thumb",       "#bfc86f");
                     root.style.setProperty("--thumbhover",  "#fb445a");
-                    root.style.setProperty("--thumbbg",     "#0a2830");
+                    root.style.setProperty("--thumbbg",     "#0a2830"); 
                     break;
                 default: 
                     this.style = ["theme-default Poppins", "main", "bg-MQ_dark", "shadow-vignette"]; 
@@ -87,6 +105,13 @@ export const useGlobalStore = defineStore("globalStore", {
                     break;
             }
             this.MQupdate();
+        },
+        async getUserProfile(value) {
+            this.edit = "";
+            this.update = true;
+            this.editing = false;
+            let response = await User.getSpecificProfile(value);
+            this.showProfile = response.userData.data;
         }
     },
 });

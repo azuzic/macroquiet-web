@@ -13,17 +13,17 @@ import Dedication from "@/assets/games/trophies/StrandedAway/Dedication.png";
 import Doom from "@/assets/games/trophies/StrandedAway/Doom.png";
 import DownwardSpiral from "@/assets/games/trophies/StrandedAway/DownwardSpiral.png";
 import Exploration from "@/assets/games/trophies/StrandedAway/Exploration.png";
-import HalfWayThere from "@/assets/games/trophies/StrandedAway/Halfwaythere.png";
-import HastaLaVista from "@/assets/games/trophies/StrandedAway/Hastalavista.png";
+import Halfwaythere from "@/assets/games/trophies/StrandedAway/Halfwaythere.png";
+import Hastalavista from "@/assets/games/trophies/StrandedAway/Hastalavista.png";
 import Higher from "@/assets/games/trophies/StrandedAway/Higher.png";
 import KingofJumping from "@/assets/games/trophies/StrandedAway/KingofJumping.png";
 import Light from "@/assets/games/trophies/StrandedAway/Light.png";
-import MasterClock from "@/assets/games/trophies/StrandedAway/Masterclock.png";
+import Masterclock from "@/assets/games/trophies/StrandedAway/Masterclock.png";
 import Monopoly from "@/assets/games/trophies/StrandedAway/Monopoly.png";
 import Neverending from "@/assets/games/trophies/StrandedAway/Neverending.png";
 import NotEnoughBoxes from "@/assets/games/trophies/StrandedAway/NotEnoughBoxes.png";
-import PapersPlease from "@/assets/games/trophies/StrandedAway/Papersplease.png";
-import UnoReverse from "@/assets/games/trophies/StrandedAway/Unoreverse.png";
+import Papersplease from "@/assets/games/trophies/StrandedAway/Papersplease.png";
+import Unoreverse from "@/assets/games/trophies/StrandedAway/Unoreverse.png";
 
 //CAROUSEL
 //DOGE
@@ -84,8 +84,8 @@ const images = {
     GameTrophy: {
         StrandedAway: {
             Abyss, BabySteps, Beginning, Celestial, ConfusingEscape, Dedication, Doom, DownwardSpiral,
-            Exploration, HalfWayThere, HastaLaVista, Higher, KingofJumping, Light, MasterClock, Monopoly,
-            Neverending, NotEnoughBoxes, PapersPlease,  UnoReverse,
+            Exploration, Halfwaythere, Hastalavista, Higher, KingofJumping, Light, Masterclock, Monopoly,
+            Neverending, NotEnoughBoxes, Papersplease,  Unoreverse,
         },
         Doge: { Bolt, Home, OHKO },
     },

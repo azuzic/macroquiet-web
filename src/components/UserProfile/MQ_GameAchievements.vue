@@ -19,7 +19,7 @@
 
         <!--TROPHIES-->
         <div class="flex gap-2 pb-2 px-2 grow overflow-auto | transition-all duration-500" :class="expandedTrophies ? 'flex-col h-[408px] items-start' : 'flex-wrap h-16 items-center'">
-            <MQ_Trophy v-for="trophy in game.trophies" :trophy="trophy" :expandedTrophies="expandedTrophies" />
+            <MQ_Trophy v-for="trophy in game.trophies" :trophy="trophy" :expandedTrophies="expandedTrophies" :gameName="game.name.replace(/ /g,'')" />
         </div>
     </MqResponsive>
 </template>

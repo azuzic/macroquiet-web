@@ -24,3 +24,27 @@ export default {
     components: { MQ_h2 },
 };
 </script>
+<style lang="scss">
+.imgg {
+    animation: index2 500ms forwards;
+    @keyframes index2 {
+        0% { z-index: 10; }
+        20% { z-index: 10; }
+        40% { z-index: 10; }
+        60% { z-index: 10; }
+        80% { z-index: 10; }
+        100% { z-index: 0; }
+    }
+    &:hover {
+        animation: index 500ms forwards;
+        @keyframes index {
+            0% { z-index: 0; }
+            20% { z-index: 10; }
+            40% { z-index: 10; }
+            60% { z-index: 10; }
+            80% { z-index: 10; }
+            100% { z-index: 10; }
+        }
+    }
+}
+</style>

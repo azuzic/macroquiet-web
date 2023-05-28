@@ -13,11 +13,8 @@ globalStore.setup()
 </script>
 
 <template>
-    <div class="w-full h-full bg-MQ_darkblue relative | transition-all duration-300" :class="globalStore.style[0]">
-        <div class="fixed w-full h-full rendering-pixelated z-0 | transition-all duration-500" :class="globalStore.style[1]">
-            <div class="absolute w-full h-full opacity-25 bg-gradient-to-b from-MQ_red via-black to-cyan-700 z-0"></div>
-            <div class="absolute w-full h-full opacity-25 | transition-all duration-500" :class="globalStore.style[2]"></div>
-        </div>
+    <div class="w-full h-full relative | transition-all duration-300" :class="globalStore.style[0]">
+        <MQ_bg/>
         <div class="min-h-full flex flex-col-reverse absolute w-full">
             <MQ_navigation />
             <router-view class="" v-slot="{ Component, route }">
@@ -31,10 +28,11 @@ globalStore.setup()
 
 <script>
 import MQ_navigation from './components/App/MQ_navigation.vue';
+import MQ_bg from './components/App/MQ_bg.vue';
 
 export default {
     name: "App",
-    components: { MQ_navigation },
+    components: { MQ_navigation, MQ_bg },
 }
 </script>
 

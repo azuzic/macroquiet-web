@@ -109,6 +109,21 @@ let User = {
             console.warn(detailedError);
         }
     },
+    async getSpecificProfile(username) {
+        let token = Auth.getLocalStorage();
+        if (!token) return false;
+        try {
+            let userData = await Service.get("users/"+username);
+            return { userData: userData, token: token };
+        } catch (error) {
+            let detailedError = {
+                functionName: "User - getCurrentSpecificProfile",
+                username: username,
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
     async putChangePassword(data) {
         try {
             return Service.put("users/current/password", data);

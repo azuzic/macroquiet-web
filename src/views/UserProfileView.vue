@@ -1,8 +1,3 @@
-<script setup>
-import { useGameStore } from '@/stores/gameStore'
-const gameStore = useGameStore();
-</script>
-
 <template>
     <div class="grow flex flex-col justify-between items-start absolute overflow-y-auto">
         <div class="flex flex-col | justify-center items-center | w-full">
@@ -20,11 +15,15 @@ const gameStore = useGameStore();
                         <MQ_ProfileBlock>Played games</MQ_ProfileBlock>
 
                         <div class="flex flex-col gap-6">
-                            <MQ_PlayedGame v-for="game in gameStore.gameData" :game="game"/> 
+                            <MQ_PlayedGame v-for="game in ($route.params.userName == globalStore.userProfile.username ? globalStore.userProfile.profile.games : globalStore.showProfile.profile.games)" :game="game"/> 
+                        </div>
+                        <div v-if="$route.params.userName == globalStore.userProfile.username && globalStore.userProfile.profile.games.length < 1 || 
+                                    $route.params.userName != globalStore.userProfile.username && globalStore.showProfile.profile.games.length < 1">
+                            <img src="https://i.gifer.com/7VE.gif">
                         </div>
 
-                        <MQ_ProfileBlock>User settings</MQ_ProfileBlock>
-                        <MQ_ProfileBlock>
+                        <MQ_ProfileBlock v-if="$route.params.userName == globalStore.userProfile.username">User settings</MQ_ProfileBlock>
+                        <MQ_ProfileBlock v-if="$route.params.userName == globalStore.userProfile.username">
                             <div class="flex justify-center sm:justify-between items-center mt-4 flex-wrap">
                                 <div class="flex flex-wrap justify-center items-center">
                                     <RouterLink to="/change-password">
@@ -58,13 +57,26 @@ const gameStore = useGameStore();
 </template>
 
 <script>
+import { useGameStore } from '@/stores/gameStore'
+import { useGlobalStore } from '@/stores/globalStore'
 import MQ_footer from '@/components/App/MQ_footer.vue';
 import MQ_UserCoverAndIcon from '@/components/UserProfile/MQ_UserCoverAndIcon.vue';
 import MQ_PlayedGame from '@/components/UserProfile/MQ_PlayedGame.vue';
 import MQ_ProfileBlock from '@/components/UserProfile/MQ_ProfileBlock.vue';
 
+let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
+
 export default {
     name: "UserProfileView",
     components: { MQ_footer, MQ_UserCoverAndIcon, MQ_PlayedGame, MQ_ProfileBlock },
+    setup() {
+        const gameStore = useGameStore();
+        const globalStore = useGlobalStore();
+        return { gameStore, globalStore }
+    },
+    async mounted() {
+        await wait(0.1);
+        await this.globalStore.getUserProfile(this.$route.params.userName);;
+    }
 }
 </script>

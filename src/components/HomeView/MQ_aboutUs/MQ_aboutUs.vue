@@ -10,14 +10,15 @@
                 <h2 class="text-sm md:text-base my-2 md:my-4 | transition-all duration-500">
                   It all started in the summer of 2021. when two friends and colleagues decided they wanted to create video games and fulfil their lifelong dreams.
                 </h2>
+
                 <h2 class="text-lg md:text-xl | transition-all duration-500">
                   Meet <a class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">blaskec</b> </a> and <a class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">zuza</b> </a> now!
                 </h2>
             </div>
 
             <div class="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-20 py-4">
-                <MQ_portrait :imageSrc="'src/assets/portraits/Portret_Luka_Big-noBG.png'"      :name="'Blaskec'"   :userName="'blaskec'"/>
-                <MQ_portrait :imageSrc="'src/assets/portraits/Portret_Alesandro_Big-noBG.png'" :name="'Zuza'"      :userName="'zuza'"/>
+                <MQ_portrait @click="$router.push('/user/blaskec')" :imageSrc="'src/assets/portraits/Portret_Luka_Big-noBG.png'"      :name="'Blaskec'"   :userName="'blaskec'"/>
+                <MQ_portrait @click="$router.push('/user/zuza')" :imageSrc="'src/assets/portraits/Portret_Alesandro_Big-noBG.png'" :name="'Zuza'"      :userName="'zuza'"/>
             </div>
 
         </div>
