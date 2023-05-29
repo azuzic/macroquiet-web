@@ -27,25 +27,25 @@ import Unoreverse from "@/assets/games/trophies/StrandedAway/Unoreverse.png";
 
 //CAROUSEL
 //DOGE
-import DogeC1 from "@/assets/carousel/Doge/2.jpg";
-import DogeC2 from "@/assets/carousel/Doge/1.jpg";
-import DogeC3 from "@/assets/carousel/Doge/3.jpg";
-import DogeC4 from "@/assets/carousel/Doge/4.jpg";
-import DogeC5 from "@/assets/carousel/Doge/5.jpg";
-import DogeC6 from "@/assets/carousel/Doge/6.jpg";
-import DogeC7 from "@/assets/carousel/Doge/7.jpg";
-import DogeC8 from "@/assets/carousel/Doge/8.jpg";
-import DogeC9 from "@/assets/carousel/Doge/9.jpg";
+import Doge1 from "@/assets/carousel/Doge/2.jpg";
+import Doge2 from "@/assets/carousel/Doge/1.jpg";
+import Doge3 from "@/assets/carousel/Doge/3.jpg";
+import Doge4 from "@/assets/carousel/Doge/4.jpg";
+import Doge5 from "@/assets/carousel/Doge/5.jpg";
+import Doge6 from "@/assets/carousel/Doge/6.jpg";
+import Doge7 from "@/assets/carousel/Doge/7.jpg";
+import Doge8 from "@/assets/carousel/Doge/8.jpg";
+import Doge9 from "@/assets/carousel/Doge/9.jpg";
 //STRANDED AWAY
-import SaC1 from "@/assets/carousel/StrandedAway/1.jpg";
-import SaC2 from "@/assets/carousel/StrandedAway/2.jpg";
-import SaC3 from "@/assets/carousel/StrandedAway/3.jpg";
-import SaC4 from "@/assets/carousel/StrandedAway/4.jpg";
-import SaC5 from "@/assets/carousel/StrandedAway/5.jpg";
-import SaC6 from "@/assets/carousel/StrandedAway/6.jpg";
-import SaC7 from "@/assets/carousel/StrandedAway/7.jpg";
-import SaC8 from "@/assets/carousel/StrandedAway/8.jpg";
-import SaC9 from "@/assets/carousel/StrandedAway/9.jpg";
+import StrandedAway1 from "@/assets/carousel/StrandedAway/1.jpg";
+import StrandedAway2 from "@/assets/carousel/StrandedAway/2.jpg";
+import StrandedAway3 from "@/assets/carousel/StrandedAway/3.jpg";
+import StrandedAway4 from "@/assets/carousel/StrandedAway/4.jpg";
+import StrandedAway5 from "@/assets/carousel/StrandedAway/5.jpg";
+import StrandedAway6 from "@/assets/carousel/StrandedAway/6.jpg";
+import StrandedAway7 from "@/assets/carousel/StrandedAway/7.jpg";
+import StrandedAway8 from "@/assets/carousel/StrandedAway/8.jpg";
+import StrandedAway9 from "@/assets/carousel/StrandedAway/9.jpg";
 
 //GAME
 //DOGE
@@ -86,8 +86,8 @@ const images = {
         Doge: { Bolt, Home, OHKO },
     },
     Carousel: {
-        StrandedAway: [SaC1, SaC5, SaC7, SaC2, SaC9, SaC3, SaC6, SaC4, SaC8],
-        Doge: [DogeC1, DogeC6, DogeC9, DogeC2, DogeC5, DogeC8, DogeC3, DogeC4, DogeC7],
+        StrandedAway: {StrandedAway1, StrandedAway5, StrandedAway7, StrandedAway2, StrandedAway9, StrandedAway3, StrandedAway6, StrandedAway4, StrandedAway8},
+        Doge: {Doge1, Doge6, Doge9, Doge2, Doge5, Doge8, Doge3, Doge4, Doge7},
     },
     GamePage: {
         StrandedAway: { GAME_SA_player_idle, GAME_SA_land, GAME_SA_cave, GAME_SA_swamp, GAME_SA_scene, 

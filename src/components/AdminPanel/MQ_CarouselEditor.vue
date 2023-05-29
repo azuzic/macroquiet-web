@@ -17,7 +17,7 @@
                 <div class="aspect-video | h-16 xs:h-28 md:h-24 lg:h-28 xl:h-36 2xl:h-48 | transition-all duration-300">
                     <div class="w-full h-full overflow-hidden bg-cover bg-center rounded-md drop-shadow-MQ relative | flex justify-center items-center
                         border-3 border-MQ_red border-opacity-0 hover:border-opacity-100 active:border-opacity-100 | transition-all duration-300" 
-                        :style="'background-image: url(' + item + ')'"></div>
+                        :style="'background-image: url(' + images.Carousel[carouselStore.activeCarouselName][item] + ')'"></div>
                 </div>
             </template>
         </draggable >
@@ -33,6 +33,7 @@ import StrandedAwayIcon from "@/assets/icons/gameIcons/StrandedAwayIcon.png";
 import DogeIcon from "@/assets/icons/gameIcons/DogeIcon.png";
 import { useCarouselStore } from '@/stores/carouselStore'
 import Draggable from "vue3-draggable";
+import { images } from "@/stores/images.js";
 
 export default {
     name: "MQ_CarouselEditor",
@@ -40,7 +41,7 @@ export default {
     props: {},
     setup() {
         const carouselStore = useCarouselStore()
-        return { carouselStore, defaultUserIcon, StrandedAwayIcon, DogeIcon }
+        return { carouselStore, defaultUserIcon, StrandedAwayIcon, DogeIcon, images }
     },
     data() {return {
         image: "",
