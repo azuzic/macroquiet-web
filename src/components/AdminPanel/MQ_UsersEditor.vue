@@ -12,7 +12,7 @@
                         <img class="h-6 md:h-7 aspect-square rounded-full mr-1" :src="user.register_method == 'MacroQuiet' ? macroQuietIcon : googleIcon">
 
                         <div class="text-MQ_light font-bold text-lg md:text-2xl w-8 md:w-12 text-right mr-2 md:mr-4">{{ i + 1 + "." }}</div>
-                        <img class="h-6 md:h-7 aspect-square rounded-full mr-1 md:mr-6" :src="user.profile.image.avatar != '' ? user.profile.image.avatar : defaultUserIcon" alt=""> 
+                        <img class="h-6 md:h-8 aspect-square rounded-full mr-1 md:mr-6" :src="user.profile.image.avatar != '' ? user.profile.image.avatar : defaultUserIcon" alt=""> 
  
                         <RouterLink :to="'/users/'+ user.username">
                             <div class="text-MQ_red text-sm md:text-xl font-bold hover:underline cursor-pointer w-48 text-left"> {{ user.username }} </div> 
