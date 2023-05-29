@@ -172,6 +172,17 @@ let User = {
             console.warn(detailedError);
         }
     },
+    async deleteProfile() {
+        try {
+            return Service.delete("users/current");
+        } catch (error) {
+            let detailedError = {
+                functionName: "User - deleteProfile",
+                error: error,
+            };
+            console.warn(detailedError);
+        }
+    },
 };
 
 let Admin = {

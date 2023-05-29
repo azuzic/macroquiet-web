@@ -11,6 +11,8 @@ import ChangePasswordView from "@/views/ChangePasswordView.vue";
 import ChangeUsernameView from "@/views/ChangeUsernameView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import AdminPanelView from "@/views/AdminPanelView.vue";
+import PrivacyPolicyView from "@/views/PrivacyPolicyView.vue";
+import DeleteProfileView from "@/views/DeleteProfileView.vue";
 import { useGlobalStore } from "@/stores/globalStore";
 
 const router = createRouter({
@@ -20,6 +22,11 @@ const router = createRouter({
             path: "/",
             name: "Home",
             component: HomeView,
+        },
+        {
+            path: "/privacy-policy",
+            name: "PrivacyPolicy",
+            component: PrivacyPolicyView,
         },
         {
             path: "/contact-us",
@@ -47,7 +54,7 @@ const router = createRouter({
             component: AdminPanelView,
         },
         {
-            path: "/user/:userName",
+            path: "/users/:userName",
             name: "User",
             component: UserProfileView,
             props: true,
@@ -71,6 +78,12 @@ const router = createRouter({
             props: true,
         },
         {
+            path: "/delete-profile",
+            name: "DeleteProfile",
+            component: DeleteProfileView,
+            props: true,
+        },
+        {
             path: "/:pathMatch(.*)*",
             name: "NotFound",
             component: PageNotFoundView,
@@ -85,6 +98,7 @@ router.beforeEach((to, from, next) => {
         "/register",
         "/contact-us",
         "/games/doge",
+        "/privacy-policy",
         "/games/stranded-away",
         "/register-with-google",
         "/reset-password/enter-email",

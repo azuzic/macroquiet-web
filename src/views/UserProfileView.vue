@@ -19,7 +19,6 @@
                         </div>
                         <div v-if="$route.params.userName == globalStore.userProfile.username && globalStore.userProfile.profile.games.length < 1 || 
                                     $route.params.userName != globalStore.userProfile.username && globalStore.showProfile.profile.games.length < 1">
-                            <img src="https://i.gifer.com/7VE.gif">
                         </div>
 
                         <MQ_ProfileBlock v-if="$route.params.userName == globalStore.userProfile.username">User settings</MQ_ProfileBlock>
@@ -39,10 +38,12 @@
                                         </div>
                                     </RouterLink>
                                 </div>
-                                <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-red-700 hover:bg-MQ_dark | text-MQ_dark hover:text-MQ_lighter
+                                <RouterLink to="/delete-profil">
+                                    <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-red-700 hover:bg-MQ_dark | text-MQ_dark hover:text-MQ_lighter
                                         border-MQ_dark border-2 rounded | transition-all duration-300 cursor-pointer w-fit | hover:border-MQ_lighter">
-                                    DELETE ACOUNT
-                                </div>
+                                        DELETE ACOUNT
+                                    </div>
+                                </RouterLink>
                             </div>
                         </MQ_ProfileBlock>
 

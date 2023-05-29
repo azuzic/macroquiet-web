@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="flex flex-col items-start pl-2 sm:pl-4 gap-1 sm:gap-4 grow h-24 sm:h-32 | transition-all duration-300">
-                <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center gap-2 drop-shadow-MQ z-10"> 
+                <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center drop-shadow-MQ z-10"> 
                     <!--USERNAME-->
-                    <div class="relative">
-                        <i v-if="globalStore.userProfile.admin" class="fa-solid fa-shield text-MQ_green peer"></i> 
+                    <div v-if="globalStore.userProfile.admin" class="relative mr-2">
+                        <i class="fa-solid fa-shield text-MQ_green peer"></i> 
                         <MQ_Tooltip>ADMIN</MQ_Tooltip>
                     </div>
                     {{ $route.params.userName == globalStore.userProfile.username ? globalStore.userProfile.username : globalStore.showProfile.username }} 

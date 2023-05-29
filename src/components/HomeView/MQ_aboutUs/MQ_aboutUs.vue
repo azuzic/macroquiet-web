@@ -17,8 +17,8 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-20 py-4">
-                <MQ_portrait @click="$router.push('/user/blaskec')" :imageSrc="'src/assets/portraits/Portret_Luka_Big-noBG.png'"      :name="'Blaskec'"   :userName="'blaskec'"/>
-                <MQ_portrait @click="$router.push('/user/zuza')" :imageSrc="'src/assets/portraits/Portret_Alesandro_Big-noBG.png'" :name="'Zuza'"      :userName="'zuza'"/>
+                <MQ_portrait @click="$router.push('/users/blaskec')" :imageSrc="'src/assets/portraits/Portret_Luka_Big-noBG.png'"      :name="'Blaskec'"   :userName="'blaskec'"/>
+                <MQ_portrait @click="$router.push('/users/zuza')" :imageSrc="'src/assets/portraits/Portret_Alesandro_Big-noBG.png'" :name="'Zuza'"      :userName="'zuza'"/>
             </div>
 
         </div>
