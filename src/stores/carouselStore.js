@@ -44,15 +44,18 @@ export const useCarouselStore = defineStore("carouselStore", {
         changeStyle(value) {
             switch (value) {
                 case "Stranded Away": 
-                    this.pictures = this.carousels.filter(carousel => carousel.name == "StrandedAway")[0].pictures; 
+                    //this.pictures = this.carousels.filter(carousel => carousel.name == "StrandedAway")[0].pictures; 
+                    this.pictures = images.Carousel.StrandedAway,
                     this.activeCarouselID = "646ba59dd606be791f1f72e6"; 
                     break;
                 case "Doge": 
-                    this.pictures = this.carousels.filter(carousel => carousel.name == "Doge")[0].pictures; 
+                    //this.pictures = this.carousels.filter(carousel => carousel.name == "Doge")[0].pictures; 
+                    this.pictures = images.Carousel.Doge,
                     this.activeCarouselID = "646ba607ed2f21076cb4fb26"; 
                     break;
                 default: 
-                    this.pictures = this.carousels.filter(carousel => carousel.name == "StrandedAway")[0].pictures; 
+                    //this.pictures = this.carousels.filter(carousel => carousel.name == "StrandedAway")[0].pictures; 
+                    this.pictures = images.Carousel.StrandedAway,
                     this.activeCarouselID = "646ba59dd606be791f1f72e6"; 
                     break;
             }

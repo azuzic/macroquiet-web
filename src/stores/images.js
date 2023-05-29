@@ -86,8 +86,8 @@ const images = {
         Doge: { Bolt, Home, OHKO },
     },
     Carousel: {
-        StrandedAway: [SaC1, SaC2, SaC3, SaC4, SaC5, SaC6, SaC7, SaC8, SaC9],
-        Doge: [DogeC1, DogeC2, DogeC3, DogeC4, DogeC5, DogeC6, DogeC7, DogeC8, DogeC9],
+        StrandedAway: [SaC1, SaC5, SaC7, SaC2, SaC9, SaC3, SaC6, SaC4, SaC8],
+        Doge: [DogeC1, DogeC6, DogeC9, DogeC2, DogeC5, DogeC8, DogeC3, DogeC4, DogeC7],
     },
     GamePage: {
         StrandedAway: { GAME_SA_player_idle, GAME_SA_land, GAME_SA_cave, GAME_SA_swamp, GAME_SA_scene, 
