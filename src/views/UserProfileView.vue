@@ -25,16 +25,16 @@
                         <MQ_ProfileBlock v-if="$route.params.userName == globalStore.userProfile.username">
                             <div class="flex justify-center sm:justify-between items-center mt-4 flex-wrap">
                                 <div class="flex flex-wrap justify-center items-center">
-                                    <RouterLink to="/change-password">
-                                        <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
-                                            hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
-                                            Change Password
-                                        </div>
-                                    </RouterLink>
                                     <RouterLink to="/change-username">
                                         <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
                                             hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
                                             Change Username
+                                        </div>
+                                    </RouterLink>
+                                    <RouterLink to="/change-password">
+                                        <div class="px-5 py-1.5 mr-4 mb-4 | text-sm whitespace-nowrap | bg-transparent hover:bg-MQ_red | text-MQ_light hover:text-MQ_dark
+                                            hover:font-bold | border-MQ_red border-2 rounded | transition-all duration-300 cursor-pointer w-fit">
+                                            Change Password
                                         </div>
                                     </RouterLink>
                                 </div>

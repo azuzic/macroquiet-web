@@ -8,11 +8,11 @@
                 <div class="flex flex-col w-full justify-between items-center gap-2">
 
                     <!--GOOGLE LOGIN-->
-                    <div class="flex justify-center items-center gap-4 -mt-2 md:-mt-4 lg:-mt-8">
+                    <div v-if="false" class="flex justify-center items-center gap-4 -mt-2 md:-mt-4 lg:-mt-8">
                         <MQ_GoogleLogInButton text="Log in"/>
                     </div>
 
-                    <MQ_h2_small :white="true" text="OR" class="mb-8 mt-2 px-4"/>
+                    <MQ_h2_small v-if="false" :white="true" text="OR" class="mb-8 mt-2 px-4"/>
 
                     <!--INPUTS-->
                     <MQ_textInput label="E-mail" icon="envelope" />
