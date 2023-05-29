@@ -7,7 +7,7 @@ const globalStore = useGlobalStore()
 <template>
     <router-link @click="globalStore.changeStyle('default'); carouselStore.changeStyle('default');" 
         to="/" class="h-full shrink flex justify-center items-center group | waviy">
-        <img class="cursor-pointer h-full min-w-fit | ml-6 lg:ml-8 | group-hover:rotate-180 | transition-all duration-1000" src="@/assets/Logos/macroquiet_logo_icon.png">
+        <img class="cursor-pointer aspect-square h-full min-w-fit | ml-6 lg:ml-8 | group-hover:rotate-180 | transition-all duration-1000" src="@/assets/Logos/macroquiet_logo_icon.png">
         <div class="logo_font text-MQ_red pt-2 pl-2 | transition-all duration-300">
             <div class="text-2xl font-bold tracking-wide flex | transition-all duration-300"> 
                 <span style="--i:1">M</span>
