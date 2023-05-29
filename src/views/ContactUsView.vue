@@ -34,10 +34,10 @@
             
             <img @click="left = true" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 right-[10%] z-10 cursor-pointer 
                 transition-all duration-500  hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-[85px]" 
-                src="src/assets/icons/trader_robot_idle.gif" :class="left ? 'opacity-0' : ''">
+                :src="trader_robot_idle" :class="left ? 'opacity-0' : ''">
             <img @click="left = false" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 left-[10%] -scale-x-100 z-10 cursor-pointer 
                 transition-all duration-500 hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-[85px]" 
-                src="src/assets/icons/trader_robot_idle.gif" :class="left ? '' : 'opacity-0'">
+                :src="trader_robot_idle" :class="left ? '' : 'opacity-0'">
             
         </div>
         <MQ_footer/>
@@ -55,6 +55,7 @@ import { object, string } from 'yup';
 import emailjs from "@emailjs/browser";
 import MQ_footer from '@/components/App/MQ_footer.vue';
 import macroquiet_logo_icon from "@/assets/Logos/macroquiet_logo_icon.png";
+import trader_robot_idle from "@/assets/icons/trader_robot_idle.gif";
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -72,7 +73,7 @@ export default {
             "E-mail": string().required().email().label("Email"),
         });
         return {
-            schema, macroquiet_logo_icon
+            schema, macroquiet_logo_icon, trader_robot_idle
         };
     },
     data() {

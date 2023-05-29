@@ -1,3 +1,7 @@
+<script setup>
+import Portret_Luka_Big_noBG from "@/assets/portraits/Portret_Luka_Big-noBG.png";
+import Portret_Alesandro_Big_noBG from "@/assets/portraits/Portret_Alesandro_Big-noBG.png";
+</script>
 <template>
     <div id="about" class="relative bg-gradient-to-b from-MQ_dark to-MQ_darkblue w-full opacity-90">
         <hr class="border-2 border-MQ_light drop-shadow-MQ relative">
@@ -17,8 +21,8 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-20 py-4">
-                <MQ_portrait @click="$router.push('/users/blaskec')" :imageSrc="'src/assets/portraits/Portret_Luka_Big-noBG.png'"      :name="'Blaskec'"   :userName="'blaskec'"/>
-                <MQ_portrait @click="$router.push('/users/zuza')" :imageSrc="'src/assets/portraits/Portret_Alesandro_Big-noBG.png'" :name="'Zuza'"      :userName="'zuza'"/>
+                <MQ_portrait @click="$router.push('/users/blaskec')" :imageSrc="Portret_Luka_Big_noBG"      :name="'Blaskec'"   :userName="'blaskec'"/>
+                <MQ_portrait @click="$router.push('/users/zuza')" :imageSrc="Portret_Alesandro_Big_noBG" :name="'Zuza'"      :userName="'zuza'"/>
             </div>
 
         </div>
