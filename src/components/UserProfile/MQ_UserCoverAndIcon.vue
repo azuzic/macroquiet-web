@@ -54,7 +54,7 @@
                         outline-none peer caret-MQ_light resize-none | transition-all duration-300 border-MQ_light border-opacity-5 focus:border-opacity-25" :maxlength="1000" rows="4"
                         :class="[globalStore.editing ? 'bg-opacity-10 border' : 'bg-opacity-0', submitting || type != 'none' ? 'h-0 opacity-0 delay-0' : 'h-full opacity-100']"></textarea>    
                     <img class="absolute | animate-spin_slow transition-all duration-500"
-                        src="@/assets/Logos/macroquiet_logo_icon.png"
+                        :src="macroquiet_logo_icon"
                         :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
                     <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
                         class="absolute w-full h-14 sm:h-auto top-0 text-xs sm:text-lg">
@@ -94,6 +94,7 @@ import MQ_alert from '@/components/Global/MQ_alerts/MQ_alert.vue';
 import { User } from "@/services";
 import { useGlobalStore } from '@/stores/globalStore';
 import MQ_Tooltip from '@/components/Global/MQ_Tooltip.vue';
+import macroquiet_logo_icon from "@/assets/Logos/macroquiet_logo_icon.png";
 
 let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 
@@ -102,7 +103,7 @@ export default {
     components: { MQ_textAreaInput, MQ_alert, MQ_Tooltip },
     setup() {
         const globalStore = useGlobalStore()
-        return { globalStore, userCover, userIcon }
+        return { globalStore, userCover, userIcon, macroquiet_logo_icon }
     },
     data() { return { 
         showPreviousUsername: false,

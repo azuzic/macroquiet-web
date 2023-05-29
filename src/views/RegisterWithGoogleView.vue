@@ -20,7 +20,7 @@
                             <div class="absolute h-full left-0 w-0 group-hover:w-full bg-MQ_light group-hover:bg-MQ_red | transition-all duration-500"></div>
                         </button>
                         <img class="absolute | animate-spin_slow transition-all duration-500"
-                            src="src/assets/Logos/macroquiet_logo_icon.png"
+                            :src="macroquiet_logo_icon"
                             :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
 
                         <MQ_alert :show="type == 'success'" color="rgb(12, 173, 134)" icon="fa-solid fa-circle-check"
@@ -45,6 +45,7 @@ import { Form, Field } from 'vee-validate';
 import { object, string } from 'yup';
 import MQ_GoogleLogInButton from '@/components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
 import MQ_footer from '@/components/App/MQ_footer.vue';
+import macroquiet_logo_icon from "@/assets/Logos/macroquiet_logo_icon.png";
 
 let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 
@@ -57,7 +58,7 @@ export default {
                 .matches(/^[^!@?#$%/-^"&*\\+=<>:;|~]*$/, { message: 'No symbols' })
                 .test( str => str.indexOf(' ') == -1 )
         });
-        return { schema, };
+        return { schema, macroquiet_logo_icon };
     },
     data() {
         return {

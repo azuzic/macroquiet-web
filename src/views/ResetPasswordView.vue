@@ -22,7 +22,7 @@
                             <div class="absolute h-full left-0 w-0 group-hover:w-full bg-MQ_light group-hover:bg-MQ_red | transition-all duration-500"></div>
                         </button>
                         <img class="absolute | animate-spin_slow transition-all duration-500"
-                            src="@/assets/Logos/macroquiet_logo_icon.png"
+                            :src="macroquiet_logo_icon"
                             :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
 
                         <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
@@ -53,7 +53,7 @@
                             <div class="absolute h-full left-0 w-0 group-hover:w-full bg-MQ_light group-hover:bg-MQ_red | transition-all duration-500"></div>
                         </button>
                         <img class="absolute | animate-spin_slow transition-all duration-500"
-                            src="@/assets/Logos/macroquiet_logo_icon.png"
+                            :src="macroquiet_logo_icon"
                             :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
 
                         <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
@@ -86,6 +86,7 @@ import MQ_h2_small from '@/components/Global/MQ_h2/MQ_h2_small.vue';
 import MQ_GoogleLogInButton from '@/components/Global/MQ_inputs/MQ_GoogleLogInButton.vue';
 import MQ_footer from '@/components/App/MQ_footer.vue';
 import { Public } from "@/services";
+import macroquiet_logo_icon from "@/assets/Logos/macroquiet_logo_icon.png";
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
@@ -105,7 +106,7 @@ export default {
             "E-mail": Yup.string().required().email().label("Email"),
         });
         return {
-            schema, schema2
+            schema, schema2, macroquiet_logo_icon
         };
     },
     data() {

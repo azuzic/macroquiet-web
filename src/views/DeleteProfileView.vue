@@ -19,7 +19,7 @@
                                 <div class="absolute h-full left-0 w-0 group-hover:w-full bg-MQ_light group-hover:bg-MQ_red | transition-all duration-500"></div>
                             </button>
                             <img class="absolute | animate-spin_slow transition-all duration-500"
-                                src="@/assets/Logos/macroquiet_logo_icon.png"
+                                :src="macroquiet_logo_icon"
                                 :class="submitting ? 'h-16 opacity-100 delay-500' : 'h-0 opacity-0 delay-0'">
 
                             <MQ_alert :show="type == 'warning'" color="rgb(220, 38, 68)" icon="fa-solid fa-triangle-exclamation"
@@ -53,6 +53,7 @@ import MQ_GoogleLogInButton from '@/components/Global/MQ_inputs/MQ_GoogleLogInBu
 import MQ_footer from '@/components/App/MQ_footer.vue';
 import { User, Auth } from "@/services";
 import { useGlobalStore } from '@/stores/globalStore'
+import macroquiet_logo_icon from "@/assets/Logos/macroquiet_logo_icon.png";
 
 let wait = function (seconds) { return new Promise((resolveFn) => { setTimeout(resolveFn, seconds * 1000); }); };
 
@@ -66,7 +67,7 @@ export default {
                                 .test("match-username", "Username must match current username", function (value) {
                                 return value === this.resolve(globalStore.userProfile.username);}),
         });
-        return { schema, globalStore };
+        return { schema, globalStore, macroquiet_logo_icon };
     },
     data() {
         return {
