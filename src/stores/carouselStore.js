@@ -57,14 +57,17 @@ export const useCarouselStore = defineStore("carouselStore", {
                 case "Stranded Away": 
                     this.pictures = this.carousels.filter(carousel => carousel.name == "StrandedAway")[0].pictures; 
                     this.activeCarouselID = "646ba59dd606be791f1f72e6"; 
+                    this.activeCarouselName = "StrandedAway";
                     break;
                 case "Doge": 
                     this.pictures = this.carousels.filter(carousel => carousel.name == "Doge")[0].pictures; 
                     this.activeCarouselID = "646ba607ed2f21076cb4fb26"; 
+                    this.activeCarouselName = "Doge";
                     break;
                 default: 
                     this.pictures = this.carousels.filter(carousel => carousel.name == "StrandedAway")[0].pictures; 
                     this.activeCarouselID = "646ba59dd606be791f1f72e6"; 
+                    this.activeCarouselName = "StrandedAway";
                     break;
             }
         }
