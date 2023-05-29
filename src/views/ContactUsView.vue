@@ -1,10 +1,10 @@
 <template>
-    <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto">
+    <div class="grow flex flex-col justify-between items-start pt-16 absolute overflow-y-auto relative">
         <div class="flex flex-col | justify-center items-center bg-red | bg-opacity-30 py-2 px-14 | w-full">
             
             <MQ_h2 :small="true" class="w-full" text="Contact us!"/>
 
-            <Form @submit="onSubmit" class="w-full max-w-md flex gap-2" :validation-schema="schema">
+            <Form @submit="onSubmit" class="w-full max-w-md flex gap-2 relative" :validation-schema="schema">
                 <div class="flex flex-col w-full justify-between items-center gap-2">
                     <MQ_textInput label="Name" icon="user"/>
                     <MQ_textInput label="E-mail" icon="envelope"/>
@@ -31,15 +31,13 @@
                     
                 </div>
             </Form>
-            
-            <img @click="left = true" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 right-[10%] z-10 cursor-pointer 
-                transition-all duration-500  hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-[85px]" 
-                :src="trader_robot_idle" :class="left ? 'opacity-0' : ''">
-            <img @click="left = false" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 left-[10%] -scale-x-100 z-10 cursor-pointer 
-                transition-all duration-500 hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-[85px]" 
-                :src="trader_robot_idle" :class="left ? '' : 'opacity-0'">
-            
         </div>
+        <img @click="left = true" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 right-[10%] z-10 cursor-pointer 
+            transition-all duration-500  hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-[85px]" 
+            :src="trader_robot_idle" :class="left ? 'opacity-0' : ''">
+        <img @click="left = false" class="rendering-pixelated absolute h-36 xs:h-44 sm:h-52 lg:h-64 left-[10%] -scale-x-100 z-10 cursor-pointer 
+            transition-all duration-500 hover:drop-shadow-pixelArt-2 sm:hover:drop-shadow-pixelArt-3 lg:hover:drop-shadow-pixelArt-4 bottom-[85px]" 
+            :src="trader_robot_idle" :class="left ? '' : 'opacity-0'">
         <MQ_footer/>
     </div>
 </template>
