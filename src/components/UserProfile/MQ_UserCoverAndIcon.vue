@@ -21,7 +21,7 @@
                     transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ"
                     :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0'">
                     CHANGE <br> AVATAR
-                </div>
+                </div> 
             </div>
             <div class="flex flex-col items-start pl-2 sm:pl-4 gap-1 sm:gap-4 grow h-24 sm:h-32 | transition-all duration-300">
                 <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center drop-shadow-MQ z-10"> 
@@ -37,7 +37,7 @@
                         </i>
                         <div @mouseleave ="showPreviousUsername = false" v-if="showPreviousUsername" 
                             class="absolute left-4 -top-12 z-50 w-fit h-fit bg-MQ_dark bg-opacity-40 p-2 rounded-md gap-1 flex flex-col
-                                text-MQ_light font-normal cursor-default text-xs">
+                                text-MQ_light font-normal cursor-default text-xs border border-MQ_light border-opacity-10">
                             <div class="whitespace-nowrap text-xs sm:text-sm"> Previous usernames: </div>
                             <div v-for="u in ($route.params.userName == globalStore.userProfile.username ? globalStore.userProfile.former_usernames : globalStore.showProfile.former_usernames)">{{u}}</div>
                         </div>
