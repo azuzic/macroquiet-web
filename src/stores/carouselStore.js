@@ -41,7 +41,12 @@ export const useCarouselStore = defineStore("carouselStore", {
         },
         async updateCarousel() {
             try {
-                await Admin.patchData("carousel/" + this.activeCarouselID , { pictures: this.pictures });
+                const extracted = this.pictures.map(str => {
+                    const regex = /\/assets\/(\d+)-/;
+                    const match = regex.exec(str);
+                    return match ? (this.activeCarouselName + match[1]) : str;
+                });
+                await Admin.patchData("carousel/" + this.activeCarouselID , { pictures: extracted });
             } catch (error) {
                 console.warn("!!!updateCarousel!!!", error);
             }
