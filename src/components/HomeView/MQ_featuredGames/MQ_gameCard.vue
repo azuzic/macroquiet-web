@@ -7,7 +7,7 @@ const carouselStore = useCarouselStore()
  
 <template>
     <div
-        class="min-w-[240px] | w-[240px] h-[300px] lg:w-[300px] lg:h-[360px] xl:w-[340px] xl:h-[380px] 2xl:w-[350px] 2xl:h-[420px] | snap-center
+        class="min-w-[240px] | w-[260px] h-[360px] lg:w-[300px] lg:h-[360px] xl:w-[340px] xl:h-[380px] 2xl:w-[350px] 2xl:h-[420px] | snap-center
     flex flex-col overflow-hidden | group | rounded-t-lg | bg-MQ_dark bg-opacity-75 hover:bg-opacity-60 | drop-shadow-md hover:drop-shadow-MQ | transition-all duration-500">
 
         <div @click="globalStore.changeStyle(game.title); carouselStore.changeStyle(game.title);" 

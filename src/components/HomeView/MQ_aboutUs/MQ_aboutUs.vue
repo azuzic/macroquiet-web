@@ -9,15 +9,15 @@ import Portret_Alesandro_Big_noBG from "@/assets/portraits/Portret_Alesandro_Big
 
             <MQ_h2 class="w-full" text="ABOUT US"/>
 
-            <div class="text-center text-MQ_light px-2 max-w-2xl">
-                <h1 class="text-lg md:text-xl | transition-all duration-500">We are a two person Indie Game Developer Studio from <b class="text-red-400">Cro</b><b class="text-MQ_lighter">at</b><b class="text-blue-400">ia</b>.</h1>
+            <div class="text-center text-MQ_light px-2 max-w-3xl">
+                <h1 class="text-lg md:text-xl | transition-all duration-500">We are a two-person Indie Game Development Studio from <b class="text-red-400">Cro</b><b class="text-MQ_lighter">at</b><b class="text-blue-400">ia</b>.</h1>
                 <h2 class="text-sm md:text-base my-2 md:my-4 | transition-all duration-500">
                   It all started in the summer of 2021. when two friends and colleagues decided they wanted to create video games and fulfil their lifelong dreams.
                 </h2>
 
                 <h2 class="text-lg md:text-xl | transition-all duration-500">
-                  Meet <a @click="$router.push('/users/blaskec')" class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">blaskec</b> </a> and 
-                  <a @click="$router.push('/users/zuza')" class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">zuza</b> </a> now!
+                  Now, let's meet <a @click="$router.push('/users/blaskec')" class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">blaskec</b> </a> and 
+                  <a @click="$router.push('/users/zuza')" class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">zuza</b> </a>
                 </h2>
             </div>
 
