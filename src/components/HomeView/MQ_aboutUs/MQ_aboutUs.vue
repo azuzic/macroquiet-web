@@ -16,7 +16,8 @@ import Portret_Alesandro_Big_noBG from "@/assets/portraits/Portret_Alesandro_Big
                 </h2>
 
                 <h2 class="text-lg md:text-xl | transition-all duration-500">
-                  Meet <a class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">blaskec</b> </a> and <a class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">zuza</b> </a> now!
+                  Meet <a @click="$router.push('/users/blaskec')" class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">blaskec</b> </a> and 
+                  <a @click="$router.push('/users/zuza')" class="text-MQ_red cursor-pointer group"> @<b class="group-hover:underline">zuza</b> </a> now!
                 </h2>
             </div>
 
