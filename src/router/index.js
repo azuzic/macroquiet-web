@@ -91,7 +91,7 @@ const router = createRouter({
     ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     const publicPages = [
         "/",
         "/login",
@@ -110,7 +110,17 @@ router.beforeEach((to, from, next) => {
 
     const globalStore = useGlobalStore();
     const userLocalStorage = Auth.getLocalStorage();
+
     if (userLocalStorage) globalStore.userLocalStorage = userLocalStorage;
+    document.title = `${to.path.includes("users") ? to.params.userName : to.name} - MacroQuiet`;
+
+    if (to.path.includes("users")) {
+        let response = await globalStore.getUserProfile(to.params.userName);
+        if (!response) {
+            next("/no-user-found");
+            return;
+        }
+    }
 
     if (userRequired && !userLocalStorage && !passwordReset) {
         next("/login");

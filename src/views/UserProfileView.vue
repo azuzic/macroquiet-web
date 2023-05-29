@@ -75,9 +75,5 @@ export default {
         const globalStore = useGlobalStore();
         return { gameStore, globalStore }
     },
-    async mounted() {
-        await wait(0.1);
-        await this.globalStore.getUserProfile(this.$route.params.userName);;
-    }
 }
 </script>

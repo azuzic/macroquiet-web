@@ -111,7 +111,8 @@ export const useGlobalStore = defineStore("globalStore", {
             this.update = true;
             this.editing = false;
             let response = await User.getSpecificProfile(value);
-            this.showProfile = response.userData.data;
+            if (response) this.showProfile = response.userData.data;
+            return response;
         }
     },
 });
