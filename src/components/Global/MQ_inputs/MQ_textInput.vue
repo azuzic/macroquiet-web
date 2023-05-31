@@ -4,11 +4,14 @@
         <div class="relative z-0 w-full mb-6 group">
             <Field :name="label" :rules="rules" v-slot="{ field, errorMessage }">
             
-                <input :type="password && hide ? 'password' : 'text'" v-bind="field" placeholder=" " class="block  py-2.5 px-0 w-full text-sm bg-transparent appearance-none 
+                <input :type="password && hide ? 'password' : 'text'" v-bind="field" placeholder=" " class="block  py-2.5 pl-0 pr-8 w-full text-sm bg-transparent appearance-none 
                     focus:outline-none focus:ring-0 peer caret-MQ_light -z-10" :maxlength="max ? max : 10000"
                     :class="errorMessage ? 'text-MQ_red' : 'text-MQ_light'"/>
+                <MQ_Tooltip v-if="tooltip">
+                    <slot></slot>
+                </MQ_Tooltip>
 
-                <div class="absolute right-0 top-3 flex justify-center items-center w-6">
+                <div class="absolute right-0 top-3 flex justify-center items-center w-6 z-10">
                     <i v-if="password" @click="hide = !hide" class="cursor-pointer text-MQ_light text-opacity-75 fa-solid text-lg hover:text-MQ_lighter | transition-all duration-300" :class="hide ? 'fa-eye-slash' : 'fa-eye'"></i>
                 </div>
 
@@ -31,17 +34,22 @@
 
 <script>
 import { Field, ErrorMessage } from 'vee-validate';
+import MQ_Tooltip from '@/components/Global/MQ_Tooltip.vue';
 
 export default {
     name: "MQ_textInput",
-    components: { Field, ErrorMessage },
+    components: { Field, ErrorMessage, MQ_Tooltip },
     data() { return {  hide: true } },
     props: {
         label: String,
         rules: Object,
         icon: String,
         password: Boolean,
-        max: Number
+        max: Number,
+        tooltip: {
+            default: false,
+            type: Boolean
+        }
     },
 }
 </script>

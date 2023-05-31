@@ -17,7 +17,13 @@
                     <!--INPUTS-->
                     <MQ_textInput label="Username" icon="user" :max="24"/>
                     <MQ_textInput label="E-mail" icon="envelope" />
-                    <MQ_textInput :password="true" label="Password" icon="key" />
+                    <MQ_textInput :password="true" label="Password" icon="key" :tooltip="true" :max="24">
+                        <p> Password must be at least <b class="text-MQ_red">8</b> characters and contain: </p>
+                        <p>- One <b class="text-MQ_red">Lowercase</b> Character</p>
+                        <p>- One <b class="text-MQ_red">Uppercase</b> Character</p>
+                        <p>- One <b class="text-MQ_red">Special</b> Character</p>
+                        <p>- One <b class="text-MQ_red">Number</b> Character</p>
+                    </MQ_textInput>
                     <MQ_textInput :password="true" label="Password confirm" icon="key" />
 
                     <!--SUBMIT-->
@@ -85,7 +91,11 @@ export default {
             "Username": string().required().label("Username")
                         .matches(/^[^!@?#$%\/\-^"&*\\+=<>:;|~\s]*$/, { message: 'No symbols' })
                         .test( str => str.indexOf(' ') == -1 ),
-            "Password": string().required().label("Password"),
+            "Password": string().required().label("Password").min(8)
+                        .matches(/^(?=.*[A-Z])/,"Must Contain One Uppercase Character")
+                        .matches(/^(?=.*[a-z])/,"Must Contain One Lowercase Character")
+                        .matches(/^(?=.*[0-9])/,"Must Contain One Number Character")
+                        .matches(/^(?=.*[!@#\$%\^&\*])/,"Must Contain One Special Case Character"),
             "Password confirm": string().required().label("Password confirm"),
             "E-mail": string().required().email().label("Email"),
         });

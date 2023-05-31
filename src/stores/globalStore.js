@@ -113,6 +113,30 @@ export const useGlobalStore = defineStore("globalStore", {
             let response = await User.getSpecificProfile(value);
             if (response) this.showProfile = response.userData.data;
             return response;
+        },
+        async wait(seconds) {
+            await wait(seconds);
+        },
+        async getImageWidthHeight(img) {
+            // Create a Promise to await image loading
+            const loadImage = new Promise((resolve, reject) => {
+                const image = new Image();
+                image.onload = () => {
+                resolve({ width: image.width, height: image.height });
+                };
+                image.onerror = () => {
+                reject(new Error('Failed to load image'));
+                };
+                image.src = URL.createObjectURL(img);
+            });
+
+            try {
+                // Wait for the image to load
+                const { width, height } = await loadImage;
+                return {"width": width, "height": height}
+            } catch (error) {
+                console.error(error);
+            }
         }
     },
 });

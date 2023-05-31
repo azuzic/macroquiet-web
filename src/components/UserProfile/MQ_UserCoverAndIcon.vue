@@ -3,26 +3,48 @@
         xs:px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 2xl:px-80 3xl:px-96 | flex justify-between items-end" :style="'background-image: url(' + readImageCover + ');'">
         <div class="w-full h-full bg-gradient-to-b from-MQ_dark opacity-25 absolute top-0 left-0"></div>
         <div class="w-full h-full bg-gradient-to-t from-MQ_dark opacity-25 absolute top-0 left-0"></div>
-        <v-image-input class="MQ_upload absolute peer overflow-hidden z-50 centered" :class="globalStore.editing ? 'opacity-100 w-36 h-10' : 'opacity-0 w-16 h-0 pointer-events-none'"
-        @change="updateUserProfileCover(image)" v-model="globalStore.userProfile.profile.image.cover"/>
-        <div class="text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red border-2 rounded overflow-hidden flex justify-center items-center
-            transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ absolute centered"
-            :class="globalStore.editing ? 'opacity-100 w-32 sm:w-36 h-9 sm:h-10' : 'opacity-0 w-16 h-0'">
-            CHANGE COVER
+        
+        <div class="absolute centered">
+            <v-image-input class="MQ_upload absolute peer overflow-hidden z-50 centered" 
+            :class="globalStore.editing ? 'opacity-100 w-36 h-10' : 'opacity-0 w-16 h-0 pointer-events-none'"
+            @change="updateUserProfileCover(image)" v-model="globalStore.userProfile.profile.image.cover"/>
+            <MQ_Tooltip v-if="globalStore.editing" class="-top-6">
+                Recomended resolution: <b class="text-MQ_red">1920 x 1080</b>
+            </MQ_Tooltip>
+            <div class="text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red border-2 rounded overflow-hidden flex justify-center items-center
+                transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ absolute centered"
+                :class="globalStore.editing ? 'opacity-100 w-32 sm:w-36 h-9 sm:h-10' : 'opacity-0 w-16 h-0'">
+                CHANGE COVER
+            </div>
+            <div class="absolute mt-9 whitespace-nowrap centered text-MQ_light text-xs drop-shadow-MQ transition-all duration-300"
+            :class="globalStore.editing ? 'opacity-100' : 'opacity-0'">
+                Max size: <b class="text-MQ_red">2MB</b>
+            </div>
         </div>
         <div class="pl-2 sm:pl-4 py-2 sm:py-4 flex grow justify-start items-end | transition-all duration-300">
             <!--USER ICON-->
-            <div class="w-24 sm:w-32 aspect-square rounded-md bg-cover bg-center | flex justify-center items-center | relative px-4 drop-shadow-MQ overflow-hidden | transition-all duration-300" 
-                :style="'background-image: url(' + readImageAvatar + ');'">
-                <div class="absolute bg-MQ_dark w-full h-full transition-all duration-300" :class="globalStore.editing ? 'bg-opacity-75' : 'bg-opacity-0'"></div>
-                <v-image-input class="MQ_upload absolute peer overflow-hidden z-[200]" :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0 pointer-events-none'"
-                @change="updateUserProfileAvatar(image)" v-model="globalStore.userProfile.profile.image.avatar"/>
-                <div class="px-5 py-1.5 | text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red rounded flex justify-center items-center
-                    transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ"
-                    :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0'">
-                    CHANGE <br> AVATAR
+            <div class="relative w-24 sm:w-32 aspect-square group/tooltip">
+                <div class="w-24 sm:w-32 aspect-square rounded-md bg-cover bg-center | flex justify-center items-center
+                        relative px-4 drop-shadow-MQ overflow-hidden | transition-all duration-300" 
+                    :style="'background-image: url(' + readImageAvatar + ');'">
+                    <div class="absolute bg-MQ_dark w-full h-full transition-all duration-300" :class="globalStore.editing ? 'bg-opacity-75' : 'bg-opacity-0'"></div>
+                    <v-image-input class="MQ_upload absolute peer overflow-hidden z-[200]" :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0 pointer-events-none'"
+                    @change="updateUserProfileAvatar(image)" v-model="globalStore.userProfile.profile.image.avatar"/>
+                    <div class="px-5 py-1.5 | text-xs sm:text-sm whitespace-nowrap | bg-transparent | text-MQ_light border-MQ_red rounded flex justify-center items-center
+                        transition-all duration-300 | peer-hover:bg-MQ_red peer-hover:text-MQ_dark peer-hover:font-bold text-center z-10 drop-shadow-MQ"
+                        :class="globalStore.editing ? 'opacity-100 w-full h-14' : 'opacity-0 w-16 h-0'">
+                        CHANGE <br> AVATAR
+                    </div>
+                    <div class="text-center absolute mt-12 whitespace-nowrap centered text-MQ_light text-xs drop-shadow-MQ transition-all duration-300"
+                    :class="globalStore.editing ? 'opacity-100' : 'opacity-0'">
+                        Max size: <b class="text-MQ_red">512KB</b>
+                    </div>
                 </div> 
+                <MQ_Tooltip v-if="globalStore.editing">
+                    Recomended resolution: <b class="text-MQ_red">256 x 256</b>
+                </MQ_Tooltip>
             </div>
+            
             <div class="flex flex-col items-start pl-2 sm:pl-4 gap-1 sm:gap-4 grow h-24 sm:h-32 | transition-all duration-300">
                 <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center drop-shadow-MQ z-10"> 
                     <!--USERNAME-->
@@ -157,11 +179,35 @@ export default {
         },
         async updateUserProfileAvatar() {
             this.formDataImageAvatar = new FormData();
+            
+            const imageSizeMB = this.globalStore.userProfile.profile.image.avatar.size / (1024 * 1024);
+            console.log(imageSizeMB);
+            if (imageSizeMB > 0.512) {
+                this.globalStore.userProfile.profile.image.avatar = this.tempAvatarSave;
+                this.response = "Avatar image is to big! Recomended avatar image size is 256 x 256";
+                this.type = "warning";
+                await wait(2.5);
+                this.type = "none";
+                return;
+            } else this.type = "none";
+
             this.formDataImageAvatar.append("image", this.globalStore.userProfile.profile.image.avatar);
             this.formDataImageAvatar.append("type", "avatar");
         },
         async updateUserProfileCover() {
             this.formDataImageCover = new FormData();
+
+            const imageSizeMB = this.globalStore.userProfile.profile.image.cover.size / (1024 * 1024);
+            console.log(imageSizeMB);
+            if (imageSizeMB > 2) {
+                this.globalStore.userProfile.profile.image.cover = this.tempCoverSave;
+                this.response = "Cover image is to big! Recomended cover image size is 1920 x 1080";
+                this.type = "warning";
+                await wait(2.5);
+                this.type = "none";
+                return;
+            } else this.type = "none";
+
             this.formDataImageCover.append("image", this.globalStore.userProfile.profile.image.cover);
             this.formDataImageCover.append("type", "cover");
         },

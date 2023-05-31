@@ -9,7 +9,13 @@
                 <div class="flex flex-col w-full justify-between items-center gap-2">
                     
                     <MQ_textInput :password="true" label="Old Password" icon="key" />
-                    <MQ_textInput :password="true" label="New Password" icon="key" />
+                    <MQ_textInput :password="true" label="New Password" icon="key" :tooltip="true">
+                        <p> New Password must be at least <b class="text-MQ_red">8</b> characters and contain: </p>
+                        <p>- One <b class="text-MQ_red">Lowercase</b> Character</p>
+                        <p>- One <b class="text-MQ_red">Uppercase</b> Character</p>
+                        <p>- One <b class="text-MQ_red">Special</b> Character</p>
+                        <p>- One <b class="text-MQ_red">Number</b> Character</p>
+                    </MQ_textInput>
                     <MQ_textInput :password="true" label="New Password confirm" icon="key" />
 
                     <div class="w-full relative flex flex-col justify-center mt-2 items-center transition-all duration-500"
@@ -60,7 +66,7 @@ import macroquiet_logo_icon from "@/assets/Logos/macroquiet_logo_icon.png";
 
 let wait = function (seconds) {
     return new Promise((resolveFn) => {
-        setTimeout(resolveFn, seconds * 1000);
+        setTimeout(resolveFn, seconds * 1000); 
     });
 };
 
@@ -71,7 +77,11 @@ export default {
         const schema = yup.object({
             "Old Password": yup.string().required().label("Old Password"),
             "New Password": yup.string().required().label("New Password")
-                .notOneOf([yup.ref('Old Password'), null], 'New password must be different from the old password'),
+                .notOneOf([yup.ref('Old Password'), null], 'New password must be different from the old password').min(8)
+                .matches(/^(?=.*[A-Z])/,"Must Contain One Uppercase Character")
+                .matches(/^(?=.*[a-z])/,"Must Contain One Lowercase Character")
+                .matches(/^(?=.*[0-9])/,"Must Contain One Number Character")
+                .matches(/^(?=.*[!@#\$%\^&\*])/,"Must Contain One Special Case Character"),
             "New Password confirm": yup.string().required().label("New Password confirm")
                 .oneOf([yup.ref('New Password'), null], 'New passwords must match'),
         });

@@ -5,8 +5,8 @@
 
             <MQ_h2 class="w-full" text="PRIVACY POLICY" :small="true"/>
             
-            <MQ_ProfileBlock class="w-full max-w-4xl justify-center items-center flex flex-col px-10 py-4 text-xs sm:text-sm md2:text-base sm:px-6 | transition-all duration-500 text-justify">
-                <div class="font-normal text-MQ_light mb-4">
+            <MQ_ProfileBlock class="w-full max-w-4xl justify-center items-center flex flex-col px-10 py-4 text-xs sm:text-sm sm:px-6 | transition-all duration-500 text-justify">
+                <div class="font-normal text-MQ_light mb-4 text-sm sm:text-base text-left">
                     Last Updated: <span class="text-MQ_green">29 May, 2023</span>
                 </div>
                 

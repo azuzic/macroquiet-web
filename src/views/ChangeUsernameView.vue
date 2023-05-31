@@ -99,7 +99,7 @@ export default {
                     await wait(2);
                     this.type = "none";
                     this.globalStore.setup()
-                    this.$router.push("/user/"+ values['New Username'])
+                    this.$router.push("/users/"+ values['New Username'])
                 } catch (e) {
                     this.response = e.response.data.error;
                     await wait(2);
