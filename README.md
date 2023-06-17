@@ -11,7 +11,7 @@ This repository contains the code for the MacroQuiet game development studio's E
 - Alesandro Žužić (azuzic@unipu.hr)
 - Luka Blašković (lblaskovi@unipu.hr)
 
-## Features
+## Content
 
 - Home page:
   - Responsive carousel of newest game
