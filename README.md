@@ -1,7 +1,47 @@
-# Vue 3 + Vite
+# "MacroQuiet Web Frontend"
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This repository contains the code for the MacroQuiet game development studio's Express.js web server.
 
-## Recommended IDE Setup
+<img src="src/assets/Logos/MacroQuietLogo.svg?raw=true" width="256">
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Link to the Application
+- [MacroQuiet Web](https://macroquiet.herokuapp.com/)
+
+## Authors
+- Alesandro Žužić (azuzic@unipu.hr)
+- Luka Blašković (lblaskovi@unipu.hr)
+
+## Features
+
+- Home page:
+  - Responsive carousel of newest game
+  - Featured games (dynamically change website when clicked on in the style of the game)
+  - About us
+  - What's been going on (horizontally scrollable news)
+  - Contact us page
+- User authentication:
+  - Login
+  - Register
+- User profile page:
+  - Edit description
+  - Edit avatar/cover image
+  - Show played games:
+    - Game trophies
+    - Achievement progress
+    - Last time played
+    - Amount played
+  - Edit user settings:
+    - Username
+    - Password
+  - Delete profile
+- Privacy policy
+
+## Video Presentation
+[Watch here](https://www.youtube.com/watch?v=R58tw1SOpjY)
+
+## Organization
+
+[Juraj Dobrila University of Pula](http://www.unipu.hr/)  
+[Pula Faculty of Informatics](https://fipu.unipu.hr/)  
+Web Applications, Academic Year 2021/2022  
+Mentor: **Nikola Tanković** ([Profile](https://fipu.unipu.hr/fipu/nikola.tankovic), [Email](nikola.tankovic@unipu.hr))
