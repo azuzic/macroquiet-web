@@ -8,8 +8,9 @@
 
 <hr />
 <div align="center">
-<img src="src/assets/Logos/MacroQuietLogo.svg?raw=true" width="256">
+<img src="public/mq_logo_new.png?raw=true" width="256">
 </div>  
+<hr />
 Welcome to the MacroQuiet Game Development Studio's Vue.js web frontend repository! 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/39d55394-c535-4ddd-82b0-c644e5c8b30f/deploy-status)](https://app.netlify.com/sites/macroquiet/deploys)
