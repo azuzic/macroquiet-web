@@ -8,18 +8,18 @@ const globalStore = useGlobalStore()
     <router-link @click="globalStore.changeStyle('default'); carouselStore.changeStyle('default');" 
         to="/" class="h-full shrink flex justify-center items-center group | waviy">
         <img class="cursor-pointer aspect-square h-full min-w-fit | ml-6 lg:ml-8 | group-hover:rotate-180 | transition-all duration-1000" src="@/assets/Logos/macroquiet_logo_icon.png">
-        <div class="logo_font text-MQ_red pt-2 pl-2 | transition-all duration-300">
+        <div class="logo_font pt-1 pl-2 | transition-all duration-300">
             <div class="text-2xl font-bold tracking-wide flex | transition-all duration-300"> 
-                <span style="--i:1">M</span>
-                <span style="--i:2">a</span>
-                <span style="--i:3">c</span>
-                <span style="--i:4">r</span>
-                <span style="--i:5">o</span>
-                <span style="--i:6">Q</span>
-                <span style="--i:7">u</span>
-                <span style="--i:8">i</span>
-                <span style="--i:9">e</span>
-                <span style="--i:10">t</span>
+                <span class="text-MQ_light" style="--i:1">M</span>
+                <span class="text-MQ_light" style="--i:2">a</span>
+                <span class="text-MQ_light" style="--i:3">c</span>
+                <span class="text-MQ_light" style="--i:4">r</span>
+                <span class="text-MQ_light" style="--i:5">o</span>
+                <span class="text-MQ_red" style="--i:6">Q</span>
+                <span class="text-MQ_red" style="--i:7">u</span>
+                <span class="text-MQ_red" style="--i:8">i</span>
+                <span class="text-MQ_red" style="--i:9">e</span>
+                <span class="text-MQ_red" style="--i:10">t</span>
             </div>
         </div>
     </router-link>
