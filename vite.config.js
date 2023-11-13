@@ -1,4 +1,6 @@
 import { defineConfig } from "vite";
+import { VitePluginRadar } from "vite-plugin-radar";
+
 import pluginRewriteAll from "vite-plugin-rewrite-all";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
