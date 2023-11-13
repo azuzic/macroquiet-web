@@ -2,125 +2,150 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="MacroQuiet - Indie Game Development Studio From Croatia." />
+    <meta
+      name="description"
+      content="MacroQuiet - Indie Game Development Studio From Croatia." />
     <title>MacroQuiet</title>
   </head>
+
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <script src="https://kit.fontawesome.com/dd2c5124db.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/dd2c5124db.js"
+      crossorigin="anonymous"></script>
   </body>
 </html>
 
 <style>
-:root {
-  --thumb: #EF5350;
-  --thumbhover: #cbd5e1;
-  --thumbbg: #06060a;
-}
-.Poppins {
+  :root {
+    --thumb: #ef5350;
+    --thumbhover: #cbd5e1;
+    --thumbbg: #06060a;
+  }
+  .Poppins {
     font-family: "Poppins", sans-serif;
-}
-html {
+  }
+  html {
     background-color: var(--thumbbg);
-}
-::-webkit-scrollbar { width: 6px; }
-html body::-webkit-scrollbar-track { background: var(--thumbbg); }
-::-webkit-scrollbar-thumb {
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  html body::-webkit-scrollbar-track {
+    background: var(--thumbbg);
+  }
+  ::-webkit-scrollbar-thumb {
     background: var(--thumb);
     border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--thumbhover); }
-::-webkit-scrollbar-corner { background: #00000000; }
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--thumbhover);
+  }
+  ::-webkit-scrollbar-corner {
+    background: #00000000;
+  }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
     transition: all 0s 50000s;
-}
+  }
 
-::selection {
-  color: var(--thumbbg);
-  background: var(--thumb);
-}
+  ::selection {
+    color: var(--thumbbg);
+    background: var(--thumb);
+  }
 
-@font-face {
-  font-family: pdark;
-  src: url("@/assets/fonts/pdark.ttf");
-}
-@font-face {
-  font-family: logo_font;
-  src: url("@/assets/fonts/Nevan.ttf");
-}
-@font-face {
-  font-family: EHSMB;
-  src: url("@/assets/fonts/EHSMB.TTF");
-}
-@font-face {
-  font-family: Squarewave;
-  src: url("@/assets/fonts/Squarewave.ttf");
-}
-.Squarewave {
-  font-family: Squarewave;
-}
-.EHSMB {
-  font-family: EHSMB;
-}
-.p-dark {
-  font-family: pdark;
-}
-.logo_font {
-  font-family: logo_font;
-}
-.rendering-auto { image-rendering: auto; }
-.rendering-crisp-edges { image-rendering: crisp-edges; }
-.rendering-pixelated { image-rendering: pixelated; }
+  @font-face {
+    font-family: pdark;
+    src: url("@/assets/fonts/pdark.ttf");
+  }
+  @font-face {
+    font-family: logo_font;
+    src: url("@/assets/fonts/Nevan.ttf");
+  }
+  @font-face {
+    font-family: EHSMB;
+    src: url("@/assets/fonts/EHSMB.TTF");
+  }
+  @font-face {
+    font-family: Squarewave;
+    src: url("@/assets/fonts/Squarewave.ttf");
+  }
+  .Squarewave {
+    font-family: Squarewave;
+  }
+  .EHSMB {
+    font-family: EHSMB;
+  }
+  .p-dark {
+    font-family: pdark;
+  }
+  .logo_font {
+    font-family: logo_font;
+  }
+  .rendering-auto {
+    image-rendering: auto;
+  }
+  .rendering-crisp-edges {
+    image-rendering: crisp-edges;
+  }
+  .rendering-pixelated {
+    image-rendering: pixelated;
+  }
 
-html, body, #app {
-  height: 100%;
-}
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
 
-.fade-enter-active, .fade-leave-active {
+  .fade-enter-active,
+  .fade-leave-active {
     transition: all 0.3s;
-}
-.fade-enter-from {
+  }
+  .fade-enter-from {
     opacity: 0;
-}
-.fade-leave-to {
+  }
+  .fade-leave-to {
     opacity: 0;
-}
-.ql-align-right {
-  text-align: right !important;
-}
-.ql-align-left {
-  text-align: left !important;
-}
-.ql-align-center {
-  text-align: center !important;
-}
-.ql-align-justify {
-  text-align: justify !important;
-}
+  }
+  .ql-align-right {
+    text-align: right !important;
+  }
+  .ql-align-left {
+    text-align: left !important;
+  }
+  .ql-align-center {
+    text-align: center !important;
+  }
+  .ql-align-justify {
+    text-align: justify !important;
+  }
 
-.main {
+  .main {
     background-image: url("src/assets/background/night_sky.gif");
     background-size: 480px 270px;
     background-position: center;
-}
-.main-stranded {
-    background: content-box url("src/assets/games/page/StrandedAway/bg.png") center/150% auto no-repeat,
-    content-box url("src/assets/background/night_sky.gif") center/480px 270px;
-}
-.main-doge {
+  }
+  .main-stranded {
+    background: content-box url("src/assets/games/page/StrandedAway/bg.png")
+        center/150% auto no-repeat,
+      content-box url("src/assets/background/night_sky.gif") center/480px 270px;
+  }
+  .main-doge {
     background-image: url("src/assets/background/doge_bg.jpg");
     background-size: 1920px 720px;
     background-position: center;
-}
+  }
 </style>
