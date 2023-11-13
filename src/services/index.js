@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 let Service = axios.create({
-  baseURL: "https://macroquiet-web-server.onrender.com/api/",
+  baseURL: import.meta.env.VITE_MACROQUIET_BACKEND_URL + "/api/",
   timeout: 6000,
 });
 
