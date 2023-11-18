@@ -81,7 +81,7 @@ export default {
 			const elementId = Math.random().toString(36).substring(2, 15);
 
 			// Create animation styles directly in the div style attribute
-			scrollingText.style.cssText = `animation: scrollAnimation-${elementId} ${distance / 10}s ease-in-out infinite alternate-reverse;`;
+			scrollingText.style.cssText = `animation: scrollAnimation-${elementId} ${1 + distance / 10}s ease-in-out infinite alternate-reverse;`;
 
 			// Add keyframes to the document head
 			const styleTag = document.createElement("style");
