@@ -28,9 +28,11 @@
 				class="min-w-fit | snap-center flex flex-col overflow-hidden | group | bg-MQ_dark bg-opacity-25 | drop-shadow-md hover:drop-shadow-MQ | transition-all duration-500"
 				:class="id % 2 == 1 ? 'self-start flex-col-reverse rounded-b-lg' : 'self-end flex-col rounded-t-lg'">
 				<div class="px-4 pt-2 pb-4 grow flex flex-col bg-MQ_dark min-w-[150px] max-w-[338px] xs:min-w-[300px] xs:max-w-md | transition-all duration-500">
-					<div class="scrollbar-h-1 text-lg | w-full text-MQ_light group-hover:text-MQ_lighter font-bold pt-1 uppercase | transition-all duration-500 | whitespace-nowrap overflow-x-auto | title">
-						<i :class="t.icon" class="text-MQ_red"></i>
-						{{ t.title }}
+					<div class="flex items-center scrollbar-h-1 text-lg w-full text-MQ_light group-hover:text-MQ_lighter font-bold pt-1 uppercase overflow-hidden | transition-all duration-500 | whitespace-nowrap | title">
+						<i :class="t.icon" class="text-MQ_red pr-1.5 pb-0.5"></i>
+						<div class="w-full overflow-hidden">
+							<div :id="t.title">{{ t.title }}</div>
+						</div>
 					</div>
 				</div>
 
@@ -50,6 +52,9 @@ export default {
 		id: Number,
 		l: Number,
 	},
+	mounted() {
+		this.animateScroll();
+	},
 	methods: {
 		formatDateReverse(d) {
 			const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -63,6 +68,25 @@ export default {
 			let month = months[monthIndex];
 
 			return `${day} ${month}, ${year}`;
+		},
+		animateScroll() {
+			const scrollingText = document.getElementById(this.t.title);
+
+			const distance = scrollingText.scrollWidth - scrollingText.clientWidth;
+			console.log(this.t.title + " = " + scrollingText.scrollWidth + " - " + scrollingText.clientWidth + " = " + distance);
+
+			// Check if scrolling is needed
+			if (distance <= 0) return;
+
+			const elementId = Math.random().toString(36).substring(2, 15);
+
+			// Create animation styles directly in the div style attribute
+			scrollingText.style.cssText = `animation: scrollAnimation-${elementId} ${distance / 10}s ease-in-out infinite alternate-reverse;`;
+
+			// Add keyframes to the document head
+			const styleTag = document.createElement("style");
+			styleTag.innerHTML = `@keyframes scrollAnimation-${elementId} { 0% { transform: translateX(0); } 100% { transform: translateX(-${distance}px); } }`;
+			document.head.appendChild(styleTag);
 		},
 	},
 };
