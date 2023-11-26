@@ -5,6 +5,12 @@ import App from "./App.vue";
 //GLOBAL STORES
 import { createPinia } from "pinia";
 
+/* Pinia global stores */
+import { useCarouselStore } from "@/stores/carouselStore.js";
+import { useGameStore } from "@/stores/gameStore.js";
+import { useGlobalStore } from "@/stores/globalStore.js";
+import { useTimelineStore } from "@/stores/timelineStore.js";
+
 //JS SCREEN RESPONIVNESS
 import { Vue3Mq } from "vue3-mq";
 
@@ -29,6 +35,12 @@ import "./style.css";
 const pinia = createPinia();
 const app = createApp(App);
 
+/* Init Pinia stores BEFORE setting up the router */
+const carouselStore = useCarouselStore(pinia);
+const gameStore = useGameStore(pinia);
+const globalStore = useGlobalStore(pinia);
+const timelineStore = useTimelineStore(pinia);
+
 //GLOBAL COMPONENTS
 app.component("v-image-input", VImageInput);
 app.component("QuillEditor", QuillEditor);
@@ -37,19 +49,21 @@ app.component("VueDatePicker", VueDatePicker);
 app.use(router);
 app.use(pinia);
 app.use(Vue3Mq, {
-    breakpoints: {
-        xxs: 0,
-        xs: 480,
-        sm: 640,
-        md: 768,
-        md2: 860,
-        lg: 1024,
-        xl: 1280,
-        xl2: 1536,
-        xl3: 1680,
-    },
+	breakpoints: {
+		xxs: 0,
+		xs: 480,
+		sm: 640,
+		md: 768,
+		md2: 860,
+		lg: 1024,
+		xl: 1280,
+		xl2: 1536,
+		xl3: 1680,
+	},
 });
 
 init(import.meta.env.VITE_EMAIL_JS);
 
 app.mount("#app");
+
+export { carouselStore, gameStore, globalStore, timelineStore };

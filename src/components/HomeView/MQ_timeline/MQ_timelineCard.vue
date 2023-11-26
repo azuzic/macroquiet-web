@@ -71,9 +71,7 @@ export default {
 		},
 		animateScroll() {
 			const scrollingText = document.getElementById(this.t.title);
-
 			const distance = scrollingText.scrollWidth - scrollingText.clientWidth;
-			console.log(this.t.title + " = " + scrollingText.scrollWidth + " - " + scrollingText.clientWidth + " = " + distance);
 
 			// Check if scrolling is needed
 			if (distance <= 0) return;

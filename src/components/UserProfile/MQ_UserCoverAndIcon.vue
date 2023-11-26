@@ -48,7 +48,7 @@
             <div class="flex flex-col items-start pl-2 sm:pl-4 gap-1 sm:gap-4 grow h-24 sm:h-32 | transition-all duration-300">
                 <div class="text-xl sm:text-2xl text-MQ_red flex justify-center items-center drop-shadow-MQ z-10"> 
                     <!--USERNAME-->
-                    <div v-if="globalStore.userProfile.admin" class="relative mr-2">
+                    <div v-if="($route.params.userName == globalStore.userProfile.username && globalStore.userProfile.admin) || globalStore.showProfile.admin" class="relative mr-2">
                         <i class="fa-solid fa-shield text-MQ_green peer"></i> 
                         <MQ_Tooltip>ADMIN</MQ_Tooltip>
                     </div>
@@ -181,7 +181,7 @@ export default {
             this.formDataImageAvatar = new FormData();
             
             const imageSizeMB = this.globalStore.userProfile.profile.image.avatar.size / (1024 * 1024);
-            console.log(imageSizeMB);
+
             if (imageSizeMB > 0.512) {
                 this.globalStore.userProfile.profile.image.avatar = this.tempAvatarSave;
                 this.response = "Avatar image is to big! Recomended avatar image size is 256 x 256";
@@ -198,7 +198,7 @@ export default {
             this.formDataImageCover = new FormData();
 
             const imageSizeMB = this.globalStore.userProfile.profile.image.cover.size / (1024 * 1024);
-            console.log(imageSizeMB);
+
             if (imageSizeMB > 2) {
                 this.globalStore.userProfile.profile.image.cover = this.tempCoverSave;
                 this.response = "Cover image is to big! Recomended cover image size is 1920 x 1080";

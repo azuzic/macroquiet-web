@@ -22,7 +22,7 @@
                     <i class="text-MQ_light hover:text-MQ_red fa-brands fa-youtube text-xl opacity-80 | transition-all duration-300"></i>
                 </a>
                 <a href="https://twitter.com/MacroQuiet" target="_blank">
-                    <i class="text-MQ_light hover:text-MQ_red fa-brands fa-twitter text-xl opacity-80 | transition-all duration-300"></i>
+                    <i class="text-MQ_light hover:text-MQ_red fa-brands fa-x-twitter text-xl opacity-80 | transition-all duration-300"></i>
                 </a>
                 <a href="https://www.buymeacoffee.com/macroquiet" target="_blank">
                     <i class="text-MQ_light hover:text-MQ_red fa-solid fa-mug-hot text-xl opacity-80 | transition-all duration-300"></i>
